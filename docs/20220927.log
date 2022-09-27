@@ -1,0 +1,65 @@
+gradle build
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Configure project :
+Kotlin Multiplatform Projects are an Alpha feature. See: https://kotlinlang.org/docs/reference/evolution/components-stability.html. To hide this message, add 'kotlin.mpp.stability.nowarn=true' to the Gradle properties.
+
+The property 'kotlin.mpp.enableGranularSourceSetsMetadata=true' has no effect in this and future Kotlin versions, as Hierarchical Structures support is now enabled by default. It is safe to remove the property.
+
+The property 'kotlin.native.enableDependencyPropagation=false' has no effect in this and future Kotlin versions, as Kotlin/Native dependency commonization is now enabled by default. It is safe to remove the property.
+
+
+Please wait while Kotlin/Native compiler 1.7.10 is being installed.
+Download https://download.jetbrains.com/kotlin/native/builds/releases/1.7.10/linux-x86_64/kotlin-native-prebuilt-linux-x86_64-1.7.10.tar.gz (177.80 MB)
+Download https://download.jetbrains.com/kotlin/native/builds/releases/1.7.10/linux-x86_64/kotlin-native-prebuilt-linux-x86_64-1.7.10.tar.gz finished, took 16 s 816 ms
+Unpack Kotlin/Native compiler to /home/user/.konan/kotlin-native-prebuilt-linux-x86_64-1.7.10
+Unpack Kotlin/Native compiler to /home/user/.konan/kotlin-native-prebuilt-linux-x86_64-1.7.10 finished, took 1 s 916 ms
+
+> Task :compileKotlinNative
+Downloading native dependencies (LLVM, sysroot etc). This is a one-time action performed only on the first run of the compiler.
+
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (0/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (11027786/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (20757154/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (32611122/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (44462066/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (56317594/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (68180554/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (80033554/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (91894738/101793914).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz (101793914/101793914). Done.
+Extracting dependency: /home/user/.konan/cache/x86_64-unknown-linux-gnu-gcc-8.3.0-glibc-2.19-kernel-4.9-2.tar.gz into /home/user/.konan/dependencies
+
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/lldb-4-linux.tar.gz (0/52150087).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/lldb-4-linux.tar.gz (12324901/52150087).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/lldb-4-linux.tar.gz (24305709/52150087).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/lldb-4-linux.tar.gz (36167221/52150087).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/lldb-4-linux.tar.gz (48028293/52150087).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/lldb-4-linux.tar.gz (52150087/52150087). Done.
+Extracting dependency: /home/user/.konan/cache/lldb-4-linux.tar.gz into /home/user/.konan/dependencies
+
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (0/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (10525796/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (22036268/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (33890052/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (45727988/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (57597244/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (69407436/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (81219164/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (93085452/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (104842316/109668457).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/llvm-11.1.0-linux-x64-essentials.tar.gz (109668457/109668457). Done.
+Extracting dependency: /home/user/.konan/cache/llvm-11.1.0-linux-x64-essentials.tar.gz into /home/user/.konan/dependencies
+
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/libffi-3.2.1-2-linux-x86-64.tar.gz (0/56412).
+(KonanProperies) Downloading dependency: https://download.jetbrains.com/kotlin/native/libffi-3.2.1-2-linux-x86-64.tar.gz (56412/56412). Done.
+Extracting dependency: /home/user/.konan/cache/libffi-3.2.1-2-linux-x86-64.tar.gz into /home/user/.konan/dependencies
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5.1/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1m 6s
+7 actionable tasks: 7 executed
