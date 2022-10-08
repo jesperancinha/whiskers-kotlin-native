@@ -1,4 +1,11 @@
 # Whiskers Kotlin-Native project
+<ins>20221008</ins>
+
+https://github.com/JetBrains/kotlin-native/issues/1212
+
+External jars will apparently never be supported by Kotlin/Native and that is because of the nature of the Kotlin/JVM AOT compiler (Ahead of Time).
+
+The only way to support this is to make own libraries to support special functionalities.
 
 <ins>20220927</ins>
 

@@ -8,6 +8,7 @@ build
 
 ## Logs
 logs
+*.hprof
 
 ## Node
 node_modules

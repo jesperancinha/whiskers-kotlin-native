@@ -1,3 +1,5 @@
+import io.ktor.util.*
+
 fun main() {
     println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
     println(randomMessage())
