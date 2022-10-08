@@ -2,7 +2,12 @@ version: 2
 updates:
 
   - package-ecosystem: gradle
-    directory: "/"
+    directory: "/good-feel"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: gradle
+    directory: "/plus"
     schedule:
       interval: "daily"
 
