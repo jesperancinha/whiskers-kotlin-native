@@ -1,0 +1,32 @@
+{
+  "name": "e2e-whiskers-native",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "cypress": "npx cypress open --browser electron",
+    "cypress:open:local": "npm run cypress",
+    "cypress:open:docker": "npx cypress open --browser electron --config baseUrl=http://localhost:8080",
+    "cypress:run:electron": "npx cypress run --browser electron",
+    "cypress:run:chrome": "npx cypress run --browser chrome",
+    "cypress:run:firefox": "npx cypress run --browser firefox",
+    "cypress:run:edge": "npx cypress run --browser edge",
+    "cypress:run:electron:full": "npx cypress run --config-file full.cypress.config.ts --browser electron",
+    "cypress:run:chrome:full": "npx cypress run --config-file full.cypress.config.ts --browser chrome",
+    "cypress:run:firefox:full": "npx cypress run --config-file full.cypress.config.ts --browser firefox",
+    "cypress:run:edge:full": "npx cypress run --config-file full.cypress.config.ts --browser edge"
+  },
+  "author": "João Esperancinha",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "10.9.0",
+    "ts-node": "10.9.1",
+    "typescript": "4.8.4"
+  },
+  "dependencies": {
+    "client-oauth2": "^4.3.3",
+    "crypto": "^1.0.1",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
