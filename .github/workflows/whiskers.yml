@@ -18,9 +18,6 @@ jobs:
         - name: Build Node
           run: make build-npm
 
-#        - name: Test Node
-#          run: make test-npm
-
         - name: Build and Test MAVEN
           run:  mvn clean install jacoco:prepare-agent package jacoco:report
 
