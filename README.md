@@ -5,3 +5,22 @@ This is a set of command line elements that we can run and install in our system
 
 1. [Good Feel](./good-feel) -  A project to make you feel good. If you run into a situation where things get tough, then run this command to make you feel good. This project is the first test-drive about native use in this whole project
 2. [Plus](./plus) - Plus just means a step forward. This module is fully dedicated to the use of external libraries.
+
+## References
+
+- [Koin — Kotlin Native Dependency Injection Library](https://medium.com/android-dev-hacks/koin-kotlin-native-dependency-injection-library-f1daddc1ef99)
+- [Realm Kotlin Multiplatform SDK](https://blog.jetbrains.com/kotlin/2021/04/realm-kotlin-multiplatform-sdk/)
+- [Ktorm @ GitHub](https://github.com/kotlin-orm/ktorm)
+- [Ktorm](https://www.ktorm.org/)
+- [Getting started with a Ktor Server](https://ktor.io/docs/intellij-idea.html)
+- [Getting started with a Ktor Client](https://ktor.io/docs/getting-started-ktor-client.html)
+- [Kotlin Native Support #571](https://github.com/ktorio/ktor/issues/571)
+- [can we use Spring with Kotlin/Native? @ Reddit](https://www.reddit.com/r/Kotlin/comments/fkn5ko/can_we_use_spring_with_kotlinnative/)
+- [GS Rest Service @ GitHub](https://github.com/spring-guides/gs-rest-service)
+- [Spring Native Overview](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#overview)
+- [Build Java Modules into a Native Executable](https://www.graalvm.org/22.2/reference-manual/native-image/guides/build-java-modules-into-native-executable/)
+- [Picocli GraalVM info](https://picocli.info/#_graalvm_native_image)
+- [Support external JAR libraries? #1212](https://github.com/JetBrains/kotlin-native/issues/1212)
+- [How to Convert Runnable .jar File to Native Code?](https://stackoverflow.com/questions/52738484/how-to-convert-runnable-jar-file-to-native-code)
+- [Incubator @ KongHQ](https://incubator.konghq.com/)
+- [Get started with Kotlin/Native in IntelliJ IDEA](https://kotlinlang.org/docs/native-get-started.html#0)

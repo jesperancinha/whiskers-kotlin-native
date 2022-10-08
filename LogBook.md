@@ -1,4 +1,6 @@
 # Whiskers Kotlin-Native project
+
+## Logs
 <ins>20221008</ins>
 
 https://github.com/JetBrains/kotlin-native/issues/1212
@@ -16,3 +18,11 @@ There is a typical [log generated](./docs/20220927.log) when running the build f
 
 It is important to notice that the first time the build runs, because everything is download, the compilation is very slow.
 In general, compilation takes a bit longer than just generating Java Byte Codes.
+
+## Project Goals
+
+Good and Bad Quotes - "The Cat that helped Lucy"
+
+1. Spring Native project - Conversion with GraalVM using plugin
+2. Kotlin Native Project - No conversion using Koin, Ktorm, Ktor Client and Ktor Server
+3. KoFu Project - Conversion with GraalVM using plugin
