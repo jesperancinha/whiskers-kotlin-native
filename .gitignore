@@ -4,7 +4,6 @@ target
 .idea
 *.iml
 build
-bin
 
 
 ## Logs
@@ -23,3 +22,6 @@ node_modules
 ## Cypress
 /videos
 /screenshots
+
+## BIN
+bin
