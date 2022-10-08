@@ -5,3 +5,21 @@ target
 *.iml
 build
 bin
+
+
+## Logs
+logs
+
+## Node
+node_modules
+
+## Temporary images
+*.jpg~
+
+## Draw IO
+*.bkp
+*.dtmp
+
+## Cypress
+/videos
+/screenshots
