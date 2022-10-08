@@ -2,7 +2,7 @@ plugins {
     kotlin("multiplatform") version "1.7.10"
 }
 
-group = "org.jesperancinha"
+group = "me.jesperancinha"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -29,6 +29,10 @@ kotlin {
     sourceSets {
         val nativeMain by getting
         val nativeTest by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-core:2.1.1")
+            }
+        }
     }
-
 }
