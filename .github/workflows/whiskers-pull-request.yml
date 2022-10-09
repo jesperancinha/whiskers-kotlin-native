@@ -5,13 +5,29 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build-test-coverage-report:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v2
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
       - name: Build Gradle
-        run: make b
+        run: make build-gradle
+
+  build-graalvm-test-coverage-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: 'latest'
+          java-version: '17'
+          components: 'native-image'
+      - name: Build Gradle GraalVM
+        run: make build-gradle
