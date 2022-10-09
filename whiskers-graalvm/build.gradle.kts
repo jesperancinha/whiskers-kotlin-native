@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.7.4"
 	id("io.spring.dependency-management") version "1.0.14.RELEASE"
+	id("org.springframework.experimental.aot") version "0.12.1"
+
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
 }
@@ -13,6 +15,7 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
 	mavenCentral()
+	maven { url = uri("https://repo.spring.io/release") }
 }
 
 extra["testcontainersVersion"] = "1.17.4"
