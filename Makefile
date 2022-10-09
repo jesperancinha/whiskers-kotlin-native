@@ -3,6 +3,8 @@ build: build-gradle
 build-gradle:
 	cd good-feel && make b
 	cd plus && make b
+	cd whiskers-cloudnative && make b
+	cd whiskers-graalvm && make b
 	make release
 release:
 	mkdir -p bin
