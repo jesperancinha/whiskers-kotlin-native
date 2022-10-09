@@ -53,7 +53,7 @@ tasks.getByName<BootBuildImage>("bootBuildImage") {
 	environment = mapOf(
 		"BP_NATIVE_IMAGE" to "true"
 	)
-	buildpacks = listOf("gcr.io/paketo-buildpacks/java-native-image:7.19.0")
+	buildpacks = listOf("gcr.io/paketo-buildpacks/java-native-image:7.34.0")
 }
 
 tasks.withType<Test> {
