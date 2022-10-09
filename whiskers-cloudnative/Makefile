@@ -3,5 +3,4 @@ build-gradle:
 	./gradlew
 	gradle bootBuildImage
 run:
-	cat ./build/native/nativeCompile/whiskers-cloudnative.build_artifacts.txt
-	./build/native/nativeCompile/whiskers-cloudnative
+	docker run whiskers-cloudnative:0.0.1-SNAPSHOT
