@@ -14,4 +14,13 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: Build Gradle
-        run: make b
+        run: make build-gradle
+
+      - uses: actions/checkout@v2
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: 'latest'
+          java-version: '17'
+          components: 'native-image'
+      - name: Build Gradle GraalVM
+        run: make build-gradle
