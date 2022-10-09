@@ -3,11 +3,11 @@ build: build-gradle build-gradle-graalvm
 build-gradle:
 	cd good-feel && make b
 	cd plus && make b
-	cd whiskers-cloudnative && make b
 	cd whiskers-ktor && make b
 	make release-gradle
 build-gradle-graalvm:
 	mkdir -p bin
+	cd whiskers-cloudnative && make b
 	cd whiskers-graalvm && make b
 	make release-gradle-graalvm
 release-gradle:
