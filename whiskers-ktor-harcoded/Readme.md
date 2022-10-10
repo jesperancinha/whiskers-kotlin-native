@@ -2,8 +2,6 @@
 
 ## References
 
-- [File I/O in Kotlin Native](https://www.nequalsonelifestyle.com/2020/11/16/kotlin-native-file-io/)
-- [fopen C](https://www.tutorialspoint.com/c_standard_library/c_function_fopen.htm)
 - [Koin — Kotlin Native Dependency Injection Library](https://medium.com/android-dev-hacks/koin-kotlin-native-dependency-injection-library-f1daddc1ef99)
 - [Realm Kotlin Multiplatform SDK](https://blog.jetbrains.com/kotlin/2021/04/realm-kotlin-multiplatform-sdk/)
 - [Ktorm @ GitHub](https://github.com/kotlin-orm/ktorm)

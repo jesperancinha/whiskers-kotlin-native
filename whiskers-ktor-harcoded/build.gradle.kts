@@ -1,7 +1,6 @@
 plugins {
     application
     kotlin("multiplatform") version "1.7.20"
-    kotlin("plugin.serialization") version "1.7.20"
 }
 
 group = "org.jesperancinha.native"
@@ -10,7 +9,6 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenCentral()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
-    maven { url = uri("https://repo1.maven.org/maven2/") }
 }
 
 kotlin {
@@ -30,16 +28,12 @@ kotlin {
             }
         }
     }
-    val ktorVersion = "2.1.2"
+    val ktorVersion="2.1.2"
     sourceSets {
         val nativeMain by getting {
             dependencies {
-                val kotlinVersion = "1.7.20"
                 implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
-                implementation("io.ktor:ktor-server-core:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-
             }
         }
         val nativeTest by getting {
