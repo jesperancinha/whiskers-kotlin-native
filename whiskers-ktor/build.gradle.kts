@@ -39,7 +39,7 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-
+                implementation( "com.squareup.sqldelight:native-driver:1.5.3")
             }
         }
         val nativeTest by getting {
@@ -48,4 +48,6 @@ kotlin {
             }
         }
     }
+
 }
+
