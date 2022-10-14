@@ -24,22 +24,34 @@ kotlin {
     }
 
     nativeTarget.apply {
+        compilations.getByName("main") {
+            cinterops {
+                val libcurl by creating
+            }
+        }
         binaries {
             executable {
+                val sysRoot = "/"
+                val libGccVersion = "11.2.0"
+                val libGcc = "/lib/gcc/x86_64-pc-linux-gnu/$libGccVersion"
+                val overriddenProperties = "targetSysRoot.linux_x64=$sysRoot;libGcc.linux_x64=$libGcc"
+                freeCompilerArgs = freeCompilerArgs + listOf(
+                    "-Xoverride-konan-properties=${overriddenProperties}"
+                )
                 entryPoint = "main"
             }
         }
     }
     val ktorVersion = "2.1.2"
     sourceSets {
+        val libcurl by creating
+
         val nativeMain by getting {
             dependencies {
-                val kotlinVersion = "1.7.20"
                 implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-                implementation( "com.squareup.sqldelight:native-driver:1.5.3")
             }
         }
         val nativeTest by getting {

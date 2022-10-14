@@ -1,5 +1,3 @@
-import com.squareup.sqldelight.db.SqlDriver
-import com.squareup.sqldelight.drivers.native.NativeSqliteDriver
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
@@ -9,12 +7,24 @@ import kotlinx.cinterop.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import libcurl.*
 import platform.posix.*
 
 @Serializable
 class Config(val port: Int)
 
-fun main() {
+fun main(args: Array<String>) {
+    val curl = curl_easy_init()
+    if (curl != null) {
+        curl_easy_setopt(curl, CURLOPT_URL, "https://example.com")
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L)
+        val res = curl_easy_perform(curl)
+        if (res != CURLE_OK) {
+            println("curl_easy_perform() failed ${curl_easy_strerror(res)?.toKString()}")
+        }
+        curl_easy_cleanup(curl)
+    }
+
     val string = readText("application.json")
     println(string)
     val configuration = Json.decodeFromString<Config>(string)

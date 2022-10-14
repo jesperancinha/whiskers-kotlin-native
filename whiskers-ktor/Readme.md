@@ -1,5 +1,17 @@
 # Whiskers Ktor
 
+
+## Installation
+
+```shell
+sudo apt-get install gcc-multilib
+sudo apt install gcc-x86-64-linux-gnux32
+sudo ln -s /usr/lib/x86_64-linux-gnu /usr/lib64
+sudo apt-get install libc-dev
+sudo apt-get install libc6-dev
+sudo apt install build-essential
+```
+
 ## References
 
 - [File I/O in Kotlin Native](https://www.nequalsonelifestyle.com/2020/11/16/kotlin-native-file-io/)

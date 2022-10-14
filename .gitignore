@@ -29,3 +29,8 @@ bin
 
 ## Compressed files
 deck.tar.gz
+
+## C / C++
+*.o
+*.a
+kotlin.native.tar.gz
