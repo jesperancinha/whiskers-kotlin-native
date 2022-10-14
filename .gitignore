@@ -34,3 +34,7 @@ deck.tar.gz
 *.o
 *.a
 kotlin.native.tar.gz
+kotlin.native
+*.kexe
+*.klib
+redcat.klib-build

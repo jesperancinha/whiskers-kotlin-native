@@ -1,6 +1,11 @@
 #ifndef LIB2_H_INCLUDED
 #define LIB2_H_INCLUDED
 
-const char* tellStory();
+char* tell_story();
 
-#endif //LIB2_H_INCLUDED
+int answer();
+
+char love();
+
+#endif
+
