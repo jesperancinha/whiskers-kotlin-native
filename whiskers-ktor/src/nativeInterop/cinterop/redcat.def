@@ -1,0 +1,3 @@
+headers = redcat.h
+staticLibraries = redcat.a
+libraryPaths = c

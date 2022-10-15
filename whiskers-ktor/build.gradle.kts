@@ -26,26 +26,23 @@ kotlin {
     nativeTarget.apply {
         compilations.getByName("main") {
             cinterops {
-                val libcurl by creating
+                val redcat by creating {
+                    defFile(project.file("src/nativeInterop/cinterop/redcat.def"))
+                    packageName("org.jesperancinha.native")
+                    includeDirs.allHeaders("c")
+                }
+
             }
         }
         binaries {
             executable {
-                val sysRoot = "/"
-                val libGccVersion = "11.2.0"
-                val libGcc = "/lib/gcc/x86_64-pc-linux-gnu/$libGccVersion"
-                val overriddenProperties = "targetSysRoot.linux_x64=$sysRoot;libGcc.linux_x64=$libGcc"
-                freeCompilerArgs = freeCompilerArgs + listOf(
-                    "-Xoverride-konan-properties=${overriddenProperties}"
-                )
                 entryPoint = "main"
             }
         }
+
     }
     val ktorVersion = "2.1.2"
     sourceSets {
-        val libcurl by creating
-
         val nativeMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-server-core:$ktorVersion")

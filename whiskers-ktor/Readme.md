@@ -10,6 +10,12 @@ sudo ln -s /usr/lib/x86_64-linux-gnu /usr/lib64
 sudo apt-get install libc-dev
 sudo apt-get install libc6-dev
 sudo apt install build-essential
+sudo apt install gcc-multilib
+sudo apt-get install libc-dev
+sudo apt-get install libc6-dev-mipsel-cross libc6-dev-mipsel-cross libc-dev-mipsel-cross
+sudo cp /usr/mipsel-linux-gnu/lib/crt*.o /usr/lib
+sudo cp /usr/lib/x86_64-linux-gnu/crt*.o /usr/lib
+sudo apt-get install binutils
 ```
 
 ## References
