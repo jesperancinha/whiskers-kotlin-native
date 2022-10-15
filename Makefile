@@ -5,13 +5,17 @@ build-gradle: build-gradle-ktor
 	cd plus && make b
 	make release-gradle
 build-gradle-ktor:
-	cd whiskers-ktor && make b
+	cd whiskers-ktor && make && make b
 	cd whiskers-ktor-harcoded && make b
 build-gradle-graalvm:
 	mkdir -p bin
 	cd whiskers-cloudnative && make b
 	cd whiskers-graalvm && make b
 	make release-gradle-graalvm
+build-gradle-redcat:
+	mkdir -p bin
+	cd whiskers-red-cat && make b
+	make release-gradle-redcat
 release-gradle:
 	mkdir -p bin
 	cp good-feel/build/bin/native/debugExecutable/good-feel.kexe bin/good-feel
@@ -20,6 +24,8 @@ release-gradle:
 	cp whiskers-ktor-harcoded/build/bin/native/releaseExecutable/whiskers-ktor-harcoded.kexe bin/whiskers-ktor-harcoded
 release-gradle-graalvm:
 	cp whiskers-graalvm/build/native/nativeCompile/whiskers-graalvm bin/whiskers-graalvm
+release-gradle-redcat:
+	cp whiskers-red-cat/build/native/nativeCompile/whiskers-red-cat bin/whiskers-red-cat
 stop:
 	docker ps -a -q --filter="name=whiskers" | xargs -I {} docker stop {}
 	docker ps -a -q --filter="name=whiskers" | xargs -I {} docker rm {}
@@ -36,3 +42,6 @@ dcup-light: dcd
 	make kong-config
 kong-config:
 	cd kong && make kong-config
+install-kotlin-native-linux:
+	cd whiskers-ktor/c && make install-kotlin-native-linux
+	cd whiskers-red-cat && make install-kotlin-native-linux
