@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-b: build
+b: build build-native
 build:
 	gcc -c "-I$(PWD)" redcat.c -o redcat.o
 	ar rcs redcat.a redcat.o
