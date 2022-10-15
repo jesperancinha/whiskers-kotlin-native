@@ -1,8 +1,27 @@
 # whiskas-kotlin-native-command-line
 
+
+[![Build, Test, Coverage and Report](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers.yml/badge.svg)](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers.yml)
+[![e2e-whiskers](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers-e2e.yml/badge.svg)](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers-e2e.yml)
+
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧 !!! [Under construction...](https://github.com/jesperancinha/project-signer/blob/master/project-signer-templates/UnderConstruction.md) !!! 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
-This is a set of command line elements that we can run and install in our system created in Kotlin and Generated using the Kotlin Native compiler
+## Introduction
+
+This project is an in-depth investigation about all things Native and JVM with focus on `Kotlin Native`.
+
+As a datasource, I have continued my novel, [Good-Story](https://github.com/jesperancinha/good-story/blob/main/docs/good.story/GoodStory.md), which links several projects focused on backend developments.
+
+If you are interested, please check [Chapter II - The cat that helped Lucy](./docs/good.story/good.story.chapter.2.md) for the complete data source and context.
+
+## Project Structure
+
+- [good-feel](./good-feel) - A simple Kotlin Native project without the use of C bindings
+- [plus](./plus) - A Kotlin Native project exploring other functions provided by Kotlin Native
+- [whiskers-cloudnative](./whiskers-cloudnative) - Spring Native way of creating a docker container as a full implementation of the Onion Model used in Microservices
+- [whiskers-graalvm](./whiskers-graalvm) - Spring Native way of creating a GraalVM self-contained executable command as a full implementation of the Onion Model used in Microservices
+- [whiskers-ktor-harcoded](./whiskers-ktor-harcoded) - Ktor Service implemented with hard-coded configuration
+- [whiskers-ktor](./whiskers-ktor) - Ktor Service containing a full implementation of the Onion Model used in Microservices
 
 ## Project layout
 
