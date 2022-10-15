@@ -53,5 +53,5 @@ jobs:
       - name: Install Kotlin Native
         run: make install-kotlin-native-linux
 
-      - name: Build Gradle GraalVM
+      - name: Build Gradle Red Cat
         run: make build-gradle-redcat

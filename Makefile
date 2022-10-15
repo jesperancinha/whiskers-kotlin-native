@@ -25,7 +25,7 @@ release-gradle:
 release-gradle-graalvm:
 	cp whiskers-graalvm/build/native/nativeCompile/whiskers-graalvm bin/whiskers-graalvm
 release-gradle-redcat:
-	cp whiskers-red-cat/build/native/nativeCompile/whiskers-red-cat bin/whiskers-red-cat
+	cp whiskers-red-cat/main.kexe bin/whiskers-red-cat
 stop:
 	docker ps -a -q --filter="name=whiskers" | xargs -I {} docker stop {}
 	docker ps -a -q --filter="name=whiskers" | xargs -I {} docker rm {}
