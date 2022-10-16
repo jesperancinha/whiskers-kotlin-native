@@ -6,7 +6,7 @@ plugins {
 	id("org.springframework.experimental.aot") version "0.12.1"
 
 	kotlin("jvm") version "1.7.20"
-	kotlin("plugin.spring") version "1.6.21"
+	kotlin("plugin.spring") version "1.7.20"
 }
 
 group = "org.jesperancinha.native"
