@@ -11,6 +11,26 @@ updates:
     schedule:
       interval: "daily"
 
+  - package-ecosystem: gradle
+    directory: "/whiskers-cloudnative"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: gradle
+    directory: "/whiskers-graalvm"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: gradle
+    directory: "/whiskers-ktor"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: gradle
+    directory: "/whiskers-ktor-hardcoded"
+    schedule:
+      interval: "daily"
+
   - package-ecosystem: npm
     directory: "/e2e"
     schedule:
