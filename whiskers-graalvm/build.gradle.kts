@@ -5,7 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.0.14.RELEASE"
 	id("org.springframework.experimental.aot") version "0.12.1"
 
-	kotlin("jvm") version "1.6.21"
+	kotlin("jvm") version "1.7.20"
 	kotlin("plugin.spring") version "1.6.21"
 }
 
