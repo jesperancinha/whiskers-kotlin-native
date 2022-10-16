@@ -20,6 +20,7 @@ sudo apt-get install binutils
 
 ## References
 
+- [hfhbd / postgress-native-sqldelight](https://github.com/hfhbd/postgres-native-sqldelight)
 - [File I/O in Kotlin Native](https://www.nequalsonelifestyle.com/2020/11/16/kotlin-native-file-io/)
 - [fopen C](https://www.tutorialspoint.com/c_standard_library/c_function_fopen.htm)
 - [Koin — Kotlin Native Dependency Injection Library](https://medium.com/android-dev-hacks/koin-kotlin-native-dependency-injection-library-f1daddc1ef99)

@@ -38,3 +38,8 @@ kotlin.native
 *.kexe
 *.klib
 redcat.klib-build
+postgres.zip
+postgres-master
+stdbool.h
+stdint.h
+_types.h
