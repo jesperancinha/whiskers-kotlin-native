@@ -20,6 +20,7 @@ import kotlin.time.Duration
 @Serializable
 class Config(val port: Int)
 
+@ExperimentalUnsignedTypes
 fun main(args: Array<String>) {
     val story = tell_story() as CPointer<ByteVar>
     println("Welcome to the redcat story (server): ${story.toKString()}")
@@ -40,6 +41,7 @@ fun main(args: Array<String>) {
         it.next()
         it.getString(1)
     })
+    CatSayingsRepository(driver).findAll().map { println(it.saying) }
     println(notPrepared.value)
     println("--- Cat logs out ---")
     embeddedServer(CIO, port = configuration.port) {
