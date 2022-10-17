@@ -44,31 +44,36 @@ For Lucy, it became clear that she would never go anywhere in the company since 
 expected of her. Her job was at stake and the odds were going against her.
 Lucy wakes up startled in the middle of the night. She was back in `Armona`. Her place was quiet and it felt safe.
 
-As the night moved on and the sun rise, Lucy took further a nice rest and around 10, she was already doing her groceries
-in the supermarket close to her on the island.
-As she went into the small supermarket she met an old friend called Ursi Tursi Lursi. Lursi was a strange man with a
-peculiar moustache. Like Lucy, Lursi was also a foreigner in Portugal.
-With a curly moustache reminding ourselves of a very sophisticated Viking, Lursi was always nice to speak to. Lucy
+As the night moved on and the sun rose, Lucy took further a nice rest and at around 10, she was already doing her
+groceries in the supermarket close to her on the island.
+As she went into the small supermarket she met an old friend called `Ursi Tursi Lursi`. `Lursi` was a strange man with a
+peculiar moustache. Like `Lucy`, `Lursi` was also a foreigner in Portugal. He came from `Switzerland` and he, unlike
+Lucy,
+was
+only in `Armona` for holidays. Every single summer he would come back to relax.
+With a curly moustache reminding ourselves of a very sophisticated Viking, `Lursi` was always nice to speak to. Lucy
 always saw in him an old friend. As they were talking over how great it was to live on that island, the cultura and the
 portuguese traditions, a red cat came along.
-It was a very friendly cat that reminded Lucy of something she never told Lursi.
+It was a very friendly cat that reminded Lucy of something she never told `Lursi`.
 
 Back in Holland, more specifically in `Nieuwegein`, Lucy once had an assignment to install some sensors in a building.
-At
-that time something was constantly failing in the software project she was involved in. Nobody could figure out what it
+At that time something was constantly failing in the software project she was involved in. Nobody could figure out what
+it
 was, and it was a difficult time, because Lucy was constantly receiving mails from herself to herself. It appeared that
 someone was able to infiltrate her account regardless of how many times she changed her password leading to
-uncomfortable moments between Lucy and her bos. Someone by the name of Sneller Brass. Brass was receiving a few odd
+uncomfortable moments between Lucy and her bos. Someone by the name of `Sneller Brass`. Brass was receiving a few odd
 mails from Lucy that made no sense, but there was increasing tension in the office about it. On one early morning Lucy
-went to the office to install some temperature sensors. Along the way, Lucy always had the time to pet a red cat that
+went to the office to install some temperature sensors. Along the way, `Lucy` always had the time to pet a red cat that
 always came along and was always there on the street.
 They both had formed a very special bond rarely seen between humans and cats. Lucy just called this cat `Kitten`. Kitten
 was obviously from someone although Lucy never ever found out who owned him.
 After a few pets and a few laughs, something that would take about 5 to 10 minutes, Lucy would proceed to do her work.
-And that was no different this day. As Lucy walks into the office, Kitten starts to meouw. But not like a normal cat
-does. It felted to Lucy that something was wrong.
-The cat insisted on going inside the office. As Lucy lets him in, the cat jumps and runs straight into her desk and
-there he goes silent and begins to look at a corner where the bookcase were.
+And that was no different this day. As Lucy walks into the office, `Kitten` starts to meouw. But not like a normal cat
+does. To Lucy, it felt like something was wrong. Somehow, the cat wanted to say something other than play or ask for
+food.
+The cat insisted on going inside the office, by scratchin its paws against the glass. As Lucy lets him in, the cat jumps
+and runs straight into her desk and
+there he goes silent and begins to look at a corner where the bookcase was.
 
 - Lucy: What are you doing Kitten? Playing hide and seek?
 - Kitten: Meouwwwwwwwwwwwwwwwwwwww! csssssssssshhhhhhh!
@@ -79,13 +84,13 @@ immediately
 clarified the emails. Someone was looking and micromanaging everything Lucy was doing. Since Brass was responsible for
 hiring the cleaners and the cleaners never found the camera in plain sight, it was the obvious conclusion that Brass
 might be involved. Regardless, Lucy mentioned this in the office, but she was accused of being `too negative` and to her
-surprised also accused of planting the camera herself.
-Many questions raised in Lucy's mind including if she was being suddenly targeted by the company simply for being a
-woman.
-After this incident, Lucy was unable to remain in an environment that suddenly became toxic to her. She presented her
-resignation and found an ew job in `Red portal enterprises B.V.`
+surprised she also accused of planting the camera herself.
+Many questions raised in Lucy's mind including if she was being suddenly targeted by the company simply for `being a
+woman`. The Netherlands was known to be, at the time, for many Dutch people, quite an extreme patriarch society. 
+After this incident, `Lucy` was unable to remain in this environment that suddenly became so toxic to her. She
+presented her resignation and found a new job at `Red portal enterprises B.V.` only a few weeks after the incident.
 
-Lursi remained the whole time listening carefully to Lucy's story
+Lursi remained the whole time listening carefully to Lucy's story in awe and disbelief.
 
 [to be continued...]
 
@@ -95,6 +100,9 @@ Lursi remained the whole time listening carefully to Lucy's story
 - Hara Arre - Chapter Lead of `Blue Round Grachten Roses Dot Com BV`
 - Sneller Brass - CTO of `Max Maxx BV`
 - `Red portal enterprises B.V.`
+- Kitten - The cat that helped Lucy
+- Ursi Tursi Lursi - A swiss friend of Lucy
+
 ## Inspiring music
 
 This is the music selection that has inspired the above fiction story:
