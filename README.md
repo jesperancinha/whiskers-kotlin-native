@@ -46,3 +46,7 @@ If you are interested, please check [Chapter II - The cat that helped Lucy](./do
 - [How to Convert Runnable .jar File to Native Code?](https://stackoverflow.com/questions/52738484/how-to-convert-runnable-jar-file-to-native-code)
 - [Incubator @ KongHQ](https://incubator.konghq.com/)
 - [Get started with Kotlin/Native in IntelliJ IDEA](https://kotlinlang.org/docs/native-get-started.html#0)
+
+## Thanks
+
+- Special thanks to [hfhbd @ GitHub](https://github.com/hfhbd/postgres-native-sqldelight), for giving me the necessary pointers to go PostgreSQL native
