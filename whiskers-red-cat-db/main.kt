@@ -11,8 +11,8 @@ fun main(args: Array<String>) {
         pgtty = null,
         dbName = "whiskers",
         login = "whiskers",
-        pwd = "whiskers",
-        pgoptions = "options"
+        pwd = "red_cat",
+        pgoptions =  null
     )
     println(PQstatus(conn))
     println("AAAAAA")
