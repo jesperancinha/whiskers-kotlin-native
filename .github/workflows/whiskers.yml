@@ -19,7 +19,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: Install Kotlin Native
-        run: make install-kotlin-native-ktor
+        run: make install-kotlin-native-linux-ktor
 
       - name: Build Gradle
         run: make build-gradle
@@ -51,7 +51,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: Install Kotlin Native
-        run: make install-kotlin-native-rc
+        run: make install-kotlin-native-linux-rc
 
       - name: Build Gradle Red Cat
         run: make build-gradle-redcat
