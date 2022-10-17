@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 
-b: build build-native
+b: build-native
+build-all: postgres-build build-native
 build:
 	gcc -c explicit_bzero_chk.c -o explicit_bzero_chk.o
 	ar rcs libpq.a postgres-master/src/interfaces/libpq/*.o postgres-master/src/common/*.o postgres-master/src/interfaces/ecpg/preproc/*.o postgres-master/src/port/*.o postgres-master/src/backend/libpq/*.o postgres-master/src/backend/lib/*.o explicit_bzero_chk.o
