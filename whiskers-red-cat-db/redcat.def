@@ -1,1 +1,4 @@
-headers = stdbool.h postgres-master/src/interfaces/libpq/libpq-int.h postgres-master/src/interfaces/libpq/libpq-fe.h
+headers = /usr/include/postgresql/libpq-fe.h
+staticLibraries = libpq.a
+libraryPaths = .
+linkerOpts = -L. -L/usr/lib/x86_64-linux-gnu -lpq

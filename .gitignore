@@ -47,3 +47,5 @@ cdefs.h
 machine
 machines
 stdlib.h
+stdio.h
+_null.h
