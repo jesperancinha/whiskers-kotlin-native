@@ -4,7 +4,7 @@ import kotlinx.cinterop.toKString
 import redcat.*
 
 fun main(args: Array<String>) {
-    println("OOOOOOO")
+    println("--- A cat's day 🐈  ---")
     val conn = PQsetdbLogin(
         pghost = "localhost",
         pgport = "5432",
@@ -15,6 +15,5 @@ fun main(args: Array<String>) {
         pgoptions =  null
     )
     println(PQstatus(conn))
-    println("AAAAAA")
-//    println(executeCommand("PGPASSWORD=red_cat psql -U whiskers -d whiskers -c 'SELECT 1' -h localhost"))
+    println("--- Cat logs out ---")
 }
