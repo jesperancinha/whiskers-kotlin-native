@@ -75,5 +75,11 @@ jobs:
       - name: Install Postgres
         run:  cd whiskers-red-cat-db/postgres-master && ./configure && make all
 
+      - name: Linux libraries
+        run: sudo apt install libreadline-dev && 
+            sudo apt-get install libpq-dev && 
+            sudo apt install bison &&
+            sudo apt install flex
+
       - name: Build Gradle Red Cat
         run: make build-gradle-redcat-db
