@@ -51,6 +51,7 @@ kong-config:
 install-kotlin-native-linux:install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
 install-kotlin-native-linux-ktor:
 	cd whiskers-ktor/c && make install-kotlin-native-linux
+	cd whiskers-ktor/postgresql && make install-kotlin-native-linux
 install-kotlin-native-linux-rc:
 	cd whiskers-red-cat && make install-kotlin-native-linux
 install-kotlin-native-linux-rcdb:

@@ -1,16 +1,22 @@
+import app.cash.sqldelight.Query
+import app.cash.sqldelight.Transacter
+import app.cash.sqldelight.db.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.cinterop.*
+import kotlinx.datetime.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import org.jesperancinha.native.PQsetdbLogin
-import org.jesperancinha.native.PQstatus
-import org.jesperancinha.native.tell_story
+import kotlinx.uuid.UUID
+import kotlinx.uuid.toUUID
+import org.jesperancinha.native.*
 import platform.posix.*
+import kotlin.time.Duration
+
 @Serializable
 class Config(val port: Int)
 
@@ -23,16 +29,18 @@ fun main(args: Array<String>) {
     println(configuration)
     println(executeCommand("PGPASSWORD=red_cat psql -U whiskers -d whiskers -c 'SELECT 1' -h localhost"))
     println("--- A cat's day 🐈  ---")
-    val conn = PQsetdbLogin(
-        pghost = "localhost",
-        pgport = "5432",
-        pgtty = null,
-        dbName = "whiskers",
-        login = "whiskers",
-        pwd = "red_cat",
-        pgoptions =  null
+    val driver = PostgresNativeDriver(
+        host = "localhost",
+        port = 5432,
+        user = "whiskers",
+        database = "whiskers",
+        password = "red_cat"
     )
-    println(PQstatus(conn))
+    val notPrepared = driver.executeQuery(null, "SELECT * from sayings.cat_lines limit 1;", parameters = 0, mapper = {
+        it.next()
+        it.getString(1)
+    })
+    println(notPrepared.value)
     println("--- Cat logs out ---")
     embeddedServer(CIO, port = configuration.port) {
         routing {
@@ -64,16 +72,17 @@ fun readText(filePath: String): String {
     printf(toString)
     return toString
 }
-fun executeCommand(command: String): String{
+
+fun executeCommand(command: String): String {
     val fp: CPointer<FILE>? = popen(command, "r")
     val buffer = ByteArray(4096)
     val returnString = StringBuilder()
     if (fp == NULL) {
-        printf("Failed to run command" )
+        printf("Failed to run command")
         exit(1)
     }
     var scan = fgets(buffer.refTo(0), buffer.size, fp)
-    if(scan != null) {
+    if (scan != null) {
         while (scan != NULL) {
             returnString.append(scan!!.toKString())
             scan = fgets(buffer.refTo(0), buffer.size, fp)

@@ -18,8 +18,17 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
+      - name: Linux libraries
+        run: sudo apt install libreadline-dev &&
+          sudo apt-get install libpq-dev &&
+          sudo apt install bison &&
+          sudo apt install flex
+
       - name: Install Kotlin Native
         run: make install-kotlin-native-linux-ktor
+
+      - name: Install Postgres
+        run:  cd whiskers-ktor/postgresql/postgres-master && ./configure && make all
 
       - name: Build Gradle
         run: make build-gradle

@@ -49,6 +49,10 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation("app.softwork:kotlinx-uuid-core:0.0.17")
+                implementation("app.cash.sqldelight:runtime:2.0.0-alpha04")
+
             }
         }
         val nativeTest by getting {
