@@ -2,9 +2,10 @@ import kotlinx.cinterop.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import org.jesperancinha.native.PQsetdbLogin
+import org.jesperancinha.native.PQstatus
 import org.jesperancinha.native.tell_story
 import platform.posix.*
-
 @Serializable
 class Config(val port: Int)
 
@@ -16,6 +17,18 @@ fun main(args: Array<String>) {
     val configuration = Json.decodeFromString<Config>(string)
     println(configuration)
     println(executeCommand("PGPASSWORD=red_cat psql -U whiskers -d whiskers -c 'SELECT 1' -h localhost"))
+    println("--- A cat's day 🐈  ---")
+    val conn = PQsetdbLogin(
+        pghost = "localhost",
+        pgport = "5432",
+        pgtty = null,
+        dbName = "whiskers",
+        login = "whiskers",
+        pwd = "red_cat",
+        pgoptions =  null
+    )
+    println(PQstatus(conn))
+    println("--- Cat logs out ---")
 }
 
 fun readText(filePath: String): String {

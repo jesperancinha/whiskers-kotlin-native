@@ -1,0 +1,4 @@
+headers = /usr/include/postgresql/libpq-fe.h
+staticLibraries = postgresql.a
+libraryPaths = .
+linkerOpts = -L. -L/usr/lib/x86_64-linux-gnu -lpq
