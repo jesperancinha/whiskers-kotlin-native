@@ -7,7 +7,7 @@ build:
 build-native: build
 	./kotlin.native/bin/cinterop -def redcat.def -compiler-options "-I$(PWD)" -compiler-options "-I$(PWD)/postgres-master/src/include" -compiler-options "-I$(PWD)/postgres-master/src/port" -o redcat.klib
 	./kotlin.native/bin/konanc -l redcat.klib main.kt -linker-options fe-connect.a -o main
-install-kotlin-native-linux:
+install-kotlin-native-linux: library-download
 	wget -O  kotlin.native.tar.gz https://github.com/JetBrains/kotlin/releases/download/v1.7.20/kotlin-native-linux-x86_64-1.7.20.tar.gz
 	tar -xvzf kotlin.native.tar.gz
 	mv kotlin-native-linux-x86_64-1.7.20 kotlin.native
@@ -16,8 +16,12 @@ install-kotlin-native-linux:
 	unzip postgres.zip
 	cd postgres-master && ./configure
 	cd postgres-master && make all
-	wget -O stdbool.h https://raw.githubusercontent.com/gcc-mirror/gcc/master/gcc/ginclude/stdbool.h
+library-download:
+	wget -O stdbool.h https://raw.githubusercontent.com/openbsd/src/master/include/stdbool.h
 	wget -O stdint.h https://raw.githubusercontent.com/openbsd/src/master/sys/sys/stdint.h
+	wget -O stdlib.h https://raw.githubusercontent.com/openbsd/src/master/include/stdlib.h
 	mkdir -p machine && cd machine && wget -O _types.h https://raw.githubusercontent.com/openbsd/src/master/sys/sys/_types.h
+	cd machine && wget -O cdefs.h https://raw.githubusercontent.com/openbsd/src/master/sys/sys/cdefs.h
+	mkdir -p sys && cd sys && wget -O cdefs.h https://raw.githubusercontent.com/openbsd/src/master/sys/sys/cdefs.h
 run:
 	./main.kexe

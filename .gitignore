@@ -43,3 +43,7 @@ postgres-master
 stdbool.h
 stdint.h
 _types.h
+cdefs.h
+machine
+machines
+stdlib.h
