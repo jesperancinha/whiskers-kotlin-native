@@ -16,7 +16,6 @@ install-kotlin-native-linux:
 	sudo apt install libreadline-dev
 	wget -O postgres.zip https://github.com/postgres/postgres/archive/refs/heads/master.zip
 	unzip postgres.zip
-	make postgres-build
 postgres-build:
 	cd postgres-master && ./configure
 	cd postgres-master && make all
