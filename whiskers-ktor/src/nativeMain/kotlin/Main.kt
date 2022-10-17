@@ -1,3 +1,8 @@
+import io.ktor.server.application.*
+import io.ktor.server.cio.*
+import io.ktor.server.engine.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import kotlinx.cinterop.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
@@ -29,6 +34,13 @@ fun main(args: Array<String>) {
     )
     println(PQstatus(conn))
     println("--- Cat logs out ---")
+    embeddedServer(CIO, port = configuration.port) {
+        routing {
+            get("/") {
+                call.respondText("Hello, world!")
+            }
+        }
+    }.start(wait = true)
 }
 
 fun readText(filePath: String): String {

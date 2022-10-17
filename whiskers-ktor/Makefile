@@ -1,4 +1,5 @@
-b: build-gradle
+b: build
+build: build-gradle
 build-gradle: build-binaries
 	gradle build
 build-binaries:
@@ -10,3 +11,5 @@ run:
 	./build/bin/native/releaseExecutable/whiskers-ktor.kexe
 dcup-light:
 	cd .. && make dcup-light
+update-run: build
+	make run
