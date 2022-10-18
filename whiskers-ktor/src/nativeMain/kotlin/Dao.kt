@@ -95,20 +95,24 @@ class ParagraphRepository(
         all.toList()
     }
 ) : Repository<Paragraph> {
-    override fun findAll(): List<Paragraph> {
-        TODO("Not yet implemented")
-    }
+    override fun findAll(): List<Paragraph> = nativeDriver.executeSelect(
+            sql = "SELECT * from story.paragraphs;",
+            mapper = listEntityMapper
+        ).value
 
-    override suspend fun findById(id: Long): Paragraph {
-        TODO("Not yet implemented")
-    }
+    override suspend fun findById(id: Long): Paragraph =nativeDriver.executeSelect(
+        sql = "SELECT * from story.paragraphs limit 1 where id = ${id};",
+        mapper = singleEntityMapper
+    ).value
 
-    override suspend fun first(): Paragraph {
-        TODO("Not yet implemented")
-    }
+    override suspend fun first(): Paragraph  =
+        nativeDriver.executeSelect(
+            sql = "SELECT * from story.paragraphs limit 1;",
+            mapper = singleEntityMapper
+        ).value
 
-    override suspend fun save(entity: Paragraph): Paragraph {
-        TODO("Not yet implemented")
-    }
+    override suspend fun save(entity: Paragraph): Paragraph =
+        nativeDriver.executeInsert(null, "INSERT INTO story.paragraphs(text)VALUES ('${entity.text}')")
+            .let { entity }
 
 }
