@@ -1,27 +1,42 @@
-import app.cash.sqldelight.Query
-import app.cash.sqldelight.Transacter
-import app.cash.sqldelight.db.*
+import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.cinterop.*
-import kotlinx.datetime.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import kotlinx.uuid.UUID
-import kotlinx.uuid.toUUID
 import org.jesperancinha.native.*
 import platform.posix.*
-import kotlin.time.Duration
 
 @Serializable
 class Config(val port: Int)
 
 @ExperimentalUnsignedTypes
 fun main(args: Array<String>) {
+    val configuration = runNativeDemos()
+    val catSayingsService = CatSayingsService()
+    makeACatsDay(catSayingsService)
+    embeddedServer(CIO, port = configuration.port) {
+        routing {
+            get("/") {
+                call.respondText("Hello, world!")
+            }
+            post ("/cat/saying"){
+                println("Entering cat sayings!")
+                val catSaying = call.receive<CatSaying>()
+                println("Received cat saying ${catSaying.saying}")
+                catSayingsService.saveCatSayings(catSaying)
+                call.respondText("Cat comments stored correctly", status = HttpStatusCode.Created)
+            }
+        }
+    }.start(wait = true)
+}
+
+private fun runNativeDemos(): Config {
     val story = tell_story() as CPointer<ByteVar>
     println("Welcome to the redcat story (server): ${story.toKString()}")
     val string = readText("application.json")
@@ -29,6 +44,11 @@ fun main(args: Array<String>) {
     val configuration = Json.decodeFromString<Config>(string)
     println(configuration)
     println(executeCommand("PGPASSWORD=red_cat psql -U whiskers -d whiskers -c 'SELECT 1' -h localhost"))
+    return configuration
+}
+
+@ExperimentalUnsignedTypes
+private fun makeACatsDay(catSayingsService: CatSayingsService) {
     println("--- A cat's day 🐈  ---")
     val driver = PostgresNativeDriver(
         host = "localhost",
@@ -41,16 +61,9 @@ fun main(args: Array<String>) {
         it.next()
         it.getString(1)
     })
-    CatSayingsRepository(driver).findAll().map { println(it.saying) }
+    catSayingsService.getAllCatSayings().map { println(it.saying) }
     println(notPrepared.value)
     println("--- Cat logs out ---")
-    embeddedServer(CIO, port = configuration.port) {
-        routing {
-            get("/") {
-                call.respondText("Hello, world!")
-            }
-        }
-    }.start(wait = true)
 }
 
 fun readText(filePath: String): String {

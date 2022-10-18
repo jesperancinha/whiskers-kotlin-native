@@ -4,10 +4,11 @@ internal interface Repository<T> {
     fun findAll(): List<T>
     fun findById(long: Long): T
     fun first(): T
+    fun save(entity: T): T
 }
 
 data class CatSaying(
-    val id: Long,
+    var id: Long? = null,
     val saying: String
 )
 
@@ -37,5 +38,9 @@ class CatSayingsRepository(
     override fun first(): CatSaying {
         TODO("Not yet implemented")
     }
+
+    override fun save(entity: CatSaying) =
+        nativeDriver.execute(null, "INSERT INTO sayings.cat_lines VALUES (${entity.saying})", parameters = 0)
+            .let { entity }
 
 }
