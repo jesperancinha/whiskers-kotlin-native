@@ -1,6 +1,7 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
 
-internal class CatSayingsService() {
+@ExperimentalUnsignedTypes
+internal class CatSayingsService {
 
     val catSayingsRepository = CatSayingsRepository(
         PostgresNativeDriver(
@@ -14,7 +15,7 @@ internal class CatSayingsService() {
 
     fun getAllCatSayings() = catSayingsRepository.findAll()
 
-    fun getCatSayingsById(id: Long) = catSayingsRepository.findById(id)
+    suspend fun getCatSayingsById(id: Long) = catSayingsRepository.findById(id)
 
-    fun saveCatSayings(catSaying: CatSaying): CatSaying = catSayingsRepository.save(catSaying)
+   suspend fun saveCatSayings(catSaying: CatSaying): CatSaying = catSayingsRepository.save(catSaying)
 }

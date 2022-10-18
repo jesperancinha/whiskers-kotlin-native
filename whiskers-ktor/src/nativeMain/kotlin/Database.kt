@@ -43,6 +43,13 @@ class PostgresNativeDriver(
     override fun notifyListeners(queryKeys: Array<String>) = Unit
     override fun removeListener(listener: Query.Listener, queryKeys: Array<String>) = Unit
     override fun currentTransaction(): Transacter.Transaction? = transaction
+    fun executeInsert(
+        identifier: Int?,
+        sql: String,
+        parameters: Int = 0,
+        binders: (SqlPreparedStatement.() -> Unit)? = null
+    ) = execute(identifier, sql, parameters, binders)
+
     override fun execute(
         identifier: Int?,
         sql: String,
@@ -110,6 +117,14 @@ class PostgresNativeDriver(
             })
         return result.value != null
     }
+
+    fun <R> executeSelect(
+        identifier: Int? = null,
+        sql: String,
+        mapper: (SqlCursor) -> R,
+        parameters: Int = 0,
+        binders: (SqlPreparedStatement.() -> Unit)? = null
+    ) = executeQuery(identifier, sql, mapper, parameters, binders)
 
     override fun <R> executeQuery(
         identifier: Int?,

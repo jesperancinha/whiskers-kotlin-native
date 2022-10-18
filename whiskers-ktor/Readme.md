@@ -14,6 +14,11 @@ make run
 curl -X POST http://0.0.0.0:8082/cat/saying --data "{\"saying\":\"whatever\"}" -H 'Content-Type: application/json'
 ```
 
+#### 2. Get all cat cayings
+
+```shell
+curl http://0.0.0.0:8082/cat/sayings
+```
 
 ## Installation
 

@@ -18,7 +18,7 @@ import platform.posix.*
 class Config(val port: Int)
 
 @ExperimentalUnsignedTypes
-fun main(args: Array<String>) {
+fun main() {
     val configuration = runNativeDemos()
     val catSayingsService = CatSayingsService()
     makeACatsDay(catSayingsService)
@@ -30,12 +30,15 @@ fun main(args: Array<String>) {
             get("/") {
                 call.respondText("Hello, world!")
             }
-            post ("/cat/saying"){
+            post("/cat/saying") {
                 println("Entering cat sayings!")
                 val catSaying = call.receive<CatSaying>()
                 println("Received cat saying ${catSaying.saying}")
                 catSayingsService.saveCatSayings(catSaying)
                 call.respondText("Cat comments stored correctly", status = HttpStatusCode.Created)
+            }
+            get("/cat/sayings") {
+                call.respond(catSayingsService.getAllCatSayings())
             }
         }
     }.start(wait = true)
