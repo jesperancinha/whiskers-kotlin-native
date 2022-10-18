@@ -34,11 +34,11 @@ fun main() {
                 println("Entering cat sayings!")
                 val catSaying = call.receive<CatSaying>()
                 println("Received cat saying ${catSaying.saying}")
-                catSayingsService.saveCatSayings(catSaying)
+                catSayingsService.save(catSaying)
                 call.respondText("Cat comments stored correctly", status = HttpStatusCode.Created)
             }
             get("/cat/sayings") {
-                call.respond(catSayingsService.getAllCatSayings())
+                call.respond(catSayingsService.getAll())
             }
         }
     }.start(wait = true)
@@ -69,7 +69,7 @@ private fun makeACatsDay(catSayingsService: CatSayingsService) {
         it.next()
         it.getString(1)
     })
-    catSayingsService.getAllCatSayings().map { println(it.saying) }
+    catSayingsService.getAll().map { println(it.saying) }
     println(notPrepared.value)
     println("--- Cat logs out ---")
 }
