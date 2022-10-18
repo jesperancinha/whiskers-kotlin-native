@@ -21,6 +21,7 @@ class Config(val port: Int)
 fun main() {
     val configuration = runNativeDemos()
     val catSayingsService = CatSayingsService()
+    val paragraphService = ParagraphService()
     makeACatsDay(catSayingsService)
     embeddedServer(CIO, port = configuration.port) {
         routing {
@@ -39,6 +40,16 @@ fun main() {
             }
             get("/cat/sayings") {
                 call.respond(catSayingsService.getAll())
+            }
+            post("/story/paragrah") {
+                println("Entering story paragraph!")
+                val paragraph = call.receive<Paragraph>()
+                println("Received cat saying ${paragraph.text}")
+                paragraphService.save(paragraph)
+                call.respondText("Story paragrah stored correctly", status = HttpStatusCode.Created)
+            }
+            get("/story/paragrahs") {
+                call.respond(paragraphService.getAll())
             }
         }
     }.start(wait = true)
