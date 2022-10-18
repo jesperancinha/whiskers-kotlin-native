@@ -10,14 +10,14 @@ with [Chapter I - Escaping the Beast](https://github.com/jesperancinha/good-stor
 
 ## Chapter II - The Cat That Helped Lucy
 
-## Recap
+### Recap
 
 After being diagnosed with a debilitating unknown disease affecting her nervous system, Lucy decided to leave The
 Netherlands and live a reclusive life in Portugal.
 In Portugal, Lucy found refuge and a safe place in Armona, an Island on the other side of a river flowing along the
 Olhão Marina, South of Portugal. There, Lucy began to have visions and confronting her past.
 
-## The cat that helped Lucy
+### The cat that helped Lucy
 
 Back in The Netherlands, Lucy had, among many of her jobs, one for a Telecom company
 called `Infrastructure Collective Zaphire BV`. It was also known as INCO. At INCO, Lucy was responsible to develop
@@ -94,7 +94,7 @@ Lursi remained the whole time listening carefully to Lucy's story in awe and dis
 
 [to be continued...]
 
-## Characters
+### Characters
 
 - Fenestev Moon - CEO of `Infrastructure Collective Zaphire BV`
 - Hara Arre - Chapter Lead of `Blue Round Grachten Roses Dot Com BV`
@@ -103,7 +103,7 @@ Lursi remained the whole time listening carefully to Lucy's story in awe and dis
 - Kitten - The cat that helped Lucy
 - Ursi Tursi Lursi - A swiss friend of Lucy
 
-## Inspiring music
+### Inspiring music
 
 This is the music selection that has inspired the above fiction story:
 
@@ -116,6 +116,16 @@ This is the music selection that has inspired the above fiction story:
       <a title="It Came From the 80's... Vol.5 - A Retro Darkwave Horror Synth Special" href="https://www.youtube.com/watch?v=bnefm57d7z4">
      <img 
           src="https://img.youtube.com/vi/bnefm57d7z4/0.jpg" 
+          style="width:20%;">
+      </a>
+      <a title="Freemasons ft. Bailey Tzuke - Uninvited (Official Video HQ)" href="https://www.youtube.com/watch?v=oFBWPcaMKeo">
+     <img 
+          src="https://img.youtube.com/vi/oFBWPcaMKeo/0.jpg" 
+          style="width:20%;">
+      </a>
+      <a title="Arabic House Mix 2012" href="https://www.youtube.com/watch?v=c-cgeKUz_Ks">
+     <img 
+          src="https://img.youtube.com/vi/c-cgeKUz_Ks/0.jpg" 
           style="width:20%;">
       </a>
 </div>
