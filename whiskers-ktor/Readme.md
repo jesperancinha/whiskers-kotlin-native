@@ -1,5 +1,19 @@
 # Whiskers Ktor
 
+## Run example
+
+```shell
+make install-kotlin-native-linux-ktor
+make build
+make run
+```
+
+#### 1. Send cat sayings
+
+```shell
+curl -X POST http://0.0.0.0:8082/cat/saying --data "{\"saying\":\"whatever\"}" -H 'Content-Type: application/json'
+```
+
 
 ## Installation
 

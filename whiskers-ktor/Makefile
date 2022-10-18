@@ -13,3 +13,6 @@ dcup-light:
 	cd .. && make dcup-light
 update-run: build
 	make run
+install-kotlin-native-linux-ktor:
+	cd c && make install-kotlin-native-linux
+	cd postgresql && make install-kotlin-native-linux

@@ -52,7 +52,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("app.softwork:kotlinx-uuid-core:0.0.17")
                 implementation("app.cash.sqldelight:runtime:2.0.0-alpha04")
-                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             }
         }

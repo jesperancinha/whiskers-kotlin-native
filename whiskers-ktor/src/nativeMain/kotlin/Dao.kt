@@ -1,5 +1,7 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
 
+import kotlinx.serialization.Serializable
+
 internal interface Repository<T> {
     fun findAll(): List<T>
     fun findById(long: Long): T
@@ -7,6 +9,7 @@ internal interface Repository<T> {
     fun save(entity: T): T
 }
 
+@Serializable
 data class CatSaying(
     var id: Long? = null,
     val saying: String
@@ -40,7 +43,7 @@ class CatSayingsRepository(
     }
 
     override fun save(entity: CatSaying) =
-        nativeDriver.execute(null, "INSERT INTO sayings.cat_lines VALUES (${entity.saying})", parameters = 0)
+        nativeDriver.execute(null, "INSERT INTO sayings.cat_lines(saying)VALUES ('${entity.saying}')", parameters = 0)
             .let { entity }
 
 }

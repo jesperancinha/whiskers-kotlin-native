@@ -1,7 +1,9 @@
 import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
 import io.ktor.server.engine.*
+import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -9,7 +11,7 @@ import kotlinx.cinterop.*
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import org.jesperancinha.native.*
+import org.jesperancinha.native.tell_story
 import platform.posix.*
 
 @Serializable
@@ -22,6 +24,9 @@ fun main(args: Array<String>) {
     makeACatsDay(catSayingsService)
     embeddedServer(CIO, port = configuration.port) {
         routing {
+            install(ContentNegotiation) {
+                json()
+            }
             get("/") {
                 call.respondText("Hello, world!")
             }
