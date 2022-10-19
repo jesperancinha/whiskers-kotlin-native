@@ -225,29 +225,6 @@ class PostgresNativeDriver(
     }
 }
 
-private fun CPointer<PGconn>.error(): String {
-    val errorMessage = PQerrorMessage(this)!!.toKString()
-    PQfinish(this)
-    return errorMessage
-}
-
-private fun CPointer<PGresult>.clear() {
-    PQclear(this)
-}
-
-private fun CPointer<PGconn>.exec(sql: String) = PQexec(this, sql)?.let {
-    it.check(this)
-    it.clear()
-} ?: throw RuntimeException("Something went wrong with PQexec!")
-
-private fun CPointer<PGresult>.check(conn: CPointer<PGconn>): CPointer<PGresult> {
-    val status = PQresultStatus(this)
-    check(status == PGRES_TUPLES_OK || status == PGRES_COMMAND_OK || status == PGRES_COPY_IN) {
-        conn.error()
-    }
-    return this
-}
-
 class PostgresCursor(
     private var result: CPointer<PGresult>,
     private val name: String,
@@ -263,12 +240,10 @@ class PostgresCursor(
 
     override fun getBytes(index: Int): ByteArray? {
         val isNull = PQgetisnull(result, tup_num = 0, field_num = index) == 1
-        return if (isNull) {
-            null
-        } else {
-            val bytes = PQgetvalue(result, tup_num = 0, field_num = index)!!
+        return if (isNull) null else {
+            val bytes = PQgetvalue(result, tup_num = 0, field_num = index)
             val length = PQgetlength(result, tup_num = 0, field_num = index)
-            bytes.fromHex(length)
+            bytes?.run { fromHex(length) }?: throw RuntimeException("Unable to retrieve bytes from the database")
         }
     }
 
@@ -302,17 +277,6 @@ class PostgresCursor(
             value!!.toKString()
         }
     }
-
-    fun getDate(index: Int): LocalDate? = getString(index)?.toLocalDate()
-    fun getTime(index: Int): LocalTime? = getString(index)?.toLocalTime()
-    fun getLocalTimestamp(index: Int): LocalDateTime? = getString(index)?.replace(" ", "T")?.toLocalDateTime()
-    fun getTimestamp(index: Int): Instant? = getString(index)?.let {
-        Instant.parse(it.replace(" ", "T"))
-    }
-
-    fun getInterval(index: Int): Duration? = getString(index)?.let { Duration.parseIsoString(it) }
-    fun getUUID(index: Int): UUID? = getString(index)?.toUUID()
-
     override fun next(): Boolean {
         result = PQexec(conn, "FETCH NEXT IN $name")?.run { check(conn) }
             ?: throw RuntimeException("Unable to prepare PQprepare")
@@ -379,30 +343,11 @@ class PostgresPreparedStatement(private val parameters: Int) : SqlPreparedStatem
         bind(index, string, textOid)
     }
 
-    fun bindDate(index: Int, value: LocalDate?) = bind(index, value?.toString(), dateOid)
-
-    fun bindTime(index: Int, value: LocalTime?) = bind(index, value?.toString(), timeOid)
-
-    fun bindLocalTimestamp(index: Int, value: LocalDateTime?) = bind(index, value?.toString(), timestampOid)
-
-    fun bindTimestamp(index: Int, value: Instant?) = bind(index, value?.toString(), timestampTzOid)
-
-    fun bindInterval(index: Int, value: Duration?) = bind(index, value?.toIsoString(), intervalOid)
-
-    fun bindUUID(index: Int, value: UUID?) = bind(index, value?.toString(), uuidOid)
-
     private companion object {
         private const val boolOid = 16u
         private const val byteaOid = 17u
         private const val longOid = 20u
         private const val textOid = 25u
         private const val doubleOid = 701u
-
-        private const val dateOid = 1082u
-        private const val timeOid = 1083u
-        private const val intervalOid = 1186u
-        private const val timestampOid = 1114u
-        private const val timestampTzOid = 1184u
-        private const val uuidOid = 2950u
     }
 }
