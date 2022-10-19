@@ -5,7 +5,7 @@ build-gradle: build-gradle-ktor
 	cd plus && make b
 	make release-gradle
 build-gradle-ktor:
-	cd whiskers-ktor && make && make b
+	cd whiskers-ktor && make b
 	cd whiskers-ktor-harcoded && make b
 build-gradle-graalvm:
 	mkdir -p bin
