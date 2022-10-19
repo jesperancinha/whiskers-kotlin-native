@@ -9,7 +9,9 @@ import org.jesperancinha.native.*
 import kotlin.time.Duration
 
 /**
- * Based on https://github.com/hfhbd/postgres-native-sqldelight under Apache 2 Commons License
+ * Based on the original file from https://github.com/hfhbd
+ * https://github.com/hfhbd/postgres-native-sqldelight under Apache 2 Commons License
+ * From 2022/10/11
  */
 @ExperimentalUnsignedTypes
 class PostgresNativeDriver(
@@ -69,7 +71,7 @@ class PostgresNativeDriver(
                     query = sql,
                     nParams = parameters,
                     paramTypes = preparedStatement?.types?.refTo(0)
-                ).check(conn).clear()
+                )?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
             }
             memScoped {
                 PQexecPrepared(
@@ -95,7 +97,7 @@ class PostgresNativeDriver(
                     paramTypes = preparedStatement?.types?.refTo(0)
                 )
             }
-        }.check(conn)
+        }?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
 
         return QueryResult.Value(value = result.rows)
     }
@@ -150,7 +152,7 @@ class PostgresNativeDriver(
                     query = "$cursor $sql",
                     nParams = parameters,
                     paramTypes = preparedStatement?.types?.refTo(0)
-                ).check(conn).clear()
+                )?.run { check(conn).clear() } ?: throw RuntimeException("Unable to prepare PQprepare")
             }
             conn.exec("BEGIN")
             memScoped {
@@ -178,7 +180,7 @@ class PostgresNativeDriver(
                     resultFormat = BINARY_RESULT_FORMAT
                 )
             }
-        }.check(conn)
+        }?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
 
         val value = PostgresCursor(result, cursorName, conn).use(mapper)
         return QueryResult.Value(value = value)
@@ -201,11 +203,7 @@ class PostgresNativeDriver(
     ) : Transacter.Transaction() {
         override fun endTransaction(successful: Boolean): QueryResult.Unit {
             if (enclosingTransaction == null) {
-                if (successful) {
-                    conn.exec("END")
-                } else {
-                    conn.exec("ROLLBACK")
-                }
+                if (successful) conn.exec("END") else conn.exec("ROLLBACK")
             }
             transaction = enclosingTransaction
             return QueryResult.Unit
@@ -221,32 +219,33 @@ class PostgresNativeDriver(
         check(end == 1) {
             conn.error()
         }
-        val result = PQgetResult(conn).check(conn)
+        val result = PQgetResult(conn)?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
+
         return result.rows
     }
 }
 
-private fun CPointer<PGconn>?.error(): String {
+private fun CPointer<PGconn>.error(): String {
     val errorMessage = PQerrorMessage(this)!!.toKString()
     PQfinish(this)
     return errorMessage
 }
 
-private fun CPointer<PGresult>?.clear() {
+private fun CPointer<PGresult>.clear() {
     PQclear(this)
 }
 
-private fun CPointer<PGconn>.exec(sql: String) = PQexec(this, sql).let {
+private fun CPointer<PGconn>.exec(sql: String) = PQexec(this, sql)?.let {
     it.check(this)
     it.clear()
-}
+} ?: throw RuntimeException("Something went wrong with PQexec!")
 
-private fun CPointer<PGresult>?.check(conn: CPointer<PGconn>): CPointer<PGresult> {
+private fun CPointer<PGresult>.check(conn: CPointer<PGconn>): CPointer<PGresult> {
     val status = PQresultStatus(this)
     check(status == PGRES_TUPLES_OK || status == PGRES_COMMAND_OK || status == PGRES_COPY_IN) {
         conn.error()
     }
-    return this ?: throw NullPointerException("No results found!")
+    return this
 }
 
 class PostgresCursor(
@@ -315,8 +314,11 @@ class PostgresCursor(
     fun getUUID(index: Int): UUID? = getString(index)?.toUUID()
 
     override fun next(): Boolean {
-        result = PQexec(conn, "FETCH NEXT IN $name").check(conn)
-        return PQcmdTuples(result)!!.toKString().toInt() == 1
+        result = PQexec(conn, "FETCH NEXT IN $name")?.run { check(conn) }
+            ?: throw RuntimeException("Unable to prepare PQprepare")
+
+        return PQcmdTuples(result)?.let { it.toKString().toInt() == 1 }
+            ?: throw RuntimeException("PQcmdTuples were not created!")
     }
 }
 
@@ -377,30 +379,17 @@ class PostgresPreparedStatement(private val parameters: Int) : SqlPreparedStatem
         bind(index, string, textOid)
     }
 
-    fun bindDate(index: Int, value: LocalDate?) {
-        bind(index, value?.toString(), dateOid)
-    }
+    fun bindDate(index: Int, value: LocalDate?) = bind(index, value?.toString(), dateOid)
 
+    fun bindTime(index: Int, value: LocalTime?) = bind(index, value?.toString(), timeOid)
 
-    fun bindTime(index: Int, value: LocalTime?) {
-        bind(index, value?.toString(), timeOid)
-    }
+    fun bindLocalTimestamp(index: Int, value: LocalDateTime?) = bind(index, value?.toString(), timestampOid)
 
-    fun bindLocalTimestamp(index: Int, value: LocalDateTime?) {
-        bind(index, value?.toString(), timestampOid)
-    }
+    fun bindTimestamp(index: Int, value: Instant?) = bind(index, value?.toString(), timestampTzOid)
 
-    fun bindTimestamp(index: Int, value: Instant?) {
-        bind(index, value?.toString(), timestampTzOid)
-    }
+    fun bindInterval(index: Int, value: Duration?) = bind(index, value?.toIsoString(), intervalOid)
 
-    fun bindInterval(index: Int, value: Duration?) {
-        bind(index, value?.toIsoString(), intervalOid)
-    }
-
-    fun bindUUID(index: Int, value: UUID?) {
-        bind(index, value?.toString(), uuidOid)
-    }
+    fun bindUUID(index: Int, value: UUID?) = bind(index, value?.toString(), uuidOid)
 
     private companion object {
         private const val boolOid = 16u
