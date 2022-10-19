@@ -1,6 +1,8 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
 
 import app.cash.sqldelight.db.SqlCursor
+import io.ktor.http.*
+import io.ktor.util.*
 import kotlinx.serialization.Serializable
 
 internal interface Repository<T> {
@@ -20,8 +22,8 @@ data class CatSaying(
 
 @Serializable
 data class Paragraph(
-    var id: Long? = null,
-    val text: String
+    val text: String,
+    var id: Long? = null
 )
 
 @ExperimentalUnsignedTypes
@@ -112,7 +114,8 @@ class ParagraphRepository(
         ).value
 
     override suspend fun save(entity: Paragraph): Paragraph =
-        nativeDriver.executeInsert(null, "INSERT INTO story.paragraphs(text)VALUES ('${entity.text}')")
+        nativeDriver.executeInsert(null, "INSERT INTO story.paragraphs(text)VALUES ('${entity.text.escapePostgreSQL()}')")
             .let { entity }
-
 }
+
+fun String.escapePostgreSQL(): String = this.replace(Regex("([^'])'([^'])"),"$1''$2")

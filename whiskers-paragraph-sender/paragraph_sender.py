@@ -1,3 +1,6 @@
+import requests
+
+
 class paragraphColor:
     PURPLE = '\033[95m'
     BLUE = '\033[94m'
@@ -15,4 +18,9 @@ with open('../docs/good.story/good.story.chapter.2.md') as f:
     print(contents)
     for paragraph in contents.split("\n\n"):
         print("{0}************************************************".format(paragraphColor.GREEN))
-        print("{0}{1}".format(paragraphColor.YELLOW, paragraph))
+        print("{0}{1}{2}".format(paragraphColor.YELLOW, paragraph, paragraphColor.RESET))
+        url = 'http://localhost:8082/story/paragrah'
+        x = requests.post(url, json={
+            'text': paragraph
+        })
+        print("{0}Response: {1}".format(paragraphColor.PURPLE, x.text))

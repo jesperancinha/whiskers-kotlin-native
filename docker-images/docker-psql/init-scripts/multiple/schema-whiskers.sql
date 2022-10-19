@@ -8,8 +8,9 @@ CREATE TABLE IF NOT EXISTS sayings.cat_lines
 
 create schema if not exists story;
 
+DROP TABLE IF EXISTS story.paragraphs;
 CREATE TABLE IF NOT EXISTS story.paragraphs
 (
     id   serial primary key,
-    text varchar(255)
+    text varchar
 );

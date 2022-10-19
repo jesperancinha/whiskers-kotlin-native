@@ -56,5 +56,8 @@ install-kotlin-native-linux-rc:
 	cd whiskers-red-cat && make install-kotlin-native-linux
 install-kotlin-native-linux-rcdb:
 	cd whiskers-red-cat-db && make install-kotlin-native-linux
+install-python:
+	sudo apt-get install python3-distutils
+	sudo apt-get install python3-apt
 run-paragraph-sender:
 	cd whiskers-paragraph-sender && python paragraph_sender.py
