@@ -128,4 +128,9 @@ This is the music selection that has inspired the above fiction story:
           src="https://img.youtube.com/vi/c-cgeKUz_Ks/0.jpg" 
           style="width:20%;">
       </a>
+      <a title="Im Nin'Alu - Ofra Haza" href="https://www.youtube.com/watch?v=ZRnzTTYk7_Q">
+     <img 
+          src="https://img.youtube.com/vi/ZRnzTTYk7_Q/0.jpg" 
+          style="width:20%;">
+      </a>
 </div>
