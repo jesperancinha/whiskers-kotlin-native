@@ -1,5 +1,7 @@
 package org.jesperancinha.knative.rest
 
+import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.Size
 import org.jesperancinha.knative.dto.CatService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,5 +19,9 @@ class CatController(
     fun getCatSayings() = catService.getAllSayings()
 
     @GetMapping("/cat/saying/{id}")
-    suspend fun getCatSayings(@PathVariable id:Int) = catService.getSayingById(id)
+    suspend fun getCatSayings(
+        @NotNull
+        @Size(min = 2, max = 14)
+        @PathVariable id:Int
+    ) = catService.getSayingById(id)
 }
