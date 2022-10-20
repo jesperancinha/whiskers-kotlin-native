@@ -29,7 +29,7 @@ fun main() {
                 json()
             }
             get("/") {
-                call.respondText("Hello, world!")
+                call.respondText("Welcome to the Cat Ktor Service!")
             }
             post("/cat/saying") {
                 println("Entering cat sayings!")
@@ -41,7 +41,7 @@ fun main() {
             get("/cat/sayings") {
                 call.respond(catSayingsService.getAll())
             }
-            post("/story/paragrah") {
+            post("/story/paragraph") {
                 println("Entering story paragraph!")
                 val paragraph = call.receive<Paragraph>()
                 println("Received cat saying ${paragraph.text}")
