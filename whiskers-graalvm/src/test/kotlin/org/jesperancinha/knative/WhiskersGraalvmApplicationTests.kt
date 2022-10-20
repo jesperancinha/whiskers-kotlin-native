@@ -1,10 +1,10 @@
-package com.example.demo
+package org.jesperancinha.knative
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class WhiskersCloudNativeApplicationTests {
+class WhiskersGraalvmApplicationTests {
 
 	@Test
 	fun contextLoads() {

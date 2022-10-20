@@ -1,4 +1,4 @@
-package com.example.demo
+package org.jesperancinha.knative
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
