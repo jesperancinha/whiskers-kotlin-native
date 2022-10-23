@@ -28,7 +28,7 @@ fun main() {
             install(ContentNegotiation) {
                 json()
             }
-            get("/") {
+            get("/cat/sayings") {
                 call.respondText("Welcome to the Cat Ktor Service!")
             }
             post("/cat/saying") {
@@ -48,7 +48,7 @@ fun main() {
                 paragraphService.save(paragraph)
                 call.respondText("Story paragrah stored correctly", status = HttpStatusCode.Created)
             }
-            get("/story/paragrahs") {
+            get("/story/paragraphs") {
                 call.respond(paragraphService.getAll())
             }
         }
@@ -76,7 +76,7 @@ private fun makeACatsDay(catSayingsService: CatSayingsService) {
         database = "whiskers",
         password = "red_cat"
     )
-    val notPrepared = driver.executeQuery(null, "SELECT * from sayings.cat_lines limit 1;", parameters = 0, mapper = {
+    val notPrepared = driver.executeQuery(null, "SELECT * from sayings.cat_line limit 1;", parameters = 0, mapper = {
         it.next()
         it.getString(1)
     })

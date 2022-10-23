@@ -13,7 +13,7 @@ class StoryController(
     val storyService: StoryService
 ) {
 
-    @GetMapping("/story/paragrahs")
+    @GetMapping("/story/paragraphs")
     fun getAllParagrahs() = storyService.getAllParagraphs()
 
     @GetMapping("/story/paragrahs/{id}")

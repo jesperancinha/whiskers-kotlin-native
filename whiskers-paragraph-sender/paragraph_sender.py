@@ -19,7 +19,7 @@ with open('../docs/good.story/good.story.chapter.2.md') as f:
     for paragraph in contents.split("\n\n"):
         print("{0}************************************************".format(paragraphColor.GREEN))
         print("{0}{1}{2}".format(paragraphColor.YELLOW, paragraph, paragraphColor.RESET))
-        url = 'http://localhost:8082/story/paragrah'
+        url = 'http://localhost:8080/story/paragraph'
         x = requests.post(url, json={
             'text': paragraph
         })

@@ -15,7 +15,7 @@ class CatController(
     @GetMapping
     suspend fun getWelcomeMessage() = "Welcome to the Cat GraalVM Service!"
 
-    @GetMapping("/cat/saying")
+    @GetMapping("/cat/sayings")
     fun getCatSayings() = catService.getAllSayings()
 
     @GetMapping("/cat/saying/{id}")

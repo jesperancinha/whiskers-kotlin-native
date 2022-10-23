@@ -53,23 +53,23 @@ class CatSayingsRepository(
 
     override fun findAll(): List<CatSaying> =
         nativeDriver.executeSelect(
-            sql = "SELECT * from sayings.cat_lines;",
+            sql = "SELECT * from sayings.cat_line ;",
             mapper = listEntityMapper
         ).value
 
     override suspend fun findById(id: Long): CatSaying = nativeDriver.executeSelect(
-        sql = "SELECT * from sayings.cat_lines limit 1 where id = ${id};",
+        sql = "SELECT * from sayings.cat_line  limit 1 where id = ${id};",
         mapper = singleEntityMapper
     ).value
 
     override suspend fun first(): CatSaying =
         nativeDriver.executeSelect(
-            sql = "SELECT * from sayings.cat_lines limit 1;",
+            sql = "SELECT * from sayings.cat_line  limit 1;",
             mapper = singleEntityMapper
         ).value
 
     override suspend fun save(entity: CatSaying) =
-        nativeDriver.executeInsert(null, "INSERT INTO sayings.cat_lines(saying)VALUES ('${entity.saying}')")
+        nativeDriver.executeInsert(null, "INSERT INTO sayings.cat_line (saying)VALUES ('${entity.saying}')")
             .let { entity }
 
 }
@@ -98,23 +98,23 @@ class ParagraphRepository(
     }
 ) : Repository<Paragraph> {
     override fun findAll(): List<Paragraph> = nativeDriver.executeSelect(
-            sql = "SELECT * from story.paragraphs;",
+            sql = "SELECT * from story.paragraph;",
             mapper = listEntityMapper
         ).value
 
     override suspend fun findById(id: Long): Paragraph =nativeDriver.executeSelect(
-        sql = "SELECT * from story.paragraphs limit 1 where id = ${id};",
+        sql = "SELECT * from story.paragraph limit 1 where id = ${id};",
         mapper = singleEntityMapper
     ).value
 
     override suspend fun first(): Paragraph  =
         nativeDriver.executeSelect(
-            sql = "SELECT * from story.paragraphs limit 1;",
+            sql = "SELECT * from story.paragraph limit 1;",
             mapper = singleEntityMapper
         ).value
 
     override suspend fun save(entity: Paragraph): Paragraph =
-        nativeDriver.executeInsert(null, "INSERT INTO story.paragraphs(text)VALUES ('${entity.text.escapePostgreSQL()}')")
+        nativeDriver.executeInsert(null, "INSERT INTO story.paragraph(text)VALUES ('${entity.text.escapePostgreSQL()}')")
             .let { entity }
 }
 
