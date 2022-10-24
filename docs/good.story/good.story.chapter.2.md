@@ -92,7 +92,8 @@ presented her resignation and found a new job at `Red portal enterprises B.V.` o
 
 Lursi remained the whole time listening carefully to Lucy's story in awe and disbelief.
 
-[to be continued...]
+[to be continued...](https://github.com/jesperancinha/note-manager-app/blob/master/docs/good.story/good.story.chapter.3.md)
+[Chapter Three - Hong Kong Enterprise Surprise](https://github.com/jesperancinha/note-manager-app/blob/master/docs/good.story/good.story.chapter.3.md)
 
 ### Characters
 
