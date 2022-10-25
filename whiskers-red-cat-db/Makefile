@@ -10,12 +10,12 @@ build-native: build
 	./kotlin.native/bin/cinterop -def redcat.def -o redcat.klib
 	./kotlin.native/bin/konanc -l redcat.klib main.kt -linker-options libpq.a -o main
 install-kotlin-native-linux:
-	wget -O  kotlin.native.tar.gz https://github.com/JetBrains/kotlin/releases/download/v1.7.20/kotlin-native-linux-x86_64-1.7.20.tar.gz
 	tar -xvzf kotlin.native.tar.gz
+	if [ -d "kotlin.native" ]; then rm -r kotlin.native; fi
 	mv kotlin-native-linux-x86_64-1.7.20 kotlin.native
 	sudo apt install libreadline-dev
-	wget -O postgres.zip https://github.com/postgres/postgres/archive/refs/heads/master.zip
-	unzip postgres.zip
+	unzip -o postgres.zip
+	bash install-postgresql.sh
 postgres-build:
 	cd postgres-master && ./configure
 	cd postgres-master && make all

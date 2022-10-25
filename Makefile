@@ -51,7 +51,18 @@ dcup-light: dcd
 	make kong-config
 kong-config:
 	cd kong && make kong-config
-install-kotlin-native-linux: install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
+download-binaries:
+	if [[ ! -f "kotlin.native.tar.gz" ]]; then wget -O kotlin.native.tar.gz https://github.com/JetBrains/kotlin/releases/download/v1.7.20/kotlin-native-linux-x86_64-1.7.20.tar.gz; fi
+	if [[ ! -f "postgres.zip" ]]; then wget -O postgres.zip https://github.com/postgres/postgres/archive/refs/heads/master.zip; fi
+copy-binaries:
+	cp kotlin*.tar.gz whiskers-ktor/postgresql
+	cp kotlin*.tar.gz whiskers-ktor/c
+	cp postgres.zip whiskers-ktor/postgresql
+	cp kotlin*.tar.gz whiskers-red-cat
+	cp kotlin*.tar.gz whiskers-red-cat-db
+	cp postgres.zip whiskers-red-cat-db
+setup-binaries: download-binaries copy-binaries
+install-kotlin-native-linux: setup-binaries install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
 install-kotlin-native-linux-ktor:
 	cd whiskers-ktor/c && make install-kotlin-native-linux
 	cd whiskers-ktor/postgresql && make install-kotlin-native-linux
