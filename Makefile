@@ -1,3 +1,6 @@
+SHELL := /bin/bash
+GITHUB_RUN_ID ?=123
+
 b: build
 build: build-gradle build-gradle-graalvm
 build-gradle: build-gradle-ktor
@@ -44,11 +47,11 @@ docker-stop-all:
 dcd: docker-clean
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml down
 dcup-light: dcd
-	docker-compose up -d whiskers-db
+	docker-compose -p ${GITHUB_RUN_ID} up -d whiskers-db
 	make kong-config
 kong-config:
 	cd kong && make kong-config
-install-kotlin-native-linux:install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
+install-kotlin-native-linux: install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
 install-kotlin-native-linux-ktor:
 	cd whiskers-ktor/c && make install-kotlin-native-linux
 	cd whiskers-ktor/postgresql && make install-kotlin-native-linux
@@ -61,8 +64,15 @@ install-python:
 	sudo apt-get install python3-apt
 run-paragraph-sender:
 	cd whiskers-paragraph-sender && python paragraph_sender.py
-dcup-ktor:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml build
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d
+dcup-ktor: whiskers-wait
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml build
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d
 dcd-ktor:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml down
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml down
+dcup-graalvm: whiskers-wait
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml build
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml up -d
+dcd-graalvm:
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml down
+whiskers-wait:
+	bash whiskers_wait.sh

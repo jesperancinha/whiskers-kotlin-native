@@ -16,7 +16,7 @@ services:
     networks:
       - whiskers-network
     healthcheck:
-      test: [ "CMD", "pg_isready", "-U", "kong" ]
+      test: [ "CMD", "pg_isready", "-U", "whiskers" ]
       interval: 10s
       timeout: 5s
       retries: 5

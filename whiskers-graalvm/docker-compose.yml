@@ -1,0 +1,8 @@
+services:
+  whiskers-ktor:
+    build:
+      context: ./whiskers-graalvm/.
+    networks:
+      - whiskers-network
+    expose:
+      - 8080
