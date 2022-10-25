@@ -26,8 +26,16 @@ data class Database(val port: Int, val host: String)
 @ExperimentalUnsignedTypes
 fun main() {
     val configuration = runNativeDemos()
-    val catSayingsService = CatSayingsService()
-    val paragraphService = ParagraphService()
+    val driver = PostgresNativeDriver(
+        host = configuration.database.host,
+        port = configuration.database.port,
+        user = "whiskers",
+        database = "whiskers",
+        password = "red_cat"
+    )
+
+    val catSayingsService = CatSayingsService(driver)
+    val paragraphService = ParagraphService(driver)
     makeACatsDay(catSayingsService, configuration)
     embeddedServer(CIO, port = configuration.server.port) {
         routing {

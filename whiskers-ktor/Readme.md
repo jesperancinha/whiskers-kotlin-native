@@ -11,13 +11,13 @@ make run
 #### 1.  Send cat sayings
 
 ```shell
-curl -X POST http://0.0.0.0:8082/cat/saying --data "{\"saying\":\"whatever\"}" -H 'Content-Type: application/json'
+curl -X POST http://localhost:8080/cat/saying --data "{\"saying\":\"whatever\"}" -H 'Content-Type: application/json'
 ```
 
 #### 2.  Get all cat cayings
 
 ```shell
-curl http://0.0.0.0:8082/cat/sayings
+curl http://localhost:8080/cat/sayings
 ```
 
 ## Installation

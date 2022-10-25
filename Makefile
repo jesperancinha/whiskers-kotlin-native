@@ -62,7 +62,7 @@ install-python:
 run-paragraph-sender:
 	cd whiskers-paragraph-sender && python paragraph_sender.py
 dcup-ktor:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml build
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml up -d
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml build
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d
 dcd-ktor:
-	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml down
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml down
