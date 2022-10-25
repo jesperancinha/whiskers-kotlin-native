@@ -16,3 +16,4 @@ update-run: build
 install-kotlin-native-linux-ktor:
 	cd c && make install-kotlin-native-linux
 	cd postgresql && make install-kotlin-native-linux
+

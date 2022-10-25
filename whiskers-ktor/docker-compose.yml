@@ -1,0 +1,8 @@
+services:
+  whiskers-ktor:
+    build:
+      context: ./whiskers-ktor/.
+    networks:
+      - whiskers-network
+    expose:
+      - 8080
