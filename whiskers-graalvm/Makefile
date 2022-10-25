@@ -8,3 +8,8 @@ run:
 update-run: b run
 dcup-light:
 	cd .. && make dcup-light
+build-jar:
+	echo "Please run this with JDK17!"
+	./gradlew bootJar
+run-jar:
+	java -jar build/libs/whiskers-graalvm-0.0.1-SNAPSHOT.jar

@@ -25,7 +25,7 @@ class CatController(
         @PathVariable id:Int
     ) = catService.getSayingById(id)
 
-    @PostMapping("/story/paragraph")
+    @PostMapping("/cat/saying")
     suspend fun createNewParagraph(
         @RequestBody
         sayingDto: CatSayingDto
