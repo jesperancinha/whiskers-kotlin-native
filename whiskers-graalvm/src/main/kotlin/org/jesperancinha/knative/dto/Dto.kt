@@ -1,10 +1,7 @@
 package org.jesperancinha.knative.dto
 
 import kotlinx.coroutines.flow.map
-import org.jesperancinha.knative.dao.CatSayingRepository
-import org.jesperancinha.knative.dao.Paragraph
-import org.jesperancinha.knative.dao.ParagraphRepository
-import org.jesperancinha.knative.dao.toDto
+import org.jesperancinha.knative.dao.*
 import org.springframework.stereotype.Service
 
 
@@ -18,10 +15,17 @@ data class CatSayingDto(
     val saying: String
 )
 
-val ParagraphDto.toDto
+val ParagraphDto.toData
     get() = Paragraph(
         id = this.id,
         text = this.text
+    )
+
+
+val CatSayingDto.toData
+    get() = CatLine(
+        id = this.id,
+        saying = this.saying
     )
 
 
@@ -31,6 +35,8 @@ class CatService(
 ) {
     fun getAllSayings() = catSayingRepository.findAll().map { it.toDto() }
     suspend fun getSayingById(id: Int) = catSayingRepository.findById(id)?.toDto()
+
+    suspend fun saveSaying(sayingDto: CatSayingDto) = catSayingRepository.save(sayingDto.toData).toDto()
 }
 
 @Service
@@ -40,5 +46,5 @@ class StoryService(
     fun getAllParagraphs() = paragraphRepository.findAll().map { it.toDto() }
 
     suspend fun getParagraphById(id: Int) = paragraphRepository.findById(id)?.toDto()
-    suspend fun saveParagraph(paragraphDto: ParagraphDto) = paragraphRepository.save(paragraphDto.toDto).toDto()
+    suspend fun saveParagraph(paragraphDto: ParagraphDto) = paragraphRepository.save(paragraphDto.toData).toDto()
 }

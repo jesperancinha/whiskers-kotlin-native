@@ -2,10 +2,10 @@ package org.jesperancinha.knative.rest
 
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
+import org.jesperancinha.knative.dto.CatSayingDto
 import org.jesperancinha.knative.dto.CatService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
+import org.jesperancinha.knative.dto.ParagraphDto
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class CatController(
@@ -24,4 +24,10 @@ class CatController(
         @Size(min = 2, max = 14)
         @PathVariable id:Int
     ) = catService.getSayingById(id)
+
+    @PostMapping("/story/paragraph")
+    suspend fun createNewParagraph(
+        @RequestBody
+        sayingDto: CatSayingDto
+    ) = catService.saveSaying(sayingDto)
 }
