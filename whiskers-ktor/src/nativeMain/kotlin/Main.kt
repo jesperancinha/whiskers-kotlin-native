@@ -15,15 +15,21 @@ import org.jesperancinha.native.tell_story
 import platform.posix.*
 
 @Serializable
-class Config(val port: Int)
+data class Config(val server: Server, val database: Database)
+
+@Serializable
+data class Server(val port: Int)
+
+@Serializable
+data class Database(val port: Int, val host: String)
 
 @ExperimentalUnsignedTypes
 fun main() {
     val configuration = runNativeDemos()
     val catSayingsService = CatSayingsService()
     val paragraphService = ParagraphService()
-    makeACatsDay(catSayingsService)
-    embeddedServer(CIO, port = configuration.port) {
+    makeACatsDay(catSayingsService, configuration)
+    embeddedServer(CIO, port = configuration.server.port) {
         routing {
             install(ContentNegotiation) {
                 json()
@@ -62,16 +68,16 @@ private fun runNativeDemos(): Config {
     println(string)
     val configuration = Json.decodeFromString<Config>(string)
     println(configuration)
-    println(executeCommand("PGPASSWORD=red_cat psql -U whiskers -d whiskers -c 'SELECT 1' -h localhost"))
+    println(executeCommand("PGPASSWORD=red_cat psql -U whiskers -d whiskers -c 'SELECT 1' -h ${configuration.database.host}"))
     return configuration
 }
 
 @ExperimentalUnsignedTypes
-private fun makeACatsDay(catSayingsService: CatSayingsService) {
+private fun makeACatsDay(catSayingsService: CatSayingsService, configuration: Config) {
     println("--- A cat's day 🐈  ---")
     val driver = PostgresNativeDriver(
-        host = "localhost",
-        port = 5432,
+        host = configuration.database.host,
+        port = configuration.database.port,
         user = "whiskers",
         database = "whiskers",
         password = "red_cat"

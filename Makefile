@@ -61,7 +61,8 @@ install-python:
 	sudo apt-get install python3-apt
 run-paragraph-sender:
 	cd whiskers-paragraph-sender && python paragraph_sender.py
-run-ktor:
+dcup-ktor:
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml build
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml up -d
 dcd-ktor:
 	docker-compose -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml down

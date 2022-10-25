@@ -1,7 +1,12 @@
-FROM alpine:latest
-
-COPY ./build/bin/native/releaseExecutable/whiskers-ktor.kexe /root
+FROM ubuntu:latest
 
 WORKDIR /root
 
-ENTRYPOINT ["./entrypoint.sh"]
+COPY ./build/bin/native/releaseExecutable/whiskers-ktor.kexe /root
+COPY application-docker.json /root/application.json
+
+COPY entrypoint.sh /root/
+
+RUN cat entrypoint.sh
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
