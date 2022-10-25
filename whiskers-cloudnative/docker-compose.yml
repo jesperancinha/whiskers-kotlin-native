@@ -1,7 +1,6 @@
 services:
-  whiskers-graalvm:
-    build:
-      context: ./whiskers-graalvm/.
+  whiskers-cloudnative:
+    image: whiskers-cloudnative:0.0.1-SNAPSHOT
     networks:
       - whiskers-network
     expose:

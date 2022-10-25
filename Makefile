@@ -74,5 +74,10 @@ dcup-graalvm: whiskers-wait
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml up -d
 dcd-graalvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml down
+dcup-cloudnative: whiskers-wait
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml build
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml up -d
+dcd-cloudnative:
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml down
 whiskers-wait:
 	bash whiskers_wait.sh

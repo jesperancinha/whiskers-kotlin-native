@@ -1,4 +1,4 @@
 services:
-  whiskers-graalvm:
+  whiskers-cloudnative:
     ports:
       - 8080:8080
