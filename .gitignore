@@ -50,3 +50,6 @@ machines
 stdlib.h
 stdio.h
 _null.h
+
+## Results
+*.csv
