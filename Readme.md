@@ -14,6 +14,32 @@ As a datasource, I have continued my novel, [Good-Story](https://github.com/jesp
 
 If you are interested, please check [Chapter II - The cat that helped Lucy](./docs/good.story/good.story.chapter.2.md) for the complete data source and context.
 
+## How to run
+
+#### 1. Install all binaries (Optional)
+
+1. Linux
+
+```bash
+make install-kotlin-native-linux
+```
+
+2. MAC-OS
+3. WINDOWS
+
+#### 2. Compile all c libraries
+
+```bash
+. ./init.sh
+```
+
+#### 3. Build all
+
+```shell
+make b
+```
+
+
 ## Project Structure
 
 - [good-feel](./good-feel) - A simple Kotlin Native project without the use of C bindings
