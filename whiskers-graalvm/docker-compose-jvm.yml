@@ -1,0 +1,11 @@
+services:
+  whiskers-graalvm:
+    build:
+      context: ./whiskers-graalvm/jvm/.
+    networks:
+      - whiskers-network
+    expose:
+      - 8080
+    depends_on:
+      whiskers-db:
+        condition: service_healthy

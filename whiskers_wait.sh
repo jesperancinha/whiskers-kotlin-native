@@ -4,7 +4,7 @@ GITHUB_RUN_ID=${GITHUB_RUN_ID:-123}
 function checkServiceByNameAndMessage() {
     name=$1
     message=$2
-    docker-compose -p "${GITHUB_RUN_ID}" logs "$name" > "logs"
+    docker ps -a -q --filter="name=$name" | xargs -I {} docker logs {} > "logs"
     string=$(cat logs)
     counter=0
     echo "Project $GITHUB_RUN_ID"
@@ -12,7 +12,7 @@ function checkServiceByNameAndMessage() {
     while [[ "$string" != *"$message"* ]]
     do
       echo -e -n "\e[93m-\e[39m"
-      docker-compose -p "${GITHUB_RUN_ID}" logs "$name" > "logs"
+      docker ps -a -q --filter="name=$name" | xargs -I {} docker logs {} > "logs"
       string=$(cat logs)
       sleep 1
       counter=$((counter+1))
@@ -26,4 +26,4 @@ function checkServiceByNameAndMessage() {
     echo -e "\e[92m Succeeded starting $name Service after $counter tries!\e[39m"
 }
 
-checkServiceByNameAndMessage whiskers-db 'database system is ready to accept connections'
+checkServiceByNameAndMessage $1 'started'

@@ -2,6 +2,8 @@ b: build-gradle
 build-gradle:
 	./gradlew
 	./gradlew nativeCompile
+	make build-jar
+	cp build/libs/whiskers-graalvm-0.0.1-SNAPSHOT.jar jvm/whiskers-graalvm.jar
 run:
 	cat ./build/native/nativeCompile/whiskers-graalvm.build_artifacts.txt
 	./build/native/nativeCompile/whiskers-graalvm
