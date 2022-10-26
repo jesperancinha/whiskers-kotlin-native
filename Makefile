@@ -117,4 +117,8 @@ dcd-jvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml down
 db-wait:
 	bash db_wait.sh
-measure-all-sts: dcup-ktor dcd-ktor dcup-graalvm dcd-graalvm dcup-cloudnative dcd-cloudnative
+measure-all-sts: dcup-ktor dcd-ktor dcup-graalvm dcd-graalvm dcup-cloudnative dcd-cloudnative dcup-jvm dcd-jvm
+cat-sayings-run:
+	cd whiskers-paragraph-sender && make cat-sayings-run
+perform-tests:
+	cd whiskers-paragraph-sender && python3 test_all.py

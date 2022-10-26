@@ -24,6 +24,8 @@ function checkServiceByNameAndMessage() {
     done
     counter=$((counter+1))
     echo -e "\e[92m Succeeded starting $name Service after $counter tries!\e[39m"
+    docker ps -a -q --filter="name=$name" | xargs -I {} docker stats {} --no-stream
+    docker ps -a -q --filter="name=$name" | xargs -I {} docker stats {} --no-stream > result-mem-"$name".txt
 }
 
-checkServiceByNameAndMessage $1 'started'
+checkServiceByNameAndMessage "$1" 'started'
