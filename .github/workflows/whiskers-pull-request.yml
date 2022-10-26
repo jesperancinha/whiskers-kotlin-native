@@ -24,6 +24,9 @@ jobs:
           sudo apt install bison &&
           sudo apt install flex
 
+      - name: Setup Binaries
+        run: make setup-binaries
+
       - name: Install Kotlin Native
         run: make install-kotlin-native-linux-ktor
 
@@ -59,6 +62,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
+      - name: Setup Binaries
+        run: make setup-binaries
+
       - name: Install Kotlin Native
         run: make install-kotlin-native-linux-rc
 
@@ -83,6 +89,9 @@ jobs:
           sudo apt-get install libpq-dev &&
           sudo apt install bison &&
           sudo apt install flex
+
+      - name: Setup Binaries
+        run: make setup-binaries
 
       - name: Install Kotlin Native
         run: make install-kotlin-native-linux-rcdb
