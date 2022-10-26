@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-./whiskers-graalvm
+./whiskers-graalvm -Dspring.profiles.active=docker

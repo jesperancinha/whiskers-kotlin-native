@@ -75,19 +75,19 @@ install-python:
 	sudo apt-get install python3-apt
 run-paragraph-sender:
 	cd whiskers-paragraph-sender && python paragraph_sender.py
-dcup-ktor:
+dcup-ktor: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d
 	make whiskers-wait
 dcd-ktor:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml down
-dcup-graalvm:
+dcup-graalvm: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml up -d
 	make whiskers-wait
 dcd-graalvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml down
-dcup-cloudnative:
+dcup-cloudnative: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml up -d
 	make whiskers-wait

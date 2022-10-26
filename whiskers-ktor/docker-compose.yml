@@ -6,3 +6,6 @@ services:
       - whiskers-network
     expose:
       - 8080
+    depends_on:
+      whiskers-db:
+        condition: service_healthy
