@@ -23,7 +23,17 @@ def send_paragraphs():
             x = requests.post(url, json={
                 'text': paragraph
             })
-            print("{0}Response: {1}".format(paragraphColor.PURPLE, x.text))
+            print("{0}Response: {1}{2}".format(paragraphColor.PURPLE, x.text, paragraphColor.RESET))
+
+
+def send_paragraphs_no_log():
+    with open('../docs/good.story/good.story.chapter.2.md') as f:
+        contents = f.read()
+        for paragraph in contents.split("\n\n"):
+            url = 'http://localhost:8080/story/paragraph'
+            x = requests.post(url, json={
+                'text': paragraph
+            })
 
 
 send_paragraphs()

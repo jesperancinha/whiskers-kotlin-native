@@ -1,8 +1,10 @@
-from paragraph_sender import send_paragraphs
+from paragraph_sender import send_paragraphs_no_log
 import requests
 
-send_paragraphs()
 
-requests.get('http://localhost:8080/story/paragraphs')
+for num in range(1, 301):
+    send_paragraphs_no_log()
 
-requests.get('http://localhost:8080/cat/sayings')
+    requests.get('http://localhost:8080/story/paragraphs')
+
+    requests.get('http://localhost:8080/cat/sayings')
