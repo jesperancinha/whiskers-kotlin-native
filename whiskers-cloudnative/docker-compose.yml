@@ -1,5 +1,6 @@
 services:
   whiskers-cloudnative:
+    command: ["-Dspring.profiles.active=docker"]
     image: whiskers-cloudnative:0.0.1-SNAPSHOT
     networks:
       - whiskers-network
