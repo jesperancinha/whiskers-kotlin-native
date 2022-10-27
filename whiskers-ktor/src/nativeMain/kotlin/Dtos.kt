@@ -19,7 +19,7 @@ class CatSayingsService(
     override fun getAll() = catSayingsRepository.findAll()
     override suspend fun getById(id: Long) = catSayingsRepository.findById(id)
     override suspend fun save(entity: CatSaying) = catSayingsRepository.save(entity)
-    fun getAllEncoded() = getAll().toCodeSayings()
+    fun getAllEncoded() = getAll().toEncodedSayings()
 }
 
 
@@ -29,10 +29,10 @@ internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragrap
     override fun getAll() = paragraphRepository.findAll()
     override suspend fun getById(id: Long) = paragraphRepository.findById(id)
     override suspend fun save(entity: Paragraph) = paragraphRepository.save(entity)
-    fun getAllEncoded() = getAll().toParagraphSaying()
+    fun getAllEncoded() = getAll().toEncodedParagraphs()
 }
 
-private inline fun  List<Paragraph>.toParagraphSaying() =  map {
+inline fun  List<Paragraph>.toEncodedParagraphs() =  map {
     val codedParagraph = it.text.split(" ").joinToString(" ") { word ->
         word.toCharArray().fold("") { acc, value ->
             "$acc${
@@ -47,7 +47,7 @@ private inline fun  List<Paragraph>.toParagraphSaying() =  map {
     }
     Paragraph(id = it.id, text = codedParagraph)
 }
-inline fun List<CatSaying>.toCodeSayings() =
+inline fun List<CatSaying>.toEncodedSayings() =
     map {
         val codedSaying = it.saying.split(" ").joinToString(" ") { word ->
             word.toCharArray().fold("") { acc, value ->

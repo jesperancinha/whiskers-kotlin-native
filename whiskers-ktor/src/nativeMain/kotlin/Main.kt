@@ -1,4 +1,5 @@
 import io.ktor.http.*
+import io.ktor.http.HttpStatusCode.Companion.Created
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
@@ -46,11 +47,10 @@ fun main() {
                 call.respondText("Welcome to the Cat Ktor Service!")
             }
             post("/cat/saying") {
-                println("Entering cat sayings!")
                 val catSaying = call.receive<CatSaying>()
-                println("Received cat saying ${catSaying.saying}")
-                catSayingsService.save(catSaying)
-                call.respondText("Cat comments stored correctly", status = HttpStatusCode.Created)
+                catSayingsService.save(catSaying).let { responseBody ->
+                    call.respond(status = Created, responseBody)
+                }
             }
             get("/cat/sayings") {
                 call.respond(catSayingsService.getAll())
@@ -59,11 +59,16 @@ fun main() {
                 call.respond(catSayingsService.getAllEncoded())
             }
             post("/story/paragraph") {
-                println("Entering story paragraph!")
                 val paragraph = call.receive<Paragraph>()
-                println("Received cat saying ${paragraph.text}")
-                paragraphService.save(paragraph)
-                call.respondText("Story paragrah stored correctly", status = HttpStatusCode.Created)
+                paragraphService.save(paragraph).let { responseBody ->
+                    call.respond(status = Created, responseBody)
+                }
+            }
+            post("/story/paragraph/encoded") {
+                val paragraphs = call.receive<List<Paragraph>>()
+                paragraphs.toEncodedParagraphs().let { responseBody ->
+                    call.respond(status = Created, responseBody)
+                }
             }
             get("/story/paragraphs") {
                 call.respond(paragraphService.getAll())

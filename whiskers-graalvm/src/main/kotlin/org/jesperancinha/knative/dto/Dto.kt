@@ -48,10 +48,10 @@ class StoryService(
     fun getAllParagraphs() = paragraphRepository.findAll().map { it.toDto() }
     suspend fun getParagraphById(id: Int) = paragraphRepository.findById(id)?.toDto()
     suspend fun saveParagraph(paragraphDto: ParagraphDto) = paragraphRepository.save(paragraphDto.toData).toDto()
-    fun getCodedParagraphs()= getAllParagraphs().toParagraphSaying()
+    fun getCodedParagraphs()= getAllParagraphs().toEncodedParagraph()
 }
 
-private fun  Flow<ParagraphDto>.toParagraphSaying() =  map {
+fun  Flow<ParagraphDto>.toEncodedParagraph() =  map {
     val codedParagraph = it.text.split(" ").joinToString(" ") { word ->
         word.toCharArray().fold("") { acc, value ->
             "$acc${
