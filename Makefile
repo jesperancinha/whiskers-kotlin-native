@@ -86,7 +86,7 @@ dcup-ktor: stop
 	make db-wait
 	date +%s | xargs -I {} echo "ktor,"{} > result-ktor.csv
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d
-	bash whiskers_wait.sh whiskers-ktor
+	bash whiskers_wait.sh whiskers-ktor ktor
 	date +%s | xargs -I {} echo "ktor,"{} >> result-ktor.csv
 	date +%s | xargs -I {} echo "ktor,"{} > result-test-ktor.csv
 	make perform-tests
@@ -102,7 +102,7 @@ dcup-graalvm: stop
 	make db-wait
 	date +%s | xargs -I {} echo "graalvm,"{} > result-graalvm.csv
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml up -d
-	bash whiskers_wait.sh whiskers-graalvm
+	bash whiskers_wait.sh whiskers-graalvm graalvm
 	date +%s | xargs -I {} echo "graalvm,"{} >> result-graalvm.csv
 	date +%s | xargs -I {} echo "graalvm,"{} > result-test-graalvm.csv
 	make perform-tests
@@ -118,7 +118,7 @@ dcup-cloudnative: stop
 	make db-wait
 	date +%s | xargs -I {} echo "cloudnative,"{} > result-cloudnative.csv
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml up -d
-	bash whiskers_wait.sh whiskers-cloudnative
+	bash whiskers_wait.sh whiskers-cloudnative cloudnative
 	date +%s | xargs -I {} echo "cloudnative,"{} >> result-cloudnative.csv
 	date +%s | xargs -I {} echo "cloudnative,"{} > result-test-cloudnative.csv
 	make perform-tests
@@ -134,7 +134,7 @@ dcup-jvm: stop
 	make db-wait
 	date +%s | xargs -I {} echo "jvm,"{} > result-jvm.csv
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml up -d
-	bash whiskers_wait.sh whiskers-graalvm
+	bash whiskers_wait.sh whiskers-graalvm jvm
 	date +%s | xargs -I {} echo "jvm,"{} >> result-jvm.csv
 	date +%s | xargs -I {} echo "jvm,"{} > result-test-jvm.csv
 	make perform-tests
