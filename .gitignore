@@ -54,3 +54,6 @@ _null.h
 ## Results
 *.csv
 *.txt
+
+# Python
+__pycache__
