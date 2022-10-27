@@ -1,6 +1,14 @@
 # Whiskers Kotlin-Native project
 
 ## Logs
+
+<ins>20221027</ins>
+
+```shell
+sudo usermod -aG docker <USER>
+sudo usermod -aG sudo <USER>
+newgrp docker
+```
 <ins>20221008</ins>
 
 https://github.com/JetBrains/kotlin-native/issues/1212

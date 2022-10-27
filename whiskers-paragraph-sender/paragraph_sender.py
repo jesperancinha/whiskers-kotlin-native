@@ -34,6 +34,3 @@ def send_paragraphs_no_log():
             x = requests.post(url, json={
                 'text': paragraph
             })
-
-
-send_paragraphs()
