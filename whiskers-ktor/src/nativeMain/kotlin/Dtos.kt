@@ -12,6 +12,8 @@ internal class CatSayingsService(driver: PostgresNativeDriver) : Service<CatSayi
     override fun getAll() = catSayingsRepository.findAll()
     override suspend fun getById(id: Long) = catSayingsRepository.findById(id)
     override suspend fun save(entity: CatSaying) = catSayingsRepository.save(entity)
+    fun getAllEncoded() = getAll().map {
+    }
 }
 
 @ExperimentalUnsignedTypes

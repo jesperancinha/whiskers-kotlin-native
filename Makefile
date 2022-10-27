@@ -62,7 +62,12 @@ copy-binaries:
 	cp kotlin*.tar.gz whiskers-red-cat-db
 	cp postgres.zip whiskers-red-cat-db
 setup-binaries: download-binaries copy-binaries
-install-kotlin-native-linux: setup-binaries install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
+install-libs:
+	sudo apt install libreadline-dev
+	sudo apt-get install libpq-dev
+	sudo apt install bison
+	sudo apt install flex
+install-kotlin-native-linux: setup-binaries install-libs install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
 install-kotlin-native-linux-ktor:
 	cd whiskers-ktor/c && make install-kotlin-native-linux
 	cd whiskers-ktor/postgresql && make install-kotlin-native-linux
