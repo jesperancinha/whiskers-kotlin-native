@@ -22,6 +22,31 @@ class CatSayingsService(
     fun getAllEncoded() = getAll().toCodeSayings()
 }
 
+
+@ExperimentalUnsignedTypes
+internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragraph> {
+    private val paragraphRepository = ParagraphRepository(nativeDriver = driver)
+    override fun getAll() = paragraphRepository.findAll()
+    override suspend fun getById(id: Long) = paragraphRepository.findById(id)
+    override suspend fun save(entity: Paragraph) = paragraphRepository.save(entity)
+    fun getAllEncoded() = getAll().toParagraphSaying()
+}
+
+private inline fun  List<Paragraph>.toParagraphSaying() =  map {
+    val codedParagraph = it.text.split(" ").joinToString(" ") { word ->
+        word.toCharArray().fold("") { acc, value ->
+            "$acc${
+                alphabet.indexOf(value).let { indexResult ->
+                    when (indexResult) {
+                        -1 -> value
+                        else -> indexResult
+                    }
+                }.toString().padStart(2, '0')
+            }"
+        }
+    }
+    Paragraph(id = it.id, text = codedParagraph)
+}
 inline fun List<CatSaying>.toCodeSayings() =
     map {
         val codedSaying = it.saying.split(" ").joinToString(" ") { word ->
@@ -38,11 +63,3 @@ inline fun List<CatSaying>.toCodeSayings() =
         }
         CatSaying(id = it.id, saying = codedSaying)
     }
-
-@ExperimentalUnsignedTypes
-internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragraph> {
-    private val paragraphRepository = ParagraphRepository(nativeDriver = driver)
-    override fun getAll() = paragraphRepository.findAll()
-    override suspend fun getById(id: Long) = paragraphRepository.findById(id)
-    override suspend fun save(entity: Paragraph) = paragraphRepository.save(entity)
-}

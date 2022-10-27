@@ -1,9 +1,11 @@
 package org.jesperancinha.knative.dto
 
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import org.jesperancinha.knative.dao.*
 import org.springframework.stereotype.Service
 
+const val alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 data class ParagraphDto(
     val text: String,
@@ -35,8 +37,8 @@ class CatService(
 ) {
     fun getAllSayings() = catSayingRepository.findAll().map { it.toDto() }
     suspend fun getSayingById(id: Int) = catSayingRepository.findById(id)?.toDto()
-
     suspend fun saveSaying(sayingDto: CatSayingDto) = catSayingRepository.save(sayingDto.toData).toDto()
+    fun getCodedSayings()= getAllSayings().toCodedSayings()
 }
 
 @Service
@@ -44,7 +46,39 @@ class StoryService(
     val paragraphRepository: ParagraphRepository
 ) {
     fun getAllParagraphs() = paragraphRepository.findAll().map { it.toDto() }
-
     suspend fun getParagraphById(id: Int) = paragraphRepository.findById(id)?.toDto()
     suspend fun saveParagraph(paragraphDto: ParagraphDto) = paragraphRepository.save(paragraphDto.toData).toDto()
+    fun getCodedParagraphs()= getAllParagraphs().toParagraphSaying()
 }
+
+private fun  Flow<ParagraphDto>.toParagraphSaying() =  map {
+    val codedParagraph = it.text.split(" ").joinToString(" ") { word ->
+        word.toCharArray().fold("") { acc, value ->
+            "$acc${
+                alphabet.indexOf(value).let { indexResult ->
+                    when (indexResult) {
+                        -1 -> value
+                        else -> indexResult
+                    }
+                }.toString().padStart(2, '0')
+            }"
+        }
+    }
+    ParagraphDto(id = it.id, text = codedParagraph)
+}
+fun Flow<CatSayingDto>.toCodedSayings() =
+    map {
+        val codedSaying = it.saying.split(" ").joinToString(" ") { word ->
+            word.toCharArray().fold("") { acc, value ->
+                "$acc${
+                    alphabet.indexOf(value).let { indexResult ->
+                        when (indexResult) {
+                            -1 -> value
+                            else -> indexResult
+                        }
+                    }.toString().padStart(2, '0')
+                }"
+            }
+        }
+        CatSayingDto(id = it.id, saying = codedSaying)
+    }

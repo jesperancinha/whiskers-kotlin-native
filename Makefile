@@ -91,6 +91,9 @@ dcup-ktor: stop
 	date +%s | xargs -I {} echo "ktor,"{} > result-test-ktor.csv
 	make perform-tests
 	date +%s | xargs -I {} echo "ktor,"{} >> result-test-ktor.csv
+	date +%s | xargs -I {} echo "ktor-encoded,"{} >> result-test-ktor.csv
+	make perform-tests-encoded
+	date +%s | xargs -I {} echo "ktor-encoded,"{} >> result-test-ktor.csv
 dcd-ktor:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml down
 dcup-graalvm: stop
@@ -104,6 +107,9 @@ dcup-graalvm: stop
 	date +%s | xargs -I {} echo "graalvm,"{} > result-test-graalvm.csv
 	make perform-tests
 	date +%s | xargs -I {} echo "graalvm,"{} >> result-test-graalvm.csv
+	date +%s | xargs -I {} echo "graalvm-encoded,"{} >> result-test-graalvm.csv
+	make perform-tests-encoded
+	date +%s | xargs -I {} echo "graalvm-encoded,"{} >> result-test-graalvm.csv
 dcd-graalvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml down
 dcup-cloudnative: stop
@@ -117,6 +123,9 @@ dcup-cloudnative: stop
 	date +%s | xargs -I {} echo "cloudnative,"{} > result-test-cloudnative.csv
 	make perform-tests
 	date +%s | xargs -I {} echo "cloudnative,"{} >> result-test-cloudnative.csv
+	date +%s | xargs -I {} echo "cloudnative-encoded,"{} >> result-test-cloudnative.csv
+	make perform-tests-encoded
+	date +%s | xargs -I {} echo "cloudnative-encoded,"{} >> result-test-cloudnative.csv
 dcd-cloudnative:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml down
 dcup-jvm: stop
@@ -130,6 +139,9 @@ dcup-jvm: stop
 	date +%s | xargs -I {} echo "jvm,"{} > result-test-jvm.csv
 	make perform-tests
 	date +%s | xargs -I {} echo "jvm,"{} >> result-test-jvm.csv
+	date +%s | xargs -I {} echo "jvm-encoded,"{} >> result-test-jvm.csv
+	make perform-tests-encoded
+	date +%s | xargs -I {} echo "jvm-encoded,"{} >> result-test-jvm.csv
 dcd-jvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml down
 db-wait:
@@ -139,3 +151,5 @@ cat-sayings-run:
 	cd whiskers-paragraph-sender && make cat-sayings-run
 perform-tests:
 	cd whiskers-paragraph-sender && python3 test_all.py
+perform-tests-encoded:
+	cd whiskers-paragraph-sender && python3 test_all_encoded.py

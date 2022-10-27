@@ -16,6 +16,9 @@ class StoryController(
     @GetMapping("/story/paragraphs")
     fun getAllParagrahs() = storyService.getAllParagraphs()
 
+    @GetMapping("/story/paragraphs/encoded")
+    fun getAllEncodedParagraphs() = storyService.getCodedParagraphs()
+
     @GetMapping("/story/paragrahs/{id}")
     suspend fun getParagraphById(
         @PathVariable

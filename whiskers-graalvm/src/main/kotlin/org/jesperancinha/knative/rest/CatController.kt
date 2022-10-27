@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.*
 class CatController(
     val catService: CatService
 ) {
-
     @GetMapping
     suspend fun getWelcomeMessage() = "Welcome to the Cat GraalVM Service!"
 
     @GetMapping("/cat/sayings")
     fun getCatSayings() = catService.getAllSayings()
+
+    @GetMapping("/cat/sayings/encoded")
+    fun getCatEncodedSayings() = catService.getCodedSayings()
 
     @GetMapping("/cat/saying/{id}")
     suspend fun getCatSayings(

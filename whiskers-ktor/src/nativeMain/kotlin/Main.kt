@@ -55,6 +55,9 @@ fun main() {
             get("/cat/sayings") {
                 call.respond(catSayingsService.getAll())
             }
+            get("/cat/sayings/encoded") {
+                call.respond(catSayingsService.getAllEncoded())
+            }
             post("/story/paragraph") {
                 println("Entering story paragraph!")
                 val paragraph = call.receive<Paragraph>()
@@ -64,6 +67,9 @@ fun main() {
             }
             get("/story/paragraphs") {
                 call.respond(paragraphService.getAll())
+            }
+            get("/story/paragraphs/encoded") {
+                call.respond(paragraphService.getAllEncoded())
             }
         }
     }.start(wait = true)

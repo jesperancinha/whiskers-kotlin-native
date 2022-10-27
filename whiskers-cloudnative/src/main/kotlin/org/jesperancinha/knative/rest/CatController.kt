@@ -4,18 +4,21 @@ import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
 import org.jesperancinha.knative.dto.CatSayingDto
 import org.jesperancinha.knative.dto.CatService
+import org.jesperancinha.knative.dto.ParagraphDto
 import org.springframework.web.bind.annotation.*
 
 @RestController
 class CatController(
     val catService: CatService
 ) {
-
     @GetMapping
     suspend fun getWelcomeMessage() = "Welcome to the Cat GraalVM Service!"
 
     @GetMapping("/cat/sayings")
     fun getCatSayings() = catService.getAllSayings()
+
+    @GetMapping("/cat/sayings/encoded")
+    fun getCatEncodedSayings() = catService.getCodedSayings()
 
     @GetMapping("/cat/saying/{id}")
     suspend fun getCatSayings(
