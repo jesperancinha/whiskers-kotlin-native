@@ -27,7 +27,7 @@ data class Paragraph(
 )
 
 @ExperimentalUnsignedTypes
-class CatSayingsRepository(
+open class CatSayingsRepository(
     val nativeDriver: PostgresNativeDriver,
     override val singleEntityMapper: (SqlCursor) -> CatSaying = {
         it.next()

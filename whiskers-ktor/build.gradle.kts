@@ -30,6 +30,7 @@ kotlin {
                     defFile(project.file("src/nativeInterop/cinterop/redcat.def"))
                     packageName("org.jesperancinha.native")
                     includeDirs.allHeaders("c")
+                    includeDirs.allHeaders("postgresql")
                 }
 
             }

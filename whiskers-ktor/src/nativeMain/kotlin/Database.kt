@@ -3,10 +3,7 @@ import app.cash.sqldelight.Transacter
 import app.cash.sqldelight.db.*
 import kotlinx.cinterop.*
 import kotlinx.datetime.*
-import kotlinx.uuid.UUID
-import kotlinx.uuid.toUUID
 import org.jesperancinha.native.*
-import kotlin.time.Duration
 
 /**
  * Based on the original file from https://github.com/hfhbd
@@ -14,7 +11,7 @@ import kotlin.time.Duration
  * From 2022/10/11
  */
 @ExperimentalUnsignedTypes
-class PostgresNativeDriver(
+open class PostgresNativeDriver(
     host: String, database: String, user: String, password: String, port: Int = 5432, options: String? = null
 ) : SqlDriver {
     private var transaction: Transacter.Transaction? = null
