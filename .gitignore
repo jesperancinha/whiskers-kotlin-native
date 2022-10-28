@@ -57,3 +57,4 @@ _null.h
 
 # Python
 __pycache__
+*.pyc
