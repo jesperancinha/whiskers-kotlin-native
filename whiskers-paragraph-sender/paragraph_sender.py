@@ -1,5 +1,6 @@
 import requests
 
+
 class paragraphColor:
     PURPLE = '\033[95m'
     BLUE = '\033[94m'
@@ -49,6 +50,7 @@ def send_paragraphs_list():
         print(x)
         print(x.text)
 
+
 def send_paragraphs_list_no_log():
     with open('../docs/good.story/good.story.chapter.2.md') as f:
         contents = f.read()
@@ -59,3 +61,30 @@ def send_paragraphs_list_no_log():
             })
         url = 'http://localhost:8080/story/paragraphs/encoded'
         requests.post(url, json=paragraphs)
+
+
+def send_paragraph():
+    with open('../docs/good.story/good.story.chapter.2.md') as f:
+        contents = f.read()
+        paragraphs = []
+        for paragraph in contents.split("\n\n"):
+            paragraphs.append({
+                "text": paragraph
+            })
+        url = 'http://localhost:8080/story/paragraph/encoded'
+        print(paragraphs[7])
+        x = requests.post(url, json=paragraphs[7])
+        print(x)
+        print(x.text)
+
+
+def send_paragraph_no_log():
+    with open('../docs/good.story/good.story.chapter.2.md') as f:
+        contents = f.read()
+        paragraphs = []
+        for paragraph in contents.split("\n\n"):
+            paragraphs.append({
+                "text": paragraph
+            })
+        url = 'http://localhost:8080/story/paragraph/encoded'
+        requests.post(url, json=paragraphs[0])

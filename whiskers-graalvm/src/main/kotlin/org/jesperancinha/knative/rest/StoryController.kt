@@ -3,6 +3,7 @@ package org.jesperancinha.knative.rest
 import kotlinx.coroutines.flow.asFlow
 import org.jesperancinha.knative.dto.ParagraphDto
 import org.jesperancinha.knative.dto.StoryService
+import org.jesperancinha.knative.dto.encodeParagraph
 import org.jesperancinha.knative.dto.toEncodedParagraph
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -33,8 +34,14 @@ class StoryController(
         paragraphDto: ParagraphDto
     ) = storyService.saveParagraph(paragraphDto)
 
-    @PostMapping("/story/paragraphs/encoded")
+    @PostMapping("/story/paragraph/encoded")
     suspend fun createEncodedParagraph(
+        @RequestBody
+        paragraphDto: ParagraphDto
+    ) = paragraphDto.encodeParagraph()
+
+    @PostMapping("/story/paragraphs/encoded")
+    fun createEncodedParagraphs(
         @RequestBody
         paragraphDtos: List<ParagraphDto>
     ) = paragraphDtos.asFlow().toEncodedParagraph()

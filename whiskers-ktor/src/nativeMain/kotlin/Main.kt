@@ -53,12 +53,6 @@ fun main() {
                     get("/") {
                         call.respondText("Welcome to the Cat Ktor Service!")
                     }
-                    post("/") {
-                        val catSaying = call.receive<CatSaying>()
-                        catSayingsService.save(catSaying).let { responseBody ->
-                            call.respond(status = Created, responseBody)
-                        }
-                    }
                     get("/") {
                         call.respond(catSayingsService.getAll())
                     }
@@ -66,23 +60,39 @@ fun main() {
                         call.respond(catSayingsService.getAllEncoded())
                     }
                 }
-            }
-            route("/story") {
-                post("/paragraph") {
-                    val paragraph = call.receive<Paragraph>()
-                    paragraphService.save(paragraph).let { responseBody ->
-                        call.respond(status = Created, responseBody)
+                route("/saying") {
+                    post("/") {
+                        val catSaying = call.receive<CatSaying>()
+                        catSayingsService.save(catSaying).let { responseBody ->
+                            call.respond(status = Created, responseBody)
+                        }
                     }
                 }
-                post("/paragraphs/encoded") {
-                    val paragraphs = call.receive<List<Paragraph>>()
+            }
+            route("/story") {
+                route("/paragraph") {
+                    post("/") {
+                        val paragraph = call.receive<Paragraph>()
+                        paragraphService.save(paragraph).let { responseBody ->
+                            call.respond(status = Created, responseBody)
+                        }
+                    }
+                    post("/encoded") {
+                        val paragraph = call.receive<Paragraph>()
+                        call.respondWithEntity(status = Created, paragraph)
+                    }
+                }
+                route("paragraphs") {
+                    post("/encoded") {
+                        val paragraphs = call.receive<List<Paragraph>>()
                         call.respondWithFlow(status = Created, paragraphs)
-                }
-                get("/paragraphs") {
-                    call.respond(paragraphService.getAll())
-                }
-                get("/paragraphs/encoded") {
-                    call.respond(paragraphService.getAllEncoded())
+                    }
+                    get("/") {
+                        call.respond(paragraphService.getAll())
+                    }
+                    get("/encoded") {
+                        call.respond(paragraphService.getAllEncoded())
+                    }
                 }
             }
         }
@@ -164,5 +174,9 @@ fun executeCommand(command: String): String {
 }
 
 private suspend fun ApplicationCall.respondWithFlow(status: HttpStatusCode, flow: List<Paragraph>) {
-    respond(status = status,  flow.asFlow().toEncodedParagraphs().toList())
+    respond(status = status, flow.asFlow().toEncodedParagraphs().toList())
+}
+
+private suspend fun ApplicationCall.respondWithEntity(status: HttpStatusCode, paragraph: Paragraph) {
+    respond(status = status, paragraph.encodeParagraph())
 }

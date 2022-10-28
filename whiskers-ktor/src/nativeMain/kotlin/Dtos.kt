@@ -34,8 +34,10 @@ internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragrap
     fun getAllEncoded() = getAll().toEncodedParagraphs()
 }
 
-inline fun Flow<Paragraph>.toEncodedParagraphs() = map {
-    val codedParagraph = it.text.split(" ").joinToString(" ") { word ->
+inline fun Flow<Paragraph>.toEncodedParagraphs() = map { it.encodeParagraph() }
+
+fun Paragraph.encodeParagraph(): Paragraph {
+    val codedParagraph = text.split(" ").joinToString(" ") { word ->
         word.toCharArray().fold("") { acc, value ->
             "$acc${
                 alphabet.indexOf(value).let { indexResult ->
@@ -47,7 +49,7 @@ inline fun Flow<Paragraph>.toEncodedParagraphs() = map {
             }"
         }
     }
-    Paragraph(id = it.id ?: -1, text = codedParagraph)
+    return Paragraph(id = id ?: -1, text = codedParagraph)
 }
 
 inline fun Flow<CatSaying>.toEncodedSayings() =
