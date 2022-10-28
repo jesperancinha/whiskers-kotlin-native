@@ -86,5 +86,5 @@ def send_paragraph_no_log():
             paragraphs.append({
                 "text": paragraph
             })
-        url = 'http://localhost:8080/story/paragraph/encoded'
-        requests.post(url, json=paragraphs[0])
+            url = 'http://localhost:8080/story/paragraph/encoded'
+            requests.post(url, json=paragraph)
