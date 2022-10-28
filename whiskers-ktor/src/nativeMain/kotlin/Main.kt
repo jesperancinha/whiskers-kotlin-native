@@ -1,3 +1,4 @@
+import io.ktor.http.*
 import io.ktor.http.HttpStatusCode.Companion.Created
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -8,7 +9,6 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.cinterop.*
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.toList
@@ -76,9 +76,7 @@ fun main() {
                 }
                 post("/paragraphs/encoded") {
                     val paragraphs = call.receive<List<Paragraph>>()
-                    paragraphs.asFlow().toEncodedParagraphs().let { responseBody ->
-                        call.respond(status = Created, responseBody.toList())
-                    }
+                        call.respondWithFlow(status = Created, paragraphs)
                 }
                 get("/paragraphs") {
                     call.respond(paragraphService.getAll())
@@ -163,4 +161,8 @@ fun executeCommand(command: String): String {
     }
     pclose(fp)
     return returnString.trim().toString()
+}
+
+private suspend fun ApplicationCall.respondWithFlow(status: HttpStatusCode, flow: List<Paragraph>) {
+    respond(status = status,  flow.asFlow().toEncodedParagraphs().toList())
 }

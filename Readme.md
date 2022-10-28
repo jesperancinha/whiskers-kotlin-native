@@ -64,6 +64,11 @@ make b
           src="https://img.youtube.com/vi/WlvK6zYo8Sw/0.jpg" 
           style="width:30%;">
       </a>
+      <a title="Applied Event Streaming With Apache Kafka, Kotlin, and Ktor" href="https://www.youtube.com/watch?v=6qxkawU0qKA">
+     <img 
+          src="https://img.youtube.com/vi/6qxkawU0qKA/0.jpg" 
+          style="width:30%;">
+      </a>
 </div>
 
 ### Online
