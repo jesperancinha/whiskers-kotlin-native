@@ -1,12 +1,14 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
 
 import io.ktor.util.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlin.text.toCharArray
 
 const val alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 internal interface Service<T> {
-    fun getAll(): List<T>
+    fun getAll(): Flow<T>
     suspend fun getById(id: Long): T
     suspend fun save(entity: T): T
 }
@@ -32,7 +34,7 @@ internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragrap
     fun getAllEncoded() = getAll().toEncodedParagraphs()
 }
 
-inline fun  List<Paragraph>.toEncodedParagraphs() =  map {
+inline fun Flow<Paragraph>.toEncodedParagraphs() = map {
     val codedParagraph = it.text.split(" ").joinToString(" ") { word ->
         word.toCharArray().fold("") { acc, value ->
             "$acc${
@@ -45,9 +47,10 @@ inline fun  List<Paragraph>.toEncodedParagraphs() =  map {
             }"
         }
     }
-    Paragraph(id = it.id, text = codedParagraph)
+    Paragraph(id = it.id ?: -1, text = codedParagraph)
 }
-inline fun List<CatSaying>.toEncodedSayings() =
+
+inline fun Flow<CatSaying>.toEncodedSayings() =
     map {
         val codedSaying = it.saying.split(" ").joinToString(" ") { word ->
             word.toCharArray().fold("") { acc, value ->
@@ -61,5 +64,5 @@ inline fun List<CatSaying>.toEncodedSayings() =
                 }"
             }
         }
-        CatSaying(id = it.id, saying = codedSaying)
+        CatSaying(id = it.id ?: -1, saying = codedSaying)
     }

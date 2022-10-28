@@ -8,6 +8,10 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import kotlinx.cinterop.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.toList
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -40,25 +44,28 @@ fun main() {
             install(ContentNegotiation) {
                 json()
             }
-            get("/cat/testdrives") {
-                call.respondText("Welcome to the Cat Ktor Service test drives!")
-                makeACatsDay(catSayingsService, runNativeDemos())
-            }
-            get("/cat/sayings") {
-                call.respondText("Welcome to the Cat Ktor Service!")
-            }
-            post("/cat/saying") {
-                val catSaying = call.receive<CatSaying>()
-                catSayingsService.save(catSaying).let { responseBody ->
-                    call.respond(status = Created, responseBody)
+            route("/cat"){
+                get("/testdrives") {
+                    call.respondText("Welcome to the Cat Ktor Service test drives!")
+                    makeACatsDay(catSayingsService, runNativeDemos())
+                }
+                get("/sayings") {
+                    call.respondText("Welcome to the Cat Ktor Service!")
+                }
+                post("/saying") {
+                    val catSaying = call.receive<CatSaying>()
+                    catSayingsService.save(catSaying).let { responseBody ->
+                        call.respond(status = Created, responseBody)
+                    }
+                }
+                get("/sayings") {
+                    call.respond(catSayingsService.getAll())
+                }
+                get("/sayings/encoded") {
+                    call.respond(catSayingsService.getAllEncoded())
                 }
             }
-            get("/cat/sayings") {
-                call.respond(catSayingsService.getAll())
-            }
-            get("/cat/sayings/encoded") {
-                call.respond(catSayingsService.getAllEncoded())
-            }
+
             post("/story/paragraph") {
                 val paragraph = call.receive<Paragraph>()
                 paragraphService.save(paragraph).let { responseBody ->
@@ -67,8 +74,8 @@ fun main() {
             }
             post("/story/paragraphs/encoded") {
                 val paragraphs = call.receive<List<Paragraph>>()
-                paragraphs.toEncodedParagraphs().let { responseBody ->
-                    call.respond(status = Created, responseBody)
+                paragraphs.asFlow().toEncodedParagraphs().let { responseBody ->
+                    call.respond(status = Created, responseBody.toList())
                 }
             }
             get("/story/paragraphs") {

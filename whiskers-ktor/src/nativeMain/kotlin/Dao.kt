@@ -3,10 +3,12 @@
 import app.cash.sqldelight.db.SqlCursor
 import io.ktor.http.*
 import io.ktor.util.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.serialization.Serializable
 
 internal interface Repository<T> {
-    fun findAll(): List<T>
+    fun findAll(): Flow<T>
     suspend fun findById(id: Long): T
     suspend fun first(): T
     suspend fun save(entity: T): T
@@ -51,11 +53,11 @@ open class CatSayingsRepository(
 
 ) : Repository<CatSaying> {
 
-    override fun findAll(): List<CatSaying> =
+    override fun findAll(): Flow<CatSaying> =
         nativeDriver.executeSelect(
             sql = "SELECT * from sayings.cat_line ;",
             mapper = listEntityMapper
-        ).value
+        ).value.asFlow()
 
     override suspend fun findById(id: Long): CatSaying = nativeDriver.executeSelect(
         sql = "SELECT * from sayings.cat_line  limit 1 where id = ${id};",
@@ -97,10 +99,10 @@ class ParagraphRepository(
         all.toList()
     }
 ) : Repository<Paragraph> {
-    override fun findAll(): List<Paragraph> = nativeDriver.executeSelect(
+    override fun findAll(): Flow<Paragraph> = nativeDriver.executeSelect(
             sql = "SELECT * from story.paragraph;",
             mapper = listEntityMapper
-        ).value
+        ).value.asFlow()
 
     override suspend fun findById(id: Long): Paragraph =nativeDriver.executeSelect(
         sql = "SELECT * from story.paragraph limit 1 where id = ${id};",

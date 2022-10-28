@@ -56,6 +56,21 @@ make b
 
 ## References
 
+### Videos
+
+<div align="center">
+      <a title="Ktor From the Ground Up" href="https://www.youtube.com/watch?v=WlvK6zYo8Sw">
+     <img 
+          src="https://img.youtube.com/vi/WlvK6zYo8Sw/0.jpg" 
+          style="width:30%;">
+      </a>
+</div>
+
+### Online
+- [Ktor demo](https://github.com/antonarhipov/ktor-demo)
+- [Ktor mini demo](https://github.com/antonarhipov/ktor-mini-demo)
+- [Ktor simple demo](https://github.com/antonarhipov/ktor-simple-demo)
+- [Ktor Examples](https://github.com/ktorio/ktor-samples)
 - [Koin — Kotlin Native Dependency Injection Library](https://medium.com/android-dev-hacks/koin-kotlin-native-dependency-injection-library-f1daddc1ef99)
 - [Realm Kotlin Multiplatform SDK](https://blog.jetbrains.com/kotlin/2021/04/realm-kotlin-multiplatform-sdk/)
 - [Ktorm @ GitHub](https://github.com/kotlin-orm/ktorm)
