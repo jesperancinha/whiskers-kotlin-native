@@ -44,45 +44,48 @@ fun main() {
             install(ContentNegotiation) {
                 json()
             }
-            route("/cat"){
+            route("/cat") {
                 get("/testdrives") {
                     call.respondText("Welcome to the Cat Ktor Service test drives!")
                     makeACatsDay(catSayingsService, runNativeDemos())
                 }
-                get("/sayings") {
-                    call.respondText("Welcome to the Cat Ktor Service!")
+                route("/sayings") {
+                    get("/") {
+                        call.respondText("Welcome to the Cat Ktor Service!")
+                    }
+                    post("/") {
+                        val catSaying = call.receive<CatSaying>()
+                        catSayingsService.save(catSaying).let { responseBody ->
+                            call.respond(status = Created, responseBody)
+                        }
+                    }
+                    get("/") {
+                        call.respond(catSayingsService.getAll())
+                    }
+                    get("/encoded") {
+                        call.respond(catSayingsService.getAllEncoded())
+                    }
                 }
-                post("/saying") {
-                    val catSaying = call.receive<CatSaying>()
-                    catSayingsService.save(catSaying).let { responseBody ->
+            }
+            route("/story") {
+                post("/paragraph") {
+                    val paragraph = call.receive<Paragraph>()
+                    paragraphService.save(paragraph).let { responseBody ->
                         call.respond(status = Created, responseBody)
                     }
                 }
-                get("/sayings") {
-                    call.respond(catSayingsService.getAll())
+                post("/paragraphs/encoded") {
+                    val paragraphs = call.receive<List<Paragraph>>()
+                    paragraphs.asFlow().toEncodedParagraphs().let { responseBody ->
+                        call.respond(status = Created, responseBody.toList())
+                    }
                 }
-                get("/sayings/encoded") {
-                    call.respond(catSayingsService.getAllEncoded())
+                get("/paragraphs") {
+                    call.respond(paragraphService.getAll())
                 }
-            }
-
-            post("/story/paragraph") {
-                val paragraph = call.receive<Paragraph>()
-                paragraphService.save(paragraph).let { responseBody ->
-                    call.respond(status = Created, responseBody)
+                get("/paragraphs/encoded") {
+                    call.respond(paragraphService.getAllEncoded())
                 }
-            }
-            post("/story/paragraphs/encoded") {
-                val paragraphs = call.receive<List<Paragraph>>()
-                paragraphs.asFlow().toEncodedParagraphs().let { responseBody ->
-                    call.respond(status = Created, responseBody.toList())
-                }
-            }
-            get("/story/paragraphs") {
-                call.respond(paragraphService.getAll())
-            }
-            get("/story/paragraphs/encoded") {
-                call.respond(paragraphService.getAllEncoded())
             }
         }
     }.start(wait = true)
@@ -154,7 +157,7 @@ fun executeCommand(command: String): String {
     var scan = fgets(buffer.refTo(0), buffer.size, fp)
     if (scan != null) {
         while (scan != NULL) {
-            returnString.append(scan!!.toKString())
+            returnString.append(scan?.toKString())
             scan = fgets(buffer.refTo(0), buffer.size, fp)
         }
     }
