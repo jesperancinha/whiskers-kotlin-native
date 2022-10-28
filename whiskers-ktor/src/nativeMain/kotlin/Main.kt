@@ -64,7 +64,7 @@ fun main() {
                     call.respond(status = Created, responseBody)
                 }
             }
-            post("/story/paragraph/encoded") {
+            post("/story/paragraphs/encoded") {
                 val paragraphs = call.receive<List<Paragraph>>()
                 paragraphs.toEncodedParagraphs().let { responseBody ->
                     call.respond(status = Created, responseBody)

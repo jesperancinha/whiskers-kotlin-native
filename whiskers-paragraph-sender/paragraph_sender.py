@@ -31,6 +31,31 @@ def send_paragraphs_no_log():
         contents = f.read()
         for paragraph in contents.split("\n\n"):
             url = 'http://localhost:8080/story/paragraph'
-            x = requests.post(url, json={
+            requests.post(url, json={
                 'text': paragraph
             })
+
+
+def send_paragraphs_list():
+    with open('../docs/good.story/good.story.chapter.2.md') as f:
+        contents = f.read()
+        paragraphs = []
+        for paragraph in contents.split("\n\n"):
+            paragraphs.append({
+                "text": paragraph
+            })
+        url = 'http://localhost:8080/story/paragraphs/encoded'
+        x = requests.post(url, json=paragraphs)
+        print(x)
+        print(x.text)
+
+def send_paragraphs_list_no_log():
+    with open('../docs/good.story/good.story.chapter.2.md') as f:
+        contents = f.read()
+        paragraphs = []
+        for paragraph in contents.split("\n\n"):
+            paragraphs.append({
+                "text": paragraph
+            })
+        url = 'http://localhost:8080/story/paragraphs/encoded'
+        requests.post(url, json=paragraphs)

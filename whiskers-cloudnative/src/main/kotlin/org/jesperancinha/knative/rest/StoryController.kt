@@ -31,7 +31,7 @@ class StoryController(
         @RequestBody
         paragraphDto: ParagraphDto) = storyService.saveParagraph(paragraphDto)
 
-    @PostMapping("/story/paragraph/encoded")
+    @PostMapping("/story/paragraphs/encoded")
     suspend fun createEncodedParagraph(
         @RequestBody
         paragraphDtos: List<ParagraphDto>

@@ -12,8 +12,8 @@ build-gradle-ktor:
 	cd whiskers-ktor-harcoded && make b
 build-gradle-graalvm:
 	mkdir -p bin
-	cd whiskers-cloudnative && make b
 	cd whiskers-graalvm && make b
+	cd whiskers-cloudnative && make b
 	make release-gradle-graalvm
 build-gradle-redcat:
 	mkdir -p bin
@@ -84,6 +84,12 @@ dcup-ktor: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d whiskers-db
 	make db-wait
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d
+	bash whiskers_wait.sh whiskers-ktor ktor
+dcup-test-ktor: stop
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml build
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d whiskers-db
+	make db-wait
 	date +%s | xargs -I {} echo "ktor,"{} > result-ktor.csv
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d
 	bash whiskers_wait.sh whiskers-ktor ktor
@@ -94,9 +100,18 @@ dcup-ktor: stop
 	date +%s | xargs -I {} echo "ktor-encoded,"{} >> result-test-ktor.csv
 	make perform-tests-encoded
 	date +%s | xargs -I {} echo "ktor-encoded,"{} >> result-test-ktor.csv
+	date +%s | xargs -I {} echo "ktor-encoded-no-db,"{} >> result-test-ktor.csv
+	make perform-tests-encoded-no-db
+	date +%s | xargs -I {} echo "ktor-encoded-no-db,"{} >> result-test-ktor.csv
 dcd-ktor:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml down
 dcup-graalvm: stop
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml build
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml up -d whiskers-db
+	make db-wait
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml up -d
+	bash whiskers_wait.sh whiskers-graalvm graalvm
+dcup-test-graalvm: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml up -d whiskers-db
 	make db-wait
@@ -110,9 +125,18 @@ dcup-graalvm: stop
 	date +%s | xargs -I {} echo "graalvm-encoded,"{} >> result-test-graalvm.csv
 	make perform-tests-encoded
 	date +%s | xargs -I {} echo "graalvm-encoded,"{} >> result-test-graalvm.csv
+	date +%s | xargs -I {} echo "graalvm-encoded-no-db,"{} >> result-test-graalvm.csv
+	make perform-tests-encoded-no-db
+	date +%s | xargs -I {} echo "graalvm-encoded-no-db,"{} >> result-test-graalvm.csv
 dcd-graalvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose.yml -f whiskers-graalvm/docker-compose.override.yml down
 dcup-cloudnative: stop
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml build
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml up -d whiskers-db
+	make db-wait
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml up -d
+	bash whiskers_wait.sh whiskers-cloudnative cloudnative
+dcup-test-cloudnative: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml up -d whiskers-db
 	make db-wait
@@ -126,9 +150,18 @@ dcup-cloudnative: stop
 	date +%s | xargs -I {} echo "cloudnative-encoded,"{} >> result-test-cloudnative.csv
 	make perform-tests-encoded
 	date +%s | xargs -I {} echo "cloudnative-encoded,"{} >> result-test-cloudnative.csv
+	date +%s | xargs -I {} echo "cloudnative-encoded-no-db,"{} >> result-test-cloudnative.csv
+	make perform-tests-encoded-no-db
+	date +%s | xargs -I {} echo "cloudnative-encoded-no-db,"{} >> result-test-cloudnative.csv
 dcd-cloudnative:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-cloudnative/docker-compose.yml -f whiskers-cloudnative/docker-compose.override.yml down
 dcup-jvm: stop
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml build
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml up -d whiskers-db
+	make db-wait
+	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml up -d
+	bash whiskers_wait.sh whiskers-graalvm jvm
+dcup-test-jvm: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml up -d whiskers-db
 	make db-wait
@@ -142,14 +175,19 @@ dcup-jvm: stop
 	date +%s | xargs -I {} echo "jvm-encoded,"{} >> result-test-jvm.csv
 	make perform-tests-encoded
 	date +%s | xargs -I {} echo "jvm-encoded,"{} >> result-test-jvm.csv
+	date +%s | xargs -I {} echo "jvm-encoded-no-db,"{} >> result-test-jvm.csv
+	make perform-tests-encoded-no-db
+	date +%s | xargs -I {} echo "jvm-encoded-no-db,"{} >> result-test-jvm.csv
 dcd-jvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml down
 db-wait:
 	bash db_wait.sh
-measure-all-sts: dcup-ktor dcd-ktor dcup-graalvm dcd-graalvm dcup-cloudnative dcd-cloudnative dcup-jvm dcd-jvm
+measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative
 cat-sayings-run:
 	cd whiskers-paragraph-sender && make cat-sayings-run
 perform-tests:
 	cd whiskers-paragraph-sender && python3 test_all.py
 perform-tests-encoded:
 	cd whiskers-paragraph-sender && python3 test_all_encoded.py
+perform-tests-encoded-no-db:
+	cd whiskers-paragraph-sender && python3 test_all_encoded_no_db.py
