@@ -1,4 +1,3 @@
-import io.ktor.http.*
 import io.ktor.http.HttpStatusCode.Companion.Created
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
@@ -26,7 +25,7 @@ data class Database(val port: Int, val host: String)
 
 @ExperimentalUnsignedTypes
 fun main() {
-    val configuration = runNativeDemos()
+    val configuration = getConfig()
     val driver = PostgresNativeDriver(
         host = configuration.database.host,
         port = configuration.database.port,
@@ -34,14 +33,16 @@ fun main() {
         database = "whiskers",
         password = "red_cat"
     )
-
     val catSayingsService = CatSayingsService(driver)
     val paragraphService = ParagraphService(driver)
-    makeACatsDay(catSayingsService, configuration)
     embeddedServer(CIO, port = configuration.server.port) {
         routing {
             install(ContentNegotiation) {
                 json()
+            }
+            get("/cat/testdrives") {
+                call.respondText("Welcome to the Cat Ktor Service test drives!")
+                makeACatsDay(catSayingsService, runNativeDemos())
             }
             get("/cat/sayings") {
                 call.respondText("Welcome to the Cat Ktor Service!")
@@ -79,6 +80,9 @@ fun main() {
         }
     }.start(wait = true)
 }
+
+private fun getConfig(): Config =
+    readText("application.json").let { config -> Json.decodeFromString(config) }
 
 private fun runNativeDemos(): Config {
     val story = tell_story() as CPointer<ByteVar>
