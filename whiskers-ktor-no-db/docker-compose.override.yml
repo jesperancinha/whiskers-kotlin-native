@@ -1,0 +1,4 @@
+services:
+  whiskers-ktor-no-db:
+    ports:
+      - 8080:8080

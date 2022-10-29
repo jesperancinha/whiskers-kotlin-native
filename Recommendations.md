@@ -5,7 +5,7 @@ Recommendations for:
 ## 1. Linux
 
 ```shell
-echo fs.inotify.max_user_watches=16777216 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+echo fs.inotify.max_user_watches=33554432 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 cat /proc/sys/fs/inotify/max_user_watches
 ```
 
