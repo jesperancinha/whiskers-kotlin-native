@@ -1,4 +1,4 @@
-cases = ['cloudnative', 'graalvm', 'jvm', 'ktor']
+cases = ['cloudnative', 'graalvm', 'jvm', 'ktor', 'ktor-no-db']
 title = "# Whiskers Performance results\n"
 header = '| Architecture | Sartup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + ' \
          'Algorithm(s) | Test Algorithm (s) |\n'
