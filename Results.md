@@ -1,6 +1,6 @@
 # Whiskers Performance results
 
-| Architecture | Sartup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
+| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
 |---|---|---|---|---|---|
 |cloudnative|6|  45.87MiB / 15.43GiB|25|37|13|
 |graalvm|13|  63.33MiB / 15.43GiB|25|37|12|

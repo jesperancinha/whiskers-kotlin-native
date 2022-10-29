@@ -9,11 +9,16 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.cinterop.*
-import kotlinx.serialization.Serializable
+import kotlinx.cinterop.ByteVar
+import kotlinx.cinterop.allocArray
+import kotlinx.cinterop.memScoped
+import kotlinx.cinterop.toKString
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import platform.posix.*
+import platform.posix.fclose
+import platform.posix.fgets
+import platform.posix.fopen
+import platform.posix.printf
 
 fun main() {
     val configuration = getConfig()
@@ -32,13 +37,13 @@ fun main() {
                         call.respond(listOf<CatSaying>())
                     }
                     get("/encoded") {
-                        call.respondWithEncodedFlow(status = HttpStatusCode.OK, listOf<CatSaying>())
+                        call.respondWithEncodedFlow(status = OK, listOf<CatSaying>())
                     }
                 }
                 route("/saying") {
                     post {
                         val catSaying = call.receive<CatSaying>()
-                        call.respond(status = HttpStatusCode.Created, catSaying)
+                        call.respond(status = Created, catSaying)
                     }
                 }
             }
@@ -46,17 +51,17 @@ fun main() {
                 route("/paragraph") {
                     post {
                         val paragraph = call.receive<Paragraph>()
-                        call.respond(status = HttpStatusCode.Created, paragraph)
+                        call.respond(status = Created, paragraph)
                     }
                     post("/encoded") {
                         val paragraph = call.receive<Paragraph>()
-                        call.respondWithEntity(status = HttpStatusCode.Created, paragraph)
+                        call.respondWithEntity(status = Created, paragraph)
                     }
                 }
                 route("paragraphs") {
                     post("/encoded") {
                         val paragraphs = call.receive<List<Paragraph>>()
-                        call.respondWithEncodedFlow(status = HttpStatusCode.Created, paragraphs)
+                        call.respondWithEncodedFlow(status = Created, paragraphs)
                     }
                     get {
                         call.respond(listOf<Paragraph>())

@@ -220,3 +220,5 @@ perform-tests-encoded:
 	cd whiskers-paragraph-sender && python3 test_all_encoded.py
 perform-tests-encoded-no-db:
 	cd whiskers-paragraph-sender && python3 test_all_encoded_no_db.py
+test-ktor-no-db:
+	cd whiskers-ktor-no-db && make run-test
