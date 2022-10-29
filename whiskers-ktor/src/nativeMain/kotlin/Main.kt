@@ -45,7 +45,7 @@ fun main() {
             install(ContentNegotiation) {
                 json()
             }
-            get("/") {
+            get {
                 call.respondText("Welcome to the Cat Ktor Service!")
             }
             route("/cat") {
@@ -54,7 +54,7 @@ fun main() {
                     makeACatsDay(catSayingsService, runNativeDemos())
                 }
                 route("/sayings") {
-                    get("/") {
+                    get {
                         call.respond(catSayingsService.getAll())
                     }
                     get("/encoded") {
@@ -62,7 +62,7 @@ fun main() {
                     }
                 }
                 route("/saying") {
-                    post("/") {
+                    post {
                         val catSaying = call.receive<CatSaying>()
                         catSayingsService.save(catSaying).let { responseBody ->
                             call.respond(status = Created, responseBody)
@@ -72,7 +72,7 @@ fun main() {
             }
             route("/story") {
                 route("/paragraph") {
-                    post("/") {
+                    post {
                         val paragraph = call.receive<Paragraph>()
                         paragraphService.save(paragraph).let { responseBody ->
                             call.respond(status = Created, responseBody)
@@ -88,7 +88,7 @@ fun main() {
                         val paragraphs = call.receive<List<Paragraph>>()
                         call.respondWithEncodedFlow(status = Created, paragraphs)
                     }
-                    get("/") {
+                    get {
                         call.respond(paragraphService.getAll())
                     }
                     get("/encoded") {
