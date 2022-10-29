@@ -2,7 +2,7 @@
 
 | Architecture | Sartup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
 |---|---|---|---|---|---|
-|cloudnative|6|  44.96MiB / 15.43GiB|26|38|13|
-|graalvm|11|  45.14MiB / 15.43GiB|26|37|15|
-|jvm|13|  157.4MiB / 15.43GiB|26|17|19|
-|ktor|11|  2.812MiB / 15.43GiB|8|0|73|
+|cloudnative|6|  45.87MiB / 15.43GiB|25|37|13|
+|graalvm|13|  63.33MiB / 15.43GiB|25|37|12|
+|jvm|13|  182.4MiB / 15.43GiB|26|17|21|
+|ktor|11|  2.285MiB / 15.43GiB|46|96|74|
