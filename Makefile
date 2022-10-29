@@ -209,6 +209,7 @@ db-wait:
 	bash db_wait.sh
 measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-ktor-no-db dcd-ktor-no-db dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative stats
 measure-all-no-container-sts: test-ktor-no-db test-ktor test-graalvm
+measure-all: measure-all-sts measure-all-no-container-sts
 stats:
 	cd whiskers-paragraph-sender && python3 make_stats.py
 cat-sayings-run:
