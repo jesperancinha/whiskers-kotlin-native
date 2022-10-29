@@ -8,26 +8,24 @@ import org.jesperancinha.knative.dto.ParagraphDto
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@RequestMapping("/cat")
 class CatController(
     val catService: CatService
 ) {
-    @GetMapping
-    suspend fun getWelcomeMessage() = "Welcome to the Cat GraalVM Service!"
-
-    @GetMapping("/cat/sayings")
+    @GetMapping("/sayings")
     fun getCatSayings() = catService.getAllSayings()
 
-    @GetMapping("/cat/sayings/encoded")
+    @GetMapping("/sayings/encoded")
     fun getCatEncodedSayings() = catService.getCodedSayings()
 
-    @GetMapping("/cat/saying/{id}")
+    @GetMapping("/saying/{id}")
     suspend fun getCatSayings(
         @NotNull
         @Size(min = 2, max = 14)
         @PathVariable id:Int
     ) = catService.getSayingById(id)
 
-    @PostMapping("/cat/saying")
+    @PostMapping("/saying")
     suspend fun createNewParagraph(
         @RequestBody
         sayingDto: CatSayingDto

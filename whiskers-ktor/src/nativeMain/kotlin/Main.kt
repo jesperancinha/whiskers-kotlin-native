@@ -1,5 +1,6 @@
 import io.ktor.http.*
 import io.ktor.http.HttpStatusCode.Companion.Created
+import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.cio.*
@@ -44,6 +45,9 @@ fun main() {
             install(ContentNegotiation) {
                 json()
             }
+            get("/") {
+                call.respondText("Welcome to the Cat Ktor Service!")
+            }
             route("/cat") {
                 get("/testdrives") {
                     call.respondText("Welcome to the Cat Ktor Service test drives!")
@@ -51,13 +55,10 @@ fun main() {
                 }
                 route("/sayings") {
                     get("/") {
-                        call.respondText("Welcome to the Cat Ktor Service!")
-                    }
-                    get("/") {
                         call.respond(catSayingsService.getAll())
                     }
                     get("/encoded") {
-                        call.respond(catSayingsService.getAllEncoded())
+                        call.respondWithEncodedFlow(status = OK, catSayingsService.getAll())
                     }
                 }
                 route("/saying") {
@@ -85,7 +86,7 @@ fun main() {
                 route("paragraphs") {
                     post("/encoded") {
                         val paragraphs = call.receive<List<Paragraph>>()
-                        call.respondWithFlow(status = Created, paragraphs)
+                        call.respondWithEncodedFlow(status = Created, paragraphs)
                     }
                     get("/") {
                         call.respond(paragraphService.getAll())
@@ -173,8 +174,11 @@ fun executeCommand(command: String): String {
     return returnString.trim().toString()
 }
 
-private suspend fun ApplicationCall.respondWithFlow(status: HttpStatusCode, flow: List<Paragraph>) {
-    respond(status = status, flow.asFlow().toEncodedParagraphs().toList())
+private suspend fun ApplicationCall.respondWithEncodedFlow(status: HttpStatusCode, flow: List<Paragraph>) {
+    respond(status = status, flow.toEncodedParagraphs())
+}
+private suspend fun ApplicationCall.respondWithEncodedFlow(status: HttpStatusCode, flow: List<CatSaying>) {
+    respond(status = status, flow.toEncodedSayings())
 }
 
 private suspend fun ApplicationCall.respondWithEntity(status: HttpStatusCode, paragraph: Paragraph) {

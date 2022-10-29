@@ -186,6 +186,8 @@ measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-graalvm dcd-graalvm dcup-test
 	cd whiskers-paragraph-sender && python3 make_stats.py
 cat-sayings-run:
 	cd whiskers-paragraph-sender && make cat-sayings-run
+cat-sayings-list:
+	cd whiskers-paragraph-sender && make cat-sayings-list
 perform-tests:
 	cd whiskers-paragraph-sender && python3 test_all.py
 perform-tests-encoded:

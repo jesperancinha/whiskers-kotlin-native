@@ -9,38 +9,40 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@RequestMapping("/story")
 class StoryController(
     val storyService: StoryService
 ) {
 
-    @GetMapping("/story/paragraphs")
+    @GetMapping("/paragraphs")
     fun getAllParagrahs() = storyService.getAllParagraphs()
 
-    @GetMapping("/story/paragraphs/encoded")
+    @GetMapping("/paragraphs/encoded")
     fun getAllEncodedParagraphs() = storyService.getCodedParagraphs()
 
-    @GetMapping("/story/paragrahs/{id}")
+    @GetMapping("/paragrahs/{id}")
     suspend fun getParagraphById(
         @PathVariable
         id: Int
     ) = storyService.getParagraphById(id)
 
-    @PostMapping("/story/paragraph")
+    @PostMapping("/paragraph")
     suspend fun createNewParagraph(
         @RequestBody
         paragraphDto: ParagraphDto
     ) = storyService.saveParagraph(paragraphDto)
 
-    @PostMapping("/story/paragraph/encoded")
+    @PostMapping("/paragraph/encoded")
     suspend fun createEncodedParagraph(
         @RequestBody
         paragraphDto: ParagraphDto
     ) = paragraphDto.encodeParagraph()
 
-    @PostMapping("/story/paragraphs/encoded")
+    @PostMapping("/paragraphs/encoded")
     fun createEncodedParagraphs(
         @RequestBody
         paragraphDtos: List<ParagraphDto>

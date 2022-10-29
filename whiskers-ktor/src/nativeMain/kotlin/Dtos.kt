@@ -8,7 +8,7 @@ import kotlin.text.toCharArray
 const val alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 internal interface Service<T> {
-    fun getAll(): Flow<T>
+    fun getAll(): List<T>
     suspend fun getById(id: Long): T
     suspend fun save(entity: T): T
 }
@@ -34,7 +34,7 @@ internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragrap
     fun getAllEncoded() = getAll().toEncodedParagraphs()
 }
 
-inline fun Flow<Paragraph>.toEncodedParagraphs() = map { it.encodeParagraph() }
+inline fun List<Paragraph>.toEncodedParagraphs() = map { it.encodeParagraph() }
 
 fun Paragraph.encodeParagraph(): Paragraph {
     val codedParagraph = text.split(" ").joinToString(" ") { word ->
@@ -52,7 +52,7 @@ fun Paragraph.encodeParagraph(): Paragraph {
     return Paragraph(id = id ?: -1, text = codedParagraph)
 }
 
-inline fun Flow<CatSaying>.toEncodedSayings() =
+inline fun List<CatSaying>.toEncodedSayings() =
     map {
         val codedSaying = it.saying.split(" ").joinToString(" ") { word ->
             word.toCharArray().fold("") { acc, value ->
