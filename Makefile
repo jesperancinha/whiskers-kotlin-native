@@ -183,6 +183,7 @@ dcd-jvm:
 db-wait:
 	bash db_wait.sh
 measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative
+	cd whiskers-paragraph-sender && python3 make_stats.py
 cat-sayings-run:
 	cd whiskers-paragraph-sender && make cat-sayings-run
 perform-tests:
