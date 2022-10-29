@@ -4,4 +4,4 @@ build-gradle:
 run-gradle:
 	./gradlew :runReleaseExecutableNative
 run:
-	./build/bin/native/releaseExecutable/whiskers-ktor-harcoded.kexe
+	./build/bin/native/releaseExecutable/whiskers-ktor-no-db.kexe

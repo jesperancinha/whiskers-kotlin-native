@@ -9,7 +9,7 @@ build-gradle: build-gradle-ktor
 	make release-gradle
 build-gradle-ktor:
 	cd whiskers-ktor && make b
-	cd whiskers-ktor-harcoded && make b
+	cd whiskers-ktor-no-db && make b
 build-gradle-graalvm:
 	mkdir -p bin
 	cd whiskers-graalvm && make b
@@ -28,7 +28,7 @@ release-gradle:
 	cp good-feel/build/bin/native/debugExecutable/good-feel.kexe bin/good-feel
 	cp plus/build/bin/native/debugExecutable/plus.kexe bin/plus
 	cp whiskers-ktor/build/bin/native/releaseExecutable/whiskers-ktor.kexe bin/whiskers-ktor
-	cp whiskers-ktor-harcoded/build/bin/native/releaseExecutable/whiskers-ktor-harcoded.kexe bin/whiskers-ktor-harcoded
+	cp whiskers-ktor-no-db/build/bin/native/releaseExecutable/whiskers-ktor-no-db.kexe bin/whiskers-ktor-no-db
 release-gradle-graalvm:
 	cp whiskers-graalvm/build/native/nativeCompile/whiskers-graalvm bin/whiskers-graalvm
 release-gradle-redcat:

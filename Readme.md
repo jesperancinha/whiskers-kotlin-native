@@ -51,7 +51,7 @@ make measure-all-sts
 - [plus](./plus) - A Kotlin Native project exploring other functions provided by Kotlin Native
 - [whiskers-cloudnative](./whiskers-cloudnative) - Spring Native way of creating a docker container as a full implementation of the Onion Model used in Microservices
 - [whiskers-graalvm](./whiskers-graalvm) - Spring Native way of creating a GraalVM self-contained executable command as a full implementation of the Onion Model used in Microservices
-- [whiskers-ktor-harcoded](./whiskers-ktor-harcoded) - Ktor Service implemented with hard-coded configuration
+- [whiskers-ktor-no-db](./whiskers-ktor-no-db) - Ktor Service implemented with hard-coded configuration
 - [whiskers-ktor](./whiskers-ktor) - Ktor Service containing a full implementation of the Onion Model used in Microservices
 
 ## Project layout

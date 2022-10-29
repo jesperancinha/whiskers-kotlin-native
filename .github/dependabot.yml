@@ -27,7 +27,7 @@ updates:
       interval: "daily"
 
   - package-ecosystem: gradle
-    directory: "/whiskers-ktor-hardcoded"
+    directory: "/whiskers-ktor-no-db"
     schedule:
       interval: "daily"
 
