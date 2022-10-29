@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
-./build/bin/native/releaseExecutable/whiskers-ktor.kexe & echo $! > pid.file
+./build/bin/native/releaseExecutable/whiskers-ktor.kexe > logs & echo $! > pid.file
 test=$(<pid.file)
+date +%s | xargs -I {} echo "ktor,"{} > ../result-ktor.csv
+test=$(<pid.file)
+string=$(<logs)
+while [[ "$string" != *"Application started"* ]]
+  do
+    string=$(<logs)
+    sleep 0.01
+  done
+date +%s | xargs -I {} echo "ktor,"{} >> ../result-ktor.csv
+pmap "$test" | tail -n 1 | xargs -I {} echo "ktor,"{} >> ../result-ktor.csv
 echo -e "\033[92m$test\033[0m"
 date +%s | xargs -I {} echo "ktor,"{} > ../result-test-no-container-ktor.csv
 make perform-tests
