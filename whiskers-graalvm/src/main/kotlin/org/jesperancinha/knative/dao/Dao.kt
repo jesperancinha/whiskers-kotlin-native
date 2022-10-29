@@ -30,4 +30,3 @@ fun CatLine.toDto() = CatSayingDto(
 interface CatSayingRepository : CoroutineCrudRepository<CatLine, Int>
 
 interface ParagraphRepository : CoroutineCrudRepository<Paragraph, Int>
-

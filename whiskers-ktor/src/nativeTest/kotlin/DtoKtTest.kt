@@ -12,7 +12,6 @@ class DtoKtTest {
     fun `should encode text`() {
         runBlocking {
             val catSayings = listOf(CatSaying(id = 1, "Yummi Yummi Yummi -!@#$%^&*()"))
-                .asFlow()
                 .toEncodedSayings()
                 .toList()
 
