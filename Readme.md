@@ -39,6 +39,11 @@ make install-kotlin-native-linux
 make b
 ```
 
+#### 4. Performe measure tests
+
+```shell
+make measure-all-sts
+```
 
 ## Project Structure
 
