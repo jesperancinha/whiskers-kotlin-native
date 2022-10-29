@@ -208,6 +208,7 @@ dcd-jvm:
 db-wait:
 	bash db_wait.sh
 measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-ktor-no-db dcd-ktor-no-db dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative stats
+measure-all-no-container-sts: test-ktor-no-db test-ktor test-graalvm
 stats:
 	cd whiskers-paragraph-sender && python3 make_stats.py
 cat-sayings-run:
@@ -222,3 +223,7 @@ perform-tests-encoded-no-db:
 	cd whiskers-paragraph-sender && python3 test_all_encoded_no_db.py
 test-ktor-no-db:
 	cd whiskers-ktor-no-db && make run-test
+test-ktor:
+	cd whiskers-ktor && make run-test
+test-graalvm:
+	cd whiskers-graalvm && make run-test
