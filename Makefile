@@ -207,9 +207,9 @@ dcd-jvm:
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f  whiskers-graalvm/docker-compose-jvm.yml -f whiskers-graalvm/docker-compose.override.yml down
 db-wait:
 	bash db_wait.sh
-measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-ktor-no-db dcd-ktor-no-db dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative stats
-measure-all-no-container-sts: test-ktor-no-db test-ktor test-graalvm
-measure-all: measure-all-sts measure-all-no-container-sts
+measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-ktor-no-db dcd-ktor-no-db dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative
+measure-all-no-container-sts: test-ktor-no-db test-ktor test-graalvm test-graalvm-jvm
+measure-all: measure-all-sts measure-all-no-container-sts stats
 stats:
 	cd whiskers-paragraph-sender && python3 make_stats.py
 cat-sayings-run:
@@ -228,3 +228,5 @@ test-ktor: dcup-light db-wait
 	cd whiskers-ktor && make run-test
 test-graalvm: dcup-light db-wait
 	cd whiskers-graalvm && make run-test
+test-graalvm-jvm: dcup-light db-wait
+	cd whiskers-graalvm, && make run-test-jvm

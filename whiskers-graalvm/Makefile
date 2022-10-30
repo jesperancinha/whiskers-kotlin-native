@@ -18,6 +18,8 @@ run-jar:
 	java -jar build/libs/whiskers-graalvm-0.0.1-SNAPSHOT.jar
 run-test:
 	bash test.sh
+run-test-jvm:
+	cd jvm && make run-test
 perform-tests:
 	cd .. && make perform-tests
 perform-tests-encoded:

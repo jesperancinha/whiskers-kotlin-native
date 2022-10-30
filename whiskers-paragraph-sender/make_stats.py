@@ -20,6 +20,7 @@ def process_container_cases():
 
 def process_container_less_cases():
     for case in cases_container_less:
+        print("Current case is {0}".format(case))
         with open("../result-no-container-{0}.csv".format(case)) as startup_ts:
             startups = startup_ts.read().splitlines()
             print(startups)
@@ -30,7 +31,7 @@ def process_container_less_cases():
             mems = used_mems.read().splitlines()
             print(mems)
         startup_time = int(startups[1].split(',')[1]) - int(startups[0].split(',')[1])
-        mem_usage = mems[2].split('           ')[1]
+        mem_usage = mems[2].split(' ').pop()
         time_db_conn = int(calls[1].split(',')[1]) - int(calls[0].split(',')[1])
         time_mix = int(calls[3].split(',')[1]) - int(calls[2].split(',')[1])
         time_algorithm = int(calls[5].split(',')[1]) - int(calls[4].split(',')[1])
@@ -39,7 +40,7 @@ def process_container_less_cases():
 
 
 cases = ['cloudnative', 'graalvm', 'jvm', 'ktor', 'ktor-no-db']
-cases_container_less = ['graalvm', 'ktor', 'ktor-no-db']
+cases_container_less = ['graalvm', 'jvm', 'ktor', 'ktor-no-db']
 title = "# Whiskers Performance results\n"
 header = '| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + ' \
          'Algorithm(s) | Test Algorithm (s) |\n'
