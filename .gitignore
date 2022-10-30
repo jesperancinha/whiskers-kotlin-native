@@ -58,3 +58,6 @@ _null.h
 # Python
 __pycache__
 *.pyc
+
+# Tests
+pid.file

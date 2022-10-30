@@ -8,3 +8,5 @@ cat-sayings-run:
 	curl -i http://localhost:8080/
 cat-sayings-list:
 	curl -i http://localhost:8080/cat/sayings/
+stats:
+	python3 make_stats.py
