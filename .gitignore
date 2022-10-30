@@ -50,6 +50,7 @@ machines
 stdlib.h
 stdio.h
 _null.h
+whiskers-runners-graalvm-standalone
 
 ## Results
 *.csv
