@@ -1,4 +1,45 @@
+def process_container_cases():
+    for case in cases:
+        with open("../result-{0}.csv".format(case)) as startup_ts:
+            startups = startup_ts.read().splitlines()
+            print(startups)
+        with open("../result-test-{0}.csv".format(case)) as calls_ts:
+            calls = calls_ts.read().splitlines()
+            print(calls)
+        with open("../result-mem-{0}.txt".format(case)) as used_mems:
+            mems = used_mems.read().splitlines()
+            print(mems)
+        startup_time = int(startups[1].split(',')[1]) - int(startups[0].split(',')[1])
+        mem_usage = mems[1].split('   ')[3]
+        time_db_conn = int(calls[1].split(',')[1]) - int(calls[0].split(',')[1])
+        time_mix = int(calls[3].split(',')[1]) - int(calls[2].split(',')[1])
+        time_algorithm = int(calls[5].split(',')[1]) - int(calls[4].split(',')[1])
+        f.write(
+            "|{0}|{1}|{2}|{3}|{4}|{5}|\n".format(case, startup_time, mem_usage, time_db_conn, time_mix, time_algorithm))
+
+
+def process_container_less_cases():
+    for case in cases_container_less:
+        with open("../result-no-container-{0}.csv".format(case)) as startup_ts:
+            startups = startup_ts.read().splitlines()
+            print(startups)
+        with open("../result-test-no-container-{0}.csv".format(case)) as calls_ts:
+            calls = calls_ts.read().splitlines()
+            print(calls)
+        with open("../result-no-container-{0}.csv".format(case)) as used_mems:
+            mems = used_mems.read().splitlines()
+            print(mems)
+        startup_time = int(startups[1].split(',')[1]) - int(startups[0].split(',')[1])
+        mem_usage = mems[2].split('           ')[1]
+        time_db_conn = int(calls[1].split(',')[1]) - int(calls[0].split(',')[1])
+        time_mix = int(calls[3].split(',')[1]) - int(calls[2].split(',')[1])
+        time_algorithm = int(calls[5].split(',')[1]) - int(calls[4].split(',')[1])
+        f.write(
+            "|{0}|{1}|{2}|{3}|{4}|{5}|\n".format(case, startup_time, mem_usage, time_db_conn, time_mix, time_algorithm))
+
+
 cases = ['cloudnative', 'graalvm', 'jvm', 'ktor', 'ktor-no-db']
+cases_container_less = ['graalvm', 'ktor', 'ktor-no-db']
 title = "# Whiskers Performance results\n"
 header = '| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + ' \
          'Algorithm(s) | Test Algorithm (s) |\n'
@@ -8,20 +49,7 @@ f.write(title)
 f.write("\n")
 f.write(header)
 f.write(separator)
-for case in cases:
-    with open("../result-{0}.csv".format(case)) as startupTS:
-        startups = startupTS.read().splitlines()
-        print(startups)
-    with open("../result-test-{0}.csv".format(case)) as callsTS:
-        calls = callsTS.read().splitlines()
-        print(calls)
-    with open("../result-mem-{0}.txt".format(case)) as usedMems:
-        mems = usedMems.read().splitlines()
-        print(mems)
-    startupTime = int(startups[1].split(',')[1]) - int(startups[0].split(',')[1])
-    memUsage = mems[1].split('   ')[3]
-    timeDbConn = int(calls[1].split(',')[1]) - int(calls[0].split(',')[1])
-    timeMix = int(calls[3].split(',')[1]) - int(calls[2].split(',')[1])
-    timeAlgorithm = int(calls[5].split(',')[1]) - int(calls[4].split(',')[1])
-    f.write("|{0}|{1}|{2}|{3}|{4}|{5}|\n".format(case, startupTime, memUsage, timeDbConn, timeMix, timeAlgorithm))
+
+process_container_cases()
+process_container_less_cases()
 f.close()
