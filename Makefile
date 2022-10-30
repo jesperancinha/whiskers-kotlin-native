@@ -229,4 +229,4 @@ test-ktor: dcup-light db-wait
 test-graalvm: dcup-light db-wait
 	cd whiskers-graalvm && make run-test
 test-graalvm-jvm: dcup-light db-wait
-	cd whiskers-graalvm, && make run-test-jvm
+	cd whiskers-graalvm && make run-test-jvm

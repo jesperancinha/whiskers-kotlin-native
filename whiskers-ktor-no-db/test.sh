@@ -9,7 +9,7 @@ while [[ "$string" != *"Application started"* ]]
     sleep 0.01
   done
 date +%s | xargs -I {} echo "ktor-no-db,"{} >> ../result-no-container-ktor-no-db.csv
-pmap "$test" | tail -n 1 | xargs -I {} echo "ktor-no-db,"{} >> ../result-no-container-ktor-no-db.csv
+ps -p "$test" -o rss | tail -n 1 | xargs -I {} echo "ktor-no-db,"{} >> ../result-no-container-ktor-no-db.csv
 echo -e "\033[92mStarting process $test\033[0m"
 date +%s | xargs -I {} echo "ktor-no-db,"{} > ../result-test-no-container-ktor-no-db.csv
 make perform-tests

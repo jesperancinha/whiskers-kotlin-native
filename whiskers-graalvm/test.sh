@@ -10,7 +10,7 @@ while [[ "$string" != *"Started application"* ]]
     sleep 0.01
   done
 date +%s | xargs -I {} echo "graalvm,"{} >> ../result-no-container-graalvm.csv
-pmap "$test" | tail -n 1 | xargs -I {} echo "graalvm,"{} >> ../result-no-container-graalvm.csv
+ps -p "$test" -o rss | tail -n 1 | xargs -I {} echo "graalvm,"{} >> ../result-no-container-graalvm.csv
 echo -e "\033[92mStarting process $test\033[0m"
 date +%s | xargs -I {} echo "graalvm,"{} > ../result-test-no-container-graalvm.csv
 make perform-tests

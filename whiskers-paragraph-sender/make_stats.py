@@ -31,7 +31,7 @@ def process_container_less_cases():
             mems = used_mems.read().splitlines()
             print(mems)
         startup_time = int(startups[1].split(',')[1]) - int(startups[0].split(',')[1])
-        mem_usage = mems[2].split(' ').pop()
+        mem_usage = "{0}K".format(mems[2].split(',').pop().lstrip().rstrip())
         time_db_conn = int(calls[1].split(',')[1]) - int(calls[0].split(',')[1])
         time_mix = int(calls[3].split(',')[1]) - int(calls[2].split(',')[1])
         time_algorithm = int(calls[5].split(',')[1]) - int(calls[4].split(',')[1])

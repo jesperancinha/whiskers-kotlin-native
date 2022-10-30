@@ -10,7 +10,7 @@ while [[ "$string" != *"Netty started"* ]]
     sleep 0.01
   done
 date +%s | xargs -I {} echo "jvm,"{} >> ../../result-no-container-jvm.csv
-pmap "$test" | tail -n 1 | xargs -I {} echo "jvm,"{} >> ../../result-no-container-jvm.csv
+ps -p "$test" -o rss | tail -n 1 | xargs -I {} echo "jvm,"{} >> ../../result-no-container-jvm.csv
 echo -e "\033[92mStarting process $test\033[0m"
 date +%s | xargs -I {} echo "jvm,"{} > ../../result-test-no-container-jvm.csv
 make perform-tests

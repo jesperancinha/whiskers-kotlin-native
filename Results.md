@@ -2,12 +2,12 @@
 
 | Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
 |---|---|---|---|---|---|
-|cloudnative|4|  44.81MiB / 15.43GiB|14|0|19|
-|graalvm|11|  45.17MiB / 15.43GiB|13|1|18|
-|jvm|13|  161.8MiB / 15.43GiB|20|1|16|
-|ktor|11|  2.742MiB / 15.43GiB|14|1|22|
-|ktor-no-db|11|  1.875MiB / 15.43GiB|9|0|23|
-|graalvm|0|611264K|19|1|0|
-|jvm|2|8311108K|21|1|0|
-|ktor|0|730108K|13|1|1|
-|ktor-no-db|0|728588K|13|1|1|
+|cloudnative|6|  99.43MiB / 15.43GiB|38|2|27|
+|graalvm|13|  92.16MiB / 15.43GiB|24|2|29|
+|jvm|14|  183.3MiB / 15.43GiB|31|2|27|
+|ktor|11|  6.254MiB / 15.43GiB|25|5|33|
+|ktor-no-db|11|  4.871MiB / 15.43GiB|15|2|33|
+|graalvm|0|graalvm,105484|24|2|3|
+|jvm|2|jvm,281288|32|2|3|
+|ktor|0|ktor,4148|25|5|7|
+|ktor-no-db|0|ktor-no-db,3488|15|2|17|
