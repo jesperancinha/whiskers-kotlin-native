@@ -5,6 +5,7 @@ import org.jesperancinha.knative.dto.ParagraphDto
 import org.jesperancinha.knative.dto.StoryService
 import org.jesperancinha.knative.dto.encodeParagraph
 import org.jesperancinha.knative.dto.toEncodedParagraph
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -47,4 +48,7 @@ class StoryController(
         @RequestBody
         paragraphDtos: List<ParagraphDto>
     ) = paragraphDtos.asFlow().toEncodedParagraph()
+
+    @DeleteMapping
+    suspend fun deleteAllParagraphs() = storyService.removeAll()
 }

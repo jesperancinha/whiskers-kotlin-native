@@ -8,3 +8,5 @@ for num in range(1, 301):
     requests.get('http://localhost:8080/story/paragraphs')
 
     requests.get('http://localhost:8080/cat/sayings')
+
+    requests.delete("http://localhost:8080/story/paragraphs")

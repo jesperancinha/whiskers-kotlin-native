@@ -39,6 +39,9 @@ class CatService(
     suspend fun getSayingById(id: Int) = catSayingRepository.findById(id)?.toDto()
     suspend fun saveSaying(sayingDto: CatSayingDto) = catSayingRepository.save(sayingDto.toData).toDto()
     fun getCodedSayings() = getAllSayings().toCodedSayings()
+    suspend fun removeAll() {
+        catSayingRepository.deleteAll()
+    }
 }
 
 @Service
@@ -49,6 +52,9 @@ class StoryService(
     suspend fun getParagraphById(id: Int) = paragraphRepository.findById(id)?.toDto()
     suspend fun saveParagraph(paragraphDto: ParagraphDto) = paragraphRepository.save(paragraphDto.toData).toDto()
     fun getCodedParagraphs() = getAllParagraphs().toEncodedParagraph()
+   suspend fun removeAll() {
+       paragraphRepository.deleteAll()
+    }
 }
 
 fun Flow<ParagraphDto>.toEncodedParagraph() = map {

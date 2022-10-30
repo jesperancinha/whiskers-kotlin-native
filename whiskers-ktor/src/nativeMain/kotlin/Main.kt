@@ -1,4 +1,5 @@
 import io.ktor.http.*
+import io.ktor.http.HttpStatusCode.Companion.Accepted
 import io.ktor.http.HttpStatusCode.Companion.Created
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.serialization.kotlinx.json.*
@@ -81,6 +82,10 @@ fun main() {
                     }
                 }
                 route("paragraphs") {
+                    delete {
+                        paragraphService.deleteAll()
+                        call.respond(status = Accepted, "")
+                    }
                     post("/encoded") {
                         val paragraphs = call.receive<List<Paragraph>>()
                         call.respondWithEncodedFlow(status = Created, paragraphs)

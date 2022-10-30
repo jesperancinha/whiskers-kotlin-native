@@ -11,6 +11,7 @@ internal interface Service<T> {
     fun getAll(): List<T>
     suspend fun getById(id: Long): T
     suspend fun save(entity: T): T
+    suspend fun deleteAll()
 }
 
 @ExperimentalUnsignedTypes
@@ -20,6 +21,7 @@ class CatSayingsService(
 ) : Service<CatSaying> {
     override fun getAll() = catSayingsRepository.findAll()
     override suspend fun getById(id: Long) = catSayingsRepository.findById(id)
+    override suspend fun deleteAll() = catSayingsRepository.deleteAll()
     override suspend fun save(entity: CatSaying) = catSayingsRepository.save(entity)
     fun getAllEncoded() = getAll().toEncodedSayings()
 }
@@ -30,6 +32,7 @@ internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragrap
     private val paragraphRepository = ParagraphRepository(nativeDriver = driver)
     override fun getAll() = paragraphRepository.findAll()
     override suspend fun getById(id: Long) = paragraphRepository.findById(id)
+    override suspend fun deleteAll() = paragraphRepository.deleteAll()
     override suspend fun save(entity: Paragraph) = paragraphRepository.save(entity)
     fun getAllEncoded() = getAll().toEncodedParagraphs()
 }
