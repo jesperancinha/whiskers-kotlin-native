@@ -14,4 +14,8 @@ install-kotlin-native-linux:
 copy-binaries:
 	cd ../../ && make copy-binaries
 run:
-	./main.kexe
+	./build/bin/native/debugExecutable/whiskers-runners-native.kexe
+measure:
+	date +%s | xargs -I {} echo "native,"{} > ../../result-single-run-native.csv
+	for ((i=0; i<=100; i++)); do make run; done
+	date +%s | xargs -I {} echo "native,"{} >> ../../result-single-run-native.csv
