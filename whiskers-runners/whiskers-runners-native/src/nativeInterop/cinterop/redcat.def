@@ -1,0 +1,4 @@
+headers = redcat.h
+staticLibraries = redcat.a
+libraryPaths = code src/nativeInterop/cinterop/code
+package = org.jesperancinha.knative
