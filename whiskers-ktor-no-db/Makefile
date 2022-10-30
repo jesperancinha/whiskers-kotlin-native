@@ -1,5 +1,6 @@
 b: build-gradle
 build-gradle:
+	if [ -d "build" ]; then rm -r build; fi
 	gradle build
 run-gradle:
 	./gradlew :runReleaseExecutableNative

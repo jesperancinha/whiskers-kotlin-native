@@ -1,6 +1,7 @@
 b: build
 build: build-gradle
 build-gradle: build-binaries
+	if [ -d "build" ]; then rm -r build; fi
 	gradle build
 build-binaries:
 	cd c && make build
