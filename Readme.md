@@ -77,6 +77,8 @@ make measure-all-sts
 </div>
 
 ### Online
+
+- [ps output – Difference between VSZ vs RSS memory usage](https://linuxconfig.org/ps-output-difference-between-vsz-vs-rss-memory-usage)
 - [Ktor demo](https://github.com/antonarhipov/ktor-demo)
 - [Ktor mini demo](https://github.com/antonarhipov/ktor-mini-demo)
 - [Ktor simple demo](https://github.com/antonarhipov/ktor-simple-demo)

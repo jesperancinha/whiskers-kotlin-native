@@ -30,4 +30,7 @@ class CatController(
         @RequestBody
         sayingDto: CatSayingDto
     ) = catService.saveSaying(sayingDto)
+
+    @DeleteMapping("/sayings")
+    suspend fun deleteAllSayings() = catService.removeAll()
 }

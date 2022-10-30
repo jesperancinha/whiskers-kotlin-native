@@ -1,5 +1,6 @@
 b: build-gradle
 build-gradle:
+	if [ -d "build" ]; then rm -r build; fi
 	./gradlew
 	./gradlew nativeCompile
 	make build-jar
@@ -15,3 +16,13 @@ build-jar:
 	./gradlew bootJar
 run-jar:
 	java -jar build/libs/whiskers-graalvm-0.0.1-SNAPSHOT.jar
+run-test:
+	bash test.sh
+run-test-jvm:
+	cd jvm && make run-test
+perform-tests:
+	cd .. && make perform-tests
+perform-tests-encoded:
+	cd .. && make perform-tests-encoded
+perform-tests-encoded-no-db:
+	cd .. && make perform-tests-encoded-no-db
