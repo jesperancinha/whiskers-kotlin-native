@@ -81,10 +81,8 @@ def send_paragraph():
 def send_paragraph_no_log():
     with open('../docs/good.story/good.story.chapter.2.md') as f:
         contents = f.read()
-        paragraphs = []
         for paragraph in contents.split("\n\n"):
-            paragraphs.append({
+            url = 'http://localhost:8080/story/paragraph/encoded'
+            requests.post(url, json={
                 "text": paragraph
             })
-            url = 'http://localhost:8080/story/paragraph/encoded'
-            requests.post(url, json=paragraph)

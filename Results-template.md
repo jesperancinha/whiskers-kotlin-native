@@ -1,3 +1,3 @@
-| Architecture | Sartup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
+| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
 |---|-----------------------|---------------------|----------------------------|------------------------------|--------------------|
 |Cloud| 1                     | 1                   | 1                          | 1                            | 1                  |

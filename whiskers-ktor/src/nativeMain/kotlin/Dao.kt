@@ -12,6 +12,7 @@ internal interface Repository<T> {
     suspend fun findById(id: Long): T
     suspend fun first(): T
     suspend fun save(entity: T): T
+    suspend fun deleteAll(): Unit
     val singleEntityMapper: (SqlCursor) -> T
     val listEntityMapper: (SqlCursor) -> List<T>
 }
@@ -70,6 +71,10 @@ open class CatSayingsRepository(
             mapper = singleEntityMapper
         ).value
 
+    override suspend fun deleteAll() {
+        nativeDriver.execute(null, "DELETE FROM sayings.cat_line",0)
+    }
+
     override suspend fun save(entity: CatSaying) =
         nativeDriver.executeInsert(null, "INSERT INTO sayings.cat_line (saying)VALUES ('${entity.saying}')")
             .let { entity }
@@ -114,6 +119,10 @@ class ParagraphRepository(
             sql = "SELECT * from story.paragraph limit 1;",
             mapper = singleEntityMapper
         ).value
+
+    override suspend fun deleteAll() {
+        nativeDriver.execute(null, "DELETE FROM story.paragraph",0)
+    }
 
     override suspend fun save(entity: Paragraph): Paragraph =
         nativeDriver.executeInsert(null, "INSERT INTO story.paragraph(text)VALUES ('${entity.text.escapePostgreSQL()}')")
