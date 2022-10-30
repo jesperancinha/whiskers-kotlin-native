@@ -31,6 +31,6 @@ class CatController(
         sayingDto: CatSayingDto
     ) = catService.saveSaying(sayingDto)
 
-    @DeleteMapping
+    @DeleteMapping("/sayings")
     suspend fun deleteAllSayings() = catService.removeAll()
 }

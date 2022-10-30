@@ -49,6 +49,6 @@ class StoryController(
         paragraphDtos: List<ParagraphDto>
     ) = paragraphDtos.asFlow().toEncodedParagraph()
 
-    @DeleteMapping
+    @DeleteMapping("/paragraphs")
     suspend fun deleteAllParagraphs() = storyService.removeAll()
 }
