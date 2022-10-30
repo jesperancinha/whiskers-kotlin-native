@@ -60,6 +60,7 @@ copy-binaries:
 	cp postgres.zip whiskers-ktor/postgresql
 	cp kotlin*.tar.gz whiskers-red-cat
 	cp kotlin*.tar.gz whiskers-red-cat-db
+	cp kotlin*.tar.gz whiskers-runners/whiskers-runners-native
 	cp postgres.zip whiskers-red-cat-db
 setup-binaries: download-binaries copy-binaries
 install-libs:
