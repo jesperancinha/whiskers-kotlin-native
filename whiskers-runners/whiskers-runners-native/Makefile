@@ -17,5 +17,5 @@ run:
 	./build/bin/native/debugExecutable/whiskers-runners-native.kexe
 run-test:
 	date +%s | xargs -I {} echo "native,"{} > ../../result-single-run-native.csv
-	for ((i=0; i<=100; i++)); do make run; done
+	for ((i=0; i<=300; i++)); do make run; done
 	date +%s | xargs -I {} echo "native,"{} >> ../../result-single-run-native.csv
