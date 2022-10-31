@@ -6,7 +6,11 @@ class App {
     }
 }
 
-fun main() {
+fun main(args: Array<String>) {
+    val max = maxOf(1, if (args.isEmpty()) 0 else args[0].toInt())
+    repeat(times = max) {
+        App.scrambleStory()
+    }
     println(App.story)
     println(App.scrambleStory())
 }
