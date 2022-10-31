@@ -1,19 +1,12 @@
-fun main() {
-    println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
-    println(randomMessage())
-    println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
+class App {
+    companion object{
+        val story: String = "The red cat used to roam around in the neighbourhood. For some reason this cat found in Lucy a connection and became Lucy's friend"
+
+        fun scrambleStory() = story.split(" ").joinToString(" ")
+    }
 }
 
-fun randomMessage(): String {
-    return listOf(
-       "Good Morning!",
-       "You are looking great today!",
-       "What a great day today!",
-       "Good job!",
-       "I really appreciate what you just did! Thank you!",
-       "Thanks for bringing me coffee!",
-       "You are the best pal ever!",
-       "I love working with you!",
-       "Rise and shine!"
-   ).random()
+fun main() {
+    println(App.story)
+    println(App.scrambleStory())
 }

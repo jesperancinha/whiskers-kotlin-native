@@ -6,7 +6,7 @@ buildw:
 	ar rcs src/nativeInterop/cinterop/code/redcat.a src/nativeInterop/cinterop/code/redcat.o
 build-native: buildw
 	./kotlin.native/bin/cinterop -def src/nativeInterop/cinterop/redcat.def -compiler-options "-I$(PWD)/src/nativeInterop/cinterop/code" -o src/nativeInterop/cinterop/code/redcat.klib
-	./kotlin.native/bin/konanc -l src/nativeInterop/cinterop/code/redcat.klib src/nativeMain/kotlin/Main.kt -linker-options code/redcat.a -o main
+	./kotlin.native/bin/konanc -l src/nativeInterop/cinterop/code/redcat.klib src/nativeMain/kotlin/Main.kt -linker-options src/nativeInterop/cinterop/code/redcat.a -o main
 install-kotlin-native-linux:
 	tar -xvzf kotlin.native.tar.gz
 	if [ -d "kotlin.native" ]; then rm -r kotlin.native; fi
@@ -14,4 +14,8 @@ install-kotlin-native-linux:
 copy-binaries:
 	cd ../../ && make copy-binaries
 run:
-	./main.kexe
+	./build/bin/native/debugExecutable/whiskers-runners-native.kexe
+run-test:
+	date +%s | xargs -I {} echo "native,"{} > ../../result-single-run-native.csv
+	for ((i=0; i<=1000; i++)); do make run; done
+	date +%s | xargs -I {} echo "native,"{} >> ../../result-single-run-native.csv

@@ -3,9 +3,10 @@
 
 char* tell_story();
 
+char* scramble_story();
+
 int answer();
 
 char love();
 
 #endif
-
