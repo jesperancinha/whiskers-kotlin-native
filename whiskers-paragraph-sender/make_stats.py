@@ -53,7 +53,8 @@ cases = ['cloudnative', 'graalvm', 'jvm', 'ktor', 'ktor-no-db']
 cases_container_less = ['graalvm', 'jvm', 'ktor', 'ktor-no-db']
 cases_runners = ['graalvm', 'knative', 'native', 'jvm']
 title = "# Whiskers Performance results\n"
-enterprise = "## Service test results\n"
+enterprise = "## Service (Container) test results\n"
+enterprise_container_less = "## Service (Exec) test results\n"
 header = '| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + ' \
          'Algorithm(s) | Test Algorithm (s) |\n'
 separator = '|---|---|---|---|---|---|\n'
@@ -67,8 +68,13 @@ f.write(enterprise)
 f.write("\n")
 f.write(header)
 f.write(separator)
-
 process_container_cases()
+
+f.write("\n")
+f.write(enterprise_container_less)
+f.write("\n")
+f.write(header)
+f.write(separator)
 process_container_less_cases()
 
 f.write("\n")

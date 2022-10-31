@@ -1,6 +1,6 @@
 # Whiskers Performance results
 
-## Service test results
+## Service (Container) test results
 
 | Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
 |---|---|---|---|---|---|
@@ -9,6 +9,11 @@
 |jvm|14|  190.2MiB / 15.43GiB|32|2|28|
 |ktor|11|  6.121MiB / 15.43GiB|28|4|31|
 |ktor-no-db|11|  4.855MiB / 15.43GiB|15|1|35|
+
+## Service (Exec) test results
+
+| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
+|---|---|---|---|---|---|
 |graalvm|0|107288K|30|2|3|
 |jvm|3|331308K|31|2|2|
 |ktor|0|5904K|23|5|7|
