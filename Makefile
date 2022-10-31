@@ -212,8 +212,8 @@ db-wait:
 	bash db_wait.sh
 measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-ktor-no-db dcd-ktor-no-db dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative
 measure-all-no-container-sts: test-ktor-no-db test-ktor test-graalvm test-graalvm-jvm
-measure-all-runners-sts: runnable-test-graalvm runnable-test-knative runnable-test-native
-measure-all: measure-all-sts measure-all-no-container-sts measyre-all-runners-sts stats
+measure-all-runners-sts: runnable-test-graalvm runnable-test-knative runnable-test-native runnable-test-jvm
+measure-all: measure-all-sts measure-all-no-container-sts measure-all-runners-sts stats
 stats:
 	cd whiskers-paragraph-sender && python3 make_stats.py
 cat-sayings-run:
@@ -240,3 +240,5 @@ runnable-test-knative:
 	cd whiskers-runners/whiskers-runners-knative && make run-test
 runnable-test-native:
 	cd whiskers-runners/whiskers-runners-native && make run-test
+runnable-test-jvm:
+	cd whiskers-runners/whiskers-runners-graalvm && make run-test-jar

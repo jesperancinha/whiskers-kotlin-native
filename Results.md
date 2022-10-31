@@ -18,6 +18,7 @@
 
 | Architecture | Runtime |
 |---|---|
-|graalvm|64|
+|graalvm|2|
 |knative|2|
-|native|3|
+|native|2|
+|jvm|54|

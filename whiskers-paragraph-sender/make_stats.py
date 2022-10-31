@@ -51,7 +51,7 @@ def process_runner_tests():
 
 cases = ['cloudnative', 'graalvm', 'jvm', 'ktor', 'ktor-no-db']
 cases_container_less = ['graalvm', 'jvm', 'ktor', 'ktor-no-db']
-cases_runners = ['graalvm', 'knative', 'native']
+cases_runners = ['graalvm', 'knative', 'native', 'jvm']
 title = "# Whiskers Performance results\n"
 enterprise = "## Service test results\n"
 header = '| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + ' \
