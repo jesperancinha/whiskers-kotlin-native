@@ -44,9 +44,12 @@ def process_runner_tests():
         print("Current case is {0}".format(case))
         with open("../result-single-run-{0}.csv".format(case)) as runs_ts:
             runs = runs_ts.read().splitlines()
+        with open("../result-multiple-run-{0}.csv".format(case)) as multiple_runs_ts:
+            multiple_runs = multiple_runs_ts.read().splitlines()
         runtime = int(runs[1].split(',')[1]) - int(runs[0].split(',')[1])
+        multiple_runtime = int(multiple_runs[1].split(',')[1]) - int(multiple_runs[0].split(',')[1])
         f.write(
-            "|{0}|{1}|\n".format(case, runtime))
+            "|{0}|{1}|{2}|\n".format(case, runtime,multiple_runtime))
 
 
 cases = ['cloudnative', 'graalvm', 'jvm', 'ktor', 'ktor-no-db']
@@ -59,8 +62,8 @@ header = '| Architecture | Startup time (seconds) | Memory used(Mbytes) | Test w
          'Algorithm(s) | Test Algorithm (s) |\n'
 separator = '|---|---|---|---|---|---|\n'
 runners = "## Runner test results\n"
-runner_headers = '| Architecture | Runtime |\n'
-runner_separator = '|---|---|\n'
+runner_headers = '| Architecture | Runtime (1000 restart run) | Runtime (1 run 10_000_000 algorithm runs) |\n'
+runner_separator = '|---|---|---|\n'
 f = open("../Results.md", "w")
 f.write(title)
 f.write("\n")

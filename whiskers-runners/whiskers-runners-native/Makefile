@@ -4,6 +4,7 @@ b: build-native buildw
 buildw:
 	gradle build
 build-native:
+	if [ -d "build" ]; then rm -r build; fi
 	gcc -c "-I$(PWD)" src/nativeInterop/cinterop/code/redcat.c -o src/nativeInterop/cinterop/code/redcat.o
 	ar rcs src/nativeInterop/cinterop/code/redcat.a src/nativeInterop/cinterop/code/redcat.o
 	./kotlin.native/bin/cinterop -def src/nativeInterop/cinterop/redcat.def -compiler-options "-I$(PWD)/src/nativeInterop/cinterop/code" -o src/nativeInterop/cinterop/code/redcat.klib
@@ -23,5 +24,5 @@ run-test:
 run-test-multiple:
 	date +%s | xargs -I {} echo "native,"{} > ../../result-multiple-run-native.csv
 	./build/bin/native/debugExecutable/whiskers-runners-native.kexe 10000000
-	date +%s | xargs -I {} echo "native,"{} > ../../result-multiple-run-native.csv
+	date +%s | xargs -I {} echo "native,"{} >> ../../result-multiple-run-native.csv
 
