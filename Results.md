@@ -1,5 +1,7 @@
 # Whiskers Performance results
 
+## Service test results
+
 | Architecture | Startup time (seconds) | Memory used(Mbytes) | Test with DB connection(s) | Test Mixed DB + Algorithm(s) | Test Algorithm (s) |
 |---|---|---|---|---|---|
 |cloudnative|7|  100.3MiB / 15.43GiB|26|3|34|
@@ -11,3 +13,11 @@
 |jvm|3|331308K|31|2|2|
 |ktor|0|5904K|23|5|7|
 |ktor-no-db|0|3424K|14|1|16|
+
+## Runner test results
+
+| Architecture | Runtime |
+|---|---|
+|graalvm|6|
+|knative|1|
+|native|0|

@@ -15,7 +15,7 @@ copy-binaries:
 	cd ../../ && make copy-binaries
 run:
 	./build/bin/native/debugExecutable/whiskers-runners-native.kexe
-measure:
+run-test:
 	date +%s | xargs -I {} echo "native,"{} > ../../result-single-run-native.csv
 	for ((i=0; i<=100; i++)); do make run; done
 	date +%s | xargs -I {} echo "native,"{} >> ../../result-single-run-native.csv

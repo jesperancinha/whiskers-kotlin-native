@@ -2,7 +2,9 @@ SHELL := /bin/bash
 GITHUB_RUN_ID ?=123
 
 b: build
-build: build-gradle build-gradle-graalvm
+build: build-gradle build-gradle-graalvm build-runners
+build-runners:
+	cd whiskers-runners && make b
 build-gradle: build-gradle-ktor
 	cd good-feel && make b
 	cd plus && make b
@@ -210,7 +212,8 @@ db-wait:
 	bash db_wait.sh
 measure-all-sts: dcup-test-ktor dcd-ktor dcup-test-ktor-no-db dcd-ktor-no-db dcup-test-graalvm dcd-graalvm dcup-test-jvm dcd-jvm dcup-test-cloudnative dcd-cloudnative
 measure-all-no-container-sts: test-ktor-no-db test-ktor test-graalvm test-graalvm-jvm
-measure-all: measure-all-sts measure-all-no-container-sts stats
+measure-all-runners-sts: runnable-test-graalvm runnable-test-knative runnable-test-native
+measure-all: measure-all-sts measure-all-no-container-sts measyre-all-runners-sts stats
 stats:
 	cd whiskers-paragraph-sender && python3 make_stats.py
 cat-sayings-run:
@@ -231,3 +234,9 @@ test-graalvm: dcup-light db-wait
 	cd whiskers-graalvm && make run-test
 test-graalvm-jvm: dcup-light db-wait
 	cd whiskers-graalvm && make run-test-jvm
+runnable-test-graalvm:
+	cd whiskers-runners/whiskers-runners-graalvm && make run-test
+runnable-test-knative:
+	cd whiskers-runners/whiskers-runners-knative && make run-test
+runnable-test-native:
+	cd whiskers-runners/whiskers-runners-native && make run-test
