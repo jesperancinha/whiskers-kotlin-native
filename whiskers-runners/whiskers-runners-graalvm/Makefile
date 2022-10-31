@@ -12,5 +12,5 @@ create-native:
 	$(JAVA_HOME)/bin/native-image -jar build/libs/whiskers-runners-graalvm-standalone.jar
 run-test:
 	date +%s | xargs -I {} echo "graalvm,"{} > ../../result-single-run-graalvm.csv
-	for ((i=0; i<=500; i++)); do make run; done
+	for ((i=0; i<=1000; i++)); do make run; done
 	date +%s | xargs -I {} echo "graalvm,"{} >> ../../result-single-run-graalvm.csv
