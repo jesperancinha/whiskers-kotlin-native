@@ -18,6 +18,6 @@
 
 | Architecture | Runtime |
 |---|---|
-|graalvm|6|
-|knative|1|
-|native|0|
+|graalvm|31|
+|knative|2|
+|native|1|
