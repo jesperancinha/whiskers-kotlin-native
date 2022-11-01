@@ -21,9 +21,9 @@
 
 ## Runner test results
 
-| Architecture | Runtime |
-|---|---|
-|graalvm|2|
-|knative|2|
-|native|2|
-|jvm|54|
+| Architecture | Runtime (1000 restart run) | Runtime (1 run 10_000_000 algorithm runs) |
+|---|---|---|
+|graalvm|2|22|
+|knative|2|161|
+|native|2|28|
+|jvm|54|8|
