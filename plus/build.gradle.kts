@@ -31,7 +31,7 @@ kotlin {
         val nativeTest by getting
         val commonMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-core:2.1.2")
+                implementation("io.ktor:ktor-client-core:2.1.3")
 
             }
         }
