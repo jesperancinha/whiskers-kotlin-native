@@ -65,12 +65,12 @@ make measure-all-sts
 
 <div align="center">
       <a title="Ktor From the Ground Up" href="https://www.youtube.com/watch?v=WlvK6zYo8Sw">
-     <img 
+     <img alt="Ktor From the Ground Up"
           src="https://img.youtube.com/vi/WlvK6zYo8Sw/0.jpg" 
           style="width:30%;">
       </a>
       <a title="Applied Event Streaming With Apache Kafka, Kotlin, and Ktor" href="https://www.youtube.com/watch?v=6qxkawU0qKA">
-     <img 
+     <img alt="Applied Event Streaming With Apache Kafka, Kotlin, and Ktor"
           src="https://img.youtube.com/vi/6qxkawU0qKA/0.jpg" 
           style="width:30%;">
       </a>
@@ -78,6 +78,7 @@ make measure-all-sts
 
 ### Online
 
+-   [Kotlin(-Native) as a Go alternative in 2021](https://discuss.kotlinlang.org/t/kotlin-native-as-a-go-alternative-in-2021/23665)
 -   [ps output – Difference between VSZ vs RSS memory usage](https://linuxconfig.org/ps-output-difference-between-vsz-vs-rss-memory-usage)
 -   [Ktor demo](https://github.com/antonarhipov/ktor-demo)
 -   [Ktor mini demo](https://github.com/antonarhipov/ktor-mini-demo)
