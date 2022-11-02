@@ -29,11 +29,5 @@ kotlin {
     sourceSets {
         val nativeMain by getting
         val nativeTest by getting
-        val commonMain by getting {
-            dependencies {
-                implementation("io.ktor:ktor-client-core:2.1.3")
-
-            }
-        }
     }
 }
