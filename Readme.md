@@ -78,6 +78,11 @@ make measure-all-sts
 
 ### Online
 
+-   [Simplifying the cloud native journey with GraalVM and Helidon by Alina Yurenko](https://blogs.oracle.com/java/post/simplifying-the-cloud-native-journey-with-graalvm-and-helidon)
+-   [AOT compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)
+-   [Native AOT Deployment](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/)
+-   [Angular AOT compilation](https://angular.io/guide/aot-compiler)
+-   [JIT compilation](https://en.wikipedia.org/wiki/Just-in-time_compilation)
 -   [Kotlin(-Native) as a Go alternative in 2021](https://discuss.kotlinlang.org/t/kotlin-native-as-a-go-alternative-in-2021/23665)
 -   [ps output – Difference between VSZ vs RSS memory usage](https://linuxconfig.org/ps-output-difference-between-vsz-vs-rss-memory-usage)
 -   [Ktor demo](https://github.com/antonarhipov/ktor-demo)

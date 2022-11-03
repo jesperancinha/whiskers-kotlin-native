@@ -4,9 +4,9 @@ fun main() {
     println("*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*")
     val groupBy: Map<String, List<Int>> = allMessages().groupBy({ it }, { it.length })
     val hashMap = allMessages().groupBy({ it }, { it.length }).entries.fold(HashMap<String, List<Int>>()) { a, b ->
-            a[b.key] = b.value
-            a
-        }
+        a[b.key] = b.value
+        a
+    }
     println(groupBy::class.qualifiedName)
     println(hashMap::class.qualifiedName)
     val toTypedArray: Map<String, String> = allMessages().toTypedArray().associateBy { it }
