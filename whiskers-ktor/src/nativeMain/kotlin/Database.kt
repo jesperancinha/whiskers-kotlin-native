@@ -1,9 +1,12 @@
+import PostgresNativeDriver.Companion.BINARY_RESULT_FORMAT
+import PostgresNativeDriver.Companion.TEXT_RESULT_FORMAT
 import app.cash.sqldelight.Query
 import app.cash.sqldelight.Transacter
 import app.cash.sqldelight.db.*
 import kotlinx.cinterop.*
 import kotlinx.datetime.*
 import org.jesperancinha.native.*
+import org.jesperancinha.native.ConnStatusType.CONNECTION_OK
 
 /**
  * Based on the original file from https://github.com/hfhbd
@@ -15,12 +18,6 @@ open class PostgresNativeDriver(
     host: String, database: String, user: String, password: String, port: Int = 5432, options: String? = null
 ) : SqlDriver {
     private var transaction: Transacter.Transaction? = null
-
-    private fun setDateOutputs() {
-        execute(null, "SET intervalstyle = 'iso_8601';", 0)
-        execute(null, "SET datestyle = 'ISO';", 0)
-    }
-
     val conn = PQsetdbLogin(
         pghost = host,
         pgport = port.toString(),
@@ -30,12 +27,10 @@ open class PostgresNativeDriver(
         pwd = password,
         pgoptions = options
     ) ?: throw NullPointerException("Unable to create connection!")
-
     init {
-        require(PQstatus(conn) == ConnStatusType.CONNECTION_OK) {
+        require(PQstatus(conn) == CONNECTION_OK) {
             conn.error()
         }
-        setDateOutputs()
     }
 
     override fun addListener(listener: Query.Listener, queryKeys: Array<String>) = Unit
@@ -69,17 +64,18 @@ open class PostgresNativeDriver(
                     nParams = parameters,
                     paramTypes = preparedStatement?.types?.refTo(0)
                 )?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
-            }
-            memScoped {
-                PQexecPrepared(
-                    conn,
-                    stmtName = identifier.toString(),
-                    nParams = parameters,
-                    paramValues = preparedStatement?.values(this),
-                    paramFormats = preparedStatement?.formats?.refTo(0),
-                    paramLengths = preparedStatement?.lengths?.refTo(0),
-                    resultFormat = BINARY_RESULT_FORMAT
-                )
+            } else {
+                memScoped {
+                    PQexecPrepared(
+                        conn,
+                        stmtName = identifier.toString(),
+                        nParams = parameters,
+                        paramValues = preparedStatement?.values(this),
+                        paramFormats = preparedStatement?.formats?.refTo(0),
+                        paramLengths = preparedStatement?.lengths?.refTo(0),
+                        resultFormat = BINARY_RESULT_FORMAT
+                    )
+                }
             }
         } else {
             memScoped {
@@ -95,16 +91,10 @@ open class PostgresNativeDriver(
                 )
             }
         }?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
-
-        return QueryResult.Value(value = result.rows)
+        val rows = PQcmdTuples(result)?.toKString() ?: ""
+        result.clear()
+        return QueryResult.Value(value = rows.toLongOrNull() ?: 0)
     }
-
-    private val CPointer<PGresult>.rows: Long
-        get() {
-            val rows = PQcmdTuples(this)?.toKString() ?: ""
-            clear()
-            return rows.toLongOrNull() ?: 0
-        }
 
     private fun preparedStatementExists(identifier: Int): Boolean {
         val result =
@@ -238,13 +228,11 @@ class PostgresCursor(
 
     private fun CPointer<ByteVar>.fromHex(length: Int): ByteArray {
         val array = ByteArray((length - 2) / 2)
-        var index = 0
-        for (i in 2 until length step 2) {
+        for ((index, i) in (2 until length step 2).withIndex()) {
             val first = this[i].toInt().fromHex()
             val second = this[i + 1].toInt().fromHex()
             val octet = first.shl(4).or(second)
             array[index] = octet.toByte()
-            index++
         }
         return array
     }
@@ -257,7 +245,7 @@ class PostgresCursor(
             null
         } else {
             val value = PQgetvalue(result, tup_num = 0, field_num = index)
-            value!!.toKString()
+            value?.toKString()
         }
     }
     override fun next(): Boolean {
@@ -269,68 +257,52 @@ class PostgresCursor(
     }
 }
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class PostgresPreparedStatement(private val parameters: Int) : SqlPreparedStatement {
     internal fun values(scope: AutofreeScope): CValuesRef<CPointerVar<ByteVar>> = createValues(parameters) {
         value = when (val value = _values[it]) {
             null -> null
-            is Data.Bytes -> value.bytes.refTo(0).getPointer(scope)
-            is Data.Text -> value.text.cstr.getPointer(scope)
+            is ByteArray -> value.refTo(0).getPointer(scope)
+            is String -> value.cstr.getPointer(scope)
+            else -> null
         }
     }
 
-    private sealed interface Data {
-        value class Bytes(val bytes: ByteArray) : Data
-        value class Text(val text: String) : Data
-    }
-
-    private val _values = arrayOfNulls<Data>(parameters)
+    private val _values = arrayOfNulls<Any>(parameters)
     internal val lengths = IntArray(parameters)
     internal val formats = IntArray(parameters)
-
-    @OptIn(ExperimentalUnsignedTypes::class)
     internal val types = UIntArray(parameters)
 
-    @OptIn(ExperimentalUnsignedTypes::class)
     private fun bind(index: Int, value: String?, oid: UInt) {
         lengths[index] = if (value != null) {
-            _values[index] = Data.Text(value)
+            _values[index] = value
             value.length
         } else 0
-        formats[index] = PostgresNativeDriver.TEXT_RESULT_FORMAT
+        formats[index] = TEXT_RESULT_FORMAT
         types[index] = oid
     }
 
     override fun bindBoolean(index: Int, boolean: Boolean?) {
-        bind(index, boolean?.toString(), boolOid)
+        bind(index, boolean?.toString(), 16u)
     }
-
-    @OptIn(ExperimentalUnsignedTypes::class)
     override fun bindBytes(index: Int, bytes: ByteArray?) {
         lengths[index] = if (bytes != null && bytes.isNotEmpty()) {
-            _values[index] = Data.Bytes(bytes)
+            _values[index] = bytes
             bytes.size
         } else 0
-        formats[index] = PostgresNativeDriver.BINARY_RESULT_FORMAT
-        types[index] = byteaOid
+        formats[index] = BINARY_RESULT_FORMAT
+        types[index] = 17u
     }
 
     override fun bindDouble(index: Int, double: Double?) {
-        bind(index, double?.toString(), doubleOid)
+        bind(index, double?.toString(), 701u)
     }
 
     override fun bindLong(index: Int, long: Long?) {
-        bind(index, long?.toString(), longOid)
+        bind(index, long?.toString(), 20u)
     }
 
     override fun bindString(index: Int, string: String?) {
-        bind(index, string, textOid)
-    }
-
-    private companion object {
-        private const val boolOid = 16u
-        private const val byteaOid = 17u
-        private const val longOid = 20u
-        private const val textOid = 25u
-        private const val doubleOid = 701u
+        bind(index, string, 25u)
     }
 }
