@@ -27,6 +27,7 @@ open class PostgresNativeDriver(
         pwd = password,
         pgoptions = options
     ) ?: throw NullPointerException("Unable to create connection!")
+
     init {
         require(PQstatus(conn) == CONNECTION_OK) {
             conn.error()
@@ -57,13 +58,8 @@ open class PostgresNativeDriver(
         } else null
         val result = if (identifier != null) {
             if (!preparedStatementExists(identifier)) {
-                PQprepare(
-                    conn,
-                    stmtName = identifier.toString(),
-                    query = sql,
-                    nParams = parameters,
-                    paramTypes = preparedStatement?.types?.refTo(0)
-                )?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
+                prepareStatement(identifier, sql = sql, parameters = parameters, preparedStatement = preparedStatement)
+                    ?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
             } else {
                 memScoped {
                     PQexecPrepared(
@@ -133,13 +129,8 @@ open class PostgresNativeDriver(
         } else null
         val result = if (identifier != null) {
             if (!preparedStatementExists(identifier)) {
-                PQprepare(
-                    conn,
-                    stmtName = identifier.toString(),
-                    query = "$cursor $sql",
-                    nParams = parameters,
-                    paramTypes = preparedStatement?.types?.refTo(0)
-                )?.run { check(conn).clear() } ?: throw RuntimeException("Unable to prepare PQprepare")
+                prepareStatement(identifier, cursor, sql, parameters, preparedStatement)
+                    ?.run { check(conn).clear() } ?: throw RuntimeException("Unable to prepare PQprepare")
             }
             conn.exec("BEGIN")
             memScoped {
@@ -172,6 +163,21 @@ open class PostgresNativeDriver(
         val value = PostgresCursor(result, cursorName, conn).use(mapper)
         return QueryResult.Value(value = value)
     }
+
+
+    private fun prepareStatement(
+        identifier: Int,
+        cursor: String? = null,
+        sql: String,
+        parameters: Int,
+        preparedStatement: PostgresPreparedStatement?
+    ) = PQprepare(
+        conn,
+        stmtName = identifier.toString(),
+        query = if (cursor == null) sql else "$cursor $sql",
+        nParams = parameters,
+        paramTypes = preparedStatement?.types?.refTo(0)
+    )
 
     internal companion object {
         const val TEXT_RESULT_FORMAT = 0
@@ -216,7 +222,7 @@ class PostgresCursor(
         return if (isNull) null else {
             val bytes = PQgetvalue(result, tup_num = 0, field_num = index)
             val length = PQgetlength(result, tup_num = 0, field_num = index)
-            bytes?.run { fromHex(length) }?: throw RuntimeException("Unable to retrieve bytes from the database")
+            bytes?.run { fromHex(length) } ?: throw RuntimeException("Unable to retrieve bytes from the database")
         }
     }
 
@@ -248,6 +254,7 @@ class PostgresCursor(
             value?.toKString()
         }
     }
+
     override fun next(): Boolean {
         result = PQexec(conn, "FETCH NEXT IN $name")?.run { check(conn) }
             ?: throw RuntimeException("Unable to prepare PQprepare")
@@ -285,6 +292,7 @@ class PostgresPreparedStatement(private val parameters: Int) : SqlPreparedStatem
     override fun bindBoolean(index: Int, boolean: Boolean?) {
         bind(index, boolean?.toString(), 16u)
     }
+
     override fun bindBytes(index: Int, bytes: ByteArray?) {
         lengths[index] = if (bytes != null && bytes.isNotEmpty()) {
             _values[index] = bytes
