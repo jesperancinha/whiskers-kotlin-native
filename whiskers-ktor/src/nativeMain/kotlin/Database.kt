@@ -101,7 +101,7 @@ open class PostgresNativeDriver(
 
     private val CPointer<PGresult>.rows: Long
         get() {
-            val rows = PQcmdTuples(this)!!.toKString()
+            val rows = PQcmdTuples(this)?.toKString() ?: ""
             clear()
             return rows.toLongOrNull() ?: 0
         }
@@ -205,20 +205,6 @@ open class PostgresNativeDriver(
             transaction = enclosingTransaction
             return QueryResult.Unit
         }
-    }
-
-    fun copy(stdin: String): Long {
-        val status = PQputCopyData(conn, stdin, stdin.encodeToByteArray().size)
-        check(status == 1) {
-            conn.error()
-        }
-        val end = PQputCopyEnd(conn, null)
-        check(end == 1) {
-            conn.error()
-        }
-        val result = PQgetResult(conn)?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
-
-        return result.rows
     }
 }
 

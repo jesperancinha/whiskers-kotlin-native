@@ -29,7 +29,6 @@ kotlin {
                     headers("src/nativeInterop/cinterop/code/redcat.h")
                     includeDirs.allHeaders("code","src/nativeInterop/cinterop/code")
                 }
-
             }
         }
         binaries {
@@ -37,7 +36,6 @@ kotlin {
                 entryPoint = "main"
             }
         }
-
     }
 
     sourceSets {
