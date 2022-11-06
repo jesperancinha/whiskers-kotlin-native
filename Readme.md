@@ -24,10 +24,10 @@ As a datasource, I have continued my novel, [Good-Story](https://github.com/jesp
 
 If you are interested, please check [Chapter II - The cat that helped Lucy](./docs/good.story/good.story.chapter.2.md) for the complete data source and context.
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91) [Kotlin Coroutines vs Java Virtual Threads — A good story, but just that…](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91)
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91) [Kotlin Native and GraalVM — The Story So Far](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91)
 
 <div align="center">
-      <a title="Kotlin Coroutines vs Java Virtual Threads — A good story, but just that…" href="https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91">
+      <a title="Kotlin Native and GraalVM — The Story So Far" href="https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91">
      <img 
           src="./docs/article.whiskers.banner.png" 
           style="width:100%;">
