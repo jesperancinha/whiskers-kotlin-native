@@ -38,6 +38,11 @@ fun main() {
     )
     val catSayingsService = CatSayingsService(driver)
     val paragraphService = ParagraphService(driver)
+    println("http://localhost:8080/cat/testdrives")
+    println("http://localhost:8080/cat/sayings")
+    println("http://localhost:8080/cat/sayings")
+    println("http://localhost:8080/story/paragraphs")
+    println("http://localhost:8080/story/paragraphs/encoded")
     embeddedServer(CIO, port = configuration.server.port) {
         routing {
             install(ContentNegotiation) {

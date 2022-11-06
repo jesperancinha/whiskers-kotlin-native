@@ -1,3 +1,3 @@
-from paragraph_sender import send_paragraph
+from paragraph_sender import send_paragraphs_list
 
-send_paragraph()
+send_paragraphs_list()

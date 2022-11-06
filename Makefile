@@ -82,7 +82,7 @@ install-python:
 	sudo apt-get install python3-distutils
 	sudo apt-get install python3-apt
 run-paragraph-sender:
-	cd whiskers-paragraph-sender && python paragraph_sender.py
+	cd whiskers-paragraph-sender && python3 paragraph_sender.py
 dcup-ktor: stop
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml build
 	docker-compose -p ${GITHUB_RUN_ID} -f docker-compose.yml -f docker-compose.override.yml -f whiskers-ktor/docker-compose.yml -f whiskers-ktor/docker-compose.override.yml up -d whiskers-db
