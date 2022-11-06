@@ -1,4 +1,4 @@
-# whiskas-kotlin-native-command-line
+# whiskers-kotlin-native-command-line
 
 ---
 
@@ -23,6 +23,18 @@ This project is an in-depth investigation about all things Native and JVM with f
 As a datasource, I have continued my novel, [Good-Story](https://github.com/jesperancinha/good-story/blob/main/docs/good.story/GoodStory.md), which links several projects focused on backend developments.
 
 If you are interested, please check [Chapter II - The cat that helped Lucy](./docs/good.story/good.story.chapter.2.md) for the complete data source and context.
+
+[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91) [Kotlin Coroutines vs Java Virtual Threads — A good story, but just that…](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91)
+
+<div align="center">
+      <a title="Kotlin Coroutines vs Java Virtual Threads — A good story, but just that…" href="https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91">
+     <img 
+          src="./docs/article.whiskers.banner.png" 
+          style="width:100%;">
+      </a>
+</div>
+
+---
 
 ## How to run
 
@@ -55,6 +67,8 @@ make b
 make measure-all-sts
 ```
 
+--- 
+
 ## Project Structure
 
 -   [good-feel](./good-feel) - A simple Kotlin Native project without the use of C bindings
@@ -64,10 +78,14 @@ make measure-all-sts
 -   [whiskers-ktor-no-db](./whiskers-ktor-no-db) - Ktor Service implemented with hard-coded configuration
 -   [whiskers-ktor](./whiskers-ktor) - Ktor Service containing a full implementation of the Onion Model used in Microservices
 
+--- 
+
 ## Project layout
 
 1.  [Good Feel](./good-feel) -  A project to make you feel good. If you run into a situation where things get tough, then run this command to make you feel good. This project is the first test-drive about native use in this whole project
 2.  [Plus](./plus) - Plus just means a step forward. This module is fully dedicated to the use of external libraries.
+
+---
 
 ## References
 
