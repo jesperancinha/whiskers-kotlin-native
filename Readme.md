@@ -78,6 +78,7 @@ make measure-all-sts
 
 ### Online
 
+-   [Why GraalVM](https://www.graalvm.org/why-graalvm/)
 -   [Simplifying the cloud native journey with GraalVM and Helidon by Alina Yurenko](https://blogs.oracle.com/java/post/simplifying-the-cloud-native-journey-with-graalvm-and-helidon)
 -   [AOT compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)
 -   [Native AOT Deployment](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/)

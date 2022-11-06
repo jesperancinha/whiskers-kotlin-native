@@ -70,6 +70,7 @@ install-libs:
 	sudo apt-get install libpq-dev
 	sudo apt install bison
 	sudo apt install flex
+	sudo apt install build-essential libz-dev zlib1g-dev
 install-kotlin-native-linux: setup-binaries install-libs install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
 install-kotlin-native-linux-ktor:
 	cd whiskers-ktor/c && make install-kotlin-native-linux
