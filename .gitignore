@@ -62,3 +62,6 @@ __pycache__
 
 # Tests
 pid.file
+
+# Images
+docs/article.whiskers.banner.png~
