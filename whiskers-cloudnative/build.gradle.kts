@@ -50,14 +50,14 @@ tasks.withType<KotlinCompile> {
 		jvmTarget = "17"
 	}
 }
-
-tasks.getByName<BootBuildImage>("bootBuildImage") {
-	builder = "paketobuildpacks/builder:tiny"
-	environment = mapOf(
-		"BP_NATIVE_IMAGE" to "true"
-	)
-	buildpacks = listOf("gcr.io/paketo-buildpacks/java-native-image:7.34.0")
-}
+//
+//tasks.getByName<BootBuildImage>("bootBuildImage") {
+//	builder = "paketobuildpacks/builder:tiny"
+//	environment = mapOf(
+//		"BP_NATIVE_IMAGE" to "true"
+//	)
+//	buildpacks = listOf("gcr.io/paketo-buildpacks/java-native-image:7.34.0")
+//}
 
 tasks.withType<Test> {
 	useJUnitPlatform()
