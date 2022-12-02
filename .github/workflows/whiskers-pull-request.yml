@@ -29,7 +29,7 @@ jobs:
         run: make setup-binaries
         
       - name: Setup Gradle Env
-        run: export GRADLE_OPTS="-Xmx64m -Dorg.gradle.jvmargs='-Xmx256m -XX:MaxPermSize=64m'"
+        run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
 
       - name: Install Kotlin Native
         run: make install-kotlin-native-linux-ktor
