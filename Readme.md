@@ -10,6 +10,8 @@
 [![Build, Test, Coverage and Report](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers.yml/badge.svg)](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers.yml)
 [![e2e-whiskers](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers-e2e.yml/badge.svg)](https://github.com/jesperancinha/whiskers-kotlin-native/actions/workflows/whiskers-e2e.yml)
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2902fbf1084a47e28746af3102c98060)](https://www.codacy.com/gh/jesperancinha/whiskers-kotlin-native/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jesperancinha/whiskers-kotlin-native&amp;utm_campaign=Badge_Grade)
+
 [![GitHub language count](https://img.shields.io/github/languages/count/jesperancinha/good-story.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/top/jesperancinha/good-story.svg)](#)
 [![GitHub top language](https://img.shields.io/github/languages/code-size/jesperancinha/good-story.svg)](#)
