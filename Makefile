@@ -5,9 +5,11 @@ b: build
 build: build-gradle build-gradle-graalvm build-runners
 build-runners:
 	cd whiskers-runners && make b
-build-gradle: build-gradle-all-ktor
+build-gradle-good-feel:
 	cd good-feel && make b
+build-gradle-plus:
 	cd plus && make b
+build-gradle: build-gradle-all-ktor build-gradle-good-feel build-gradle-plus
 	make release-gradle
 build-gradle-ktor:
 	cd whiskers-ktor && make b
