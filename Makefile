@@ -5,13 +5,15 @@ b: build
 build: build-gradle build-gradle-graalvm build-runners
 build-runners:
 	cd whiskers-runners && make b
-build-gradle: build-gradle-ktor
+build-gradle: build-gradle-all-ktor
 	cd good-feel && make b
 	cd plus && make b
 	make release-gradle
 build-gradle-ktor:
 	cd whiskers-ktor && make b
+build-gradle-ktor-no-db:
 	cd whiskers-ktor-no-db && make b
+build-gradle-all-ktor: build-gradle-ktor build-gradle-ktor-no-db
 build-gradle-graalvm:
 	mkdir -p bin
 	cd whiskers-graalvm && make b

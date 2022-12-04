@@ -5,7 +5,61 @@ on:
     branches: [ main ]
 
 jobs:
-  build-test-coverage-report:
+  build-test-good-feel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project sources
+        uses: actions/checkout@v2
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: 'latest'
+          java-version: '17'
+          components: 'native-image'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Build Gradle
+        run: make build-gradle-good-feel
+
+  build-test-plus:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project sources
+        uses: actions/checkout@v2
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: 'latest'
+          java-version: '17'
+          components: 'native-image'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Build Gradle
+        run: make build-gradle-plus
+
+  build-test-ktor-no-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project sources
+        uses: actions/checkout@v2
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: 'latest'
+          java-version: '17'
+          components: 'native-image'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Setup Gradle Env
+        run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
+
+      - name: Build Gradle
+        run: make build-gradle-ktor-no-db
+
+  build-test-ktor:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
@@ -27,7 +81,7 @@ jobs:
 
       - name: Setup Binaries
         run: make setup-binaries
-        
+
       - name: Setup Gradle Env
         run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
 
@@ -38,9 +92,9 @@ jobs:
         run:  cd whiskers-ktor/postgresql/postgres-master && ./configure && make all
 
       - name: Build Gradle
-        run: make build-gradle
+        run: make build-gradle-ktor
 
-  build-graalvm-test-coverage-report:
+  build-graalvm-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
