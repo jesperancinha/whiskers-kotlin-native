@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -94,7 +94,21 @@ jobs:
       - name: Build Gradle
         run: make build-gradle-ktor
 
-  build-graalvm-test:
+  build-graalvm-exec-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: gradle/gradle-build-action@v2
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: 'latest'
+          java-version: '17'
+          components: 'native-image'
+
+      - name: Build Gradle GraalVM
+        run: make build-gradle-exec-graalvm
+
+  build-graalvm-cloud-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -105,11 +119,8 @@ jobs:
           java-version: '17'
           components: 'native-image'
 
-      - name: Setup Binaries
-        run: make setup-binaries
-
       - name: Build Gradle GraalVM
-        run: make build-gradle-graalvm
+        run: make build-gradle-cloud-graalvm
 
   build-whiskers-red-cat:
     runs-on: ubuntu-latest
