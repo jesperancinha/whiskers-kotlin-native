@@ -19,12 +19,12 @@ Olhão Marina, South of Portugal. There, Lucy began to have visions and confront
 ### The cat that helped Lucy
 
 Back in The Netherlands, Lucy had, among many of her jobs, one for a Telecom company
-called `Infrastructure Collective Zaphire BV`. It was also known as INCO. At INCO, Lucy was responsible to develop
+called `Infrastructure Collective Zaphire BV`. It was also known as `Incozed`. At `Incozed`, Lucy was responsible to develop
 software to support a variety of Telecom services.
 This was the job she got after her position at `BeRGees`. In Lucy's dream, she remembered Hara Arre. Hara was someone
 with her eyes on power, fame and reputation. She cared very little about her own position or the company itself.
 Needless to say that Hara would make the best to exploit the work from Lucy even claiming at times Lucy's work as her
-own work. The dream shifted back to INCO to a meeting with another one of her former bosses: Fenestev Moon.
+own work. The dream shifted back to `Incozed` to a meeting with another one of her former bosses: Fenestev Moon.
 Lucy and Mr. Moon went to a meeting to clarify some concerns brought up by Lucy. Lucy was always concerned about the
 safety of the company and due to her knowledge she was aware that some drastic changes had to be made in regard to the
 software being produced. The dream turns to something Lucy remembers being the inflexion point in her decision to remain
@@ -33,7 +33,7 @@ Fenestev, like Hara Arre, only had his sight on power and immediate profit and s
 as `unwanted weak negative emotions`. Lucy remembered his trick:
 
 - Fenestev Moon: I appreciate the fact that you bring this up to me. But you also have to understand the business side
-  of our company. I can't spend money like that to invest in new sofware that way. And then you know you say this and
+  of our company. I can't spend money like that to invest in new software that way. And then you know you say this and
   then it happens and then the computer gets broken and the car I have to take and the weather gets bad and when I cook
   the computer gets down... you don't follow me do you Lucy?
 - Lucy: With all due respect Mr. Moon, I'm not sure if I understand you.
