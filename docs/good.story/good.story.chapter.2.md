@@ -46,7 +46,7 @@ Lucy wakes up startled in the middle of the night. She was back in `Armona`. Her
 As the night moved on and the sun rose, Lucy took further a nice rest and at around 10, she was already doing her
 groceries in the supermarket close to her on the island.
 As she went into the small supermarket she met an old friend called `Lars Pereira`. `Lars` was a strange man with a
-peculiar moustache. Like `Lucy`, `Lars` was also a foreigner in Portugal. He came from `Switzerland` and he, unlike
+peculiar moustache. Like `Lucy`, `Lars` was also a foreigner in Portugal. He came from `Norway` and he, unlike
 Lucy,
 was
 only in `Armona` for holidays. Every single summer he would come back to relax.
@@ -101,7 +101,7 @@ Lars remained the whole time listening carefully to Lucy's story in awe and disb
 - Sneller Brass - CTO of `Max Maxx BV`
 - `Red portal enterprises B.V.`
 - Kitten - The cat that helped Lucy
-- Lars Pereira - A swiss friend of Lucy
+- Lars Pereira - A norwegian friend of Lucy
 
 ### Inspiring music
 
