@@ -45,15 +45,15 @@ Lucy wakes up startled in the middle of the night. She was back in `Armona`. Her
 
 As the night moved on and the sun rose, Lucy took further a nice rest and at around 10, she was already doing her
 groceries in the supermarket close to her on the island.
-As she went into the small supermarket she met an old friend called `Ursi Tursi Lursi`. `Lursi` was a strange man with a
-peculiar moustache. Like `Lucy`, `Lursi` was also a foreigner in Portugal. He came from `Switzerland` and he, unlike
+As she went into the small supermarket she met an old friend called `Lars Pereira`. `Lars` was a strange man with a
+peculiar moustache. Like `Lucy`, `Lars` was also a foreigner in Portugal. He came from `Switzerland` and he, unlike
 Lucy,
 was
 only in `Armona` for holidays. Every single summer he would come back to relax.
-With a curly moustache reminding ourselves of a very sophisticated Viking, `Lursi` was always nice to speak to. Lucy
+With a curly moustache reminding ourselves of a very sophisticated Viking, `Lars` was always nice to speak to. Lucy
 always saw in him an old friend. As they were talking over how great it was to live on that island, the cultura and the
 portuguese traditions, a red cat came along.
-It was a very friendly cat that reminded Lucy of something she never told `Lursi`.
+It was a very friendly cat that reminded Lucy of something she never told `Lars`.
 
 Back in Holland, more specifically in `Nieuwegein`, Lucy once had an assignment to install some sensors in a building.
 At that time something was constantly failing in the software project she was involved in. Nobody could figure out what
@@ -89,7 +89,7 @@ woman`. The Netherlands was known to be, at the time, for many Dutch people, qui
 After this incident, `Lucy` was unable to remain in this environment that suddenly became so toxic to her. She
 presented her resignation and found a new job at `Red portal enterprises B.V.` only a few weeks after the incident.
 
-Lursi remained the whole time listening carefully to Lucy's story in awe and disbelief.
+Lars remained the whole time listening carefully to Lucy's story in awe and disbelief.
 
 [to be continued...](https://github.com/jesperancinha/note-manager-app/blob/master/docs/good.story/good.story.chapter.3.md)
 [Chapter Three - Hong Kong Enterprise Surprise](https://github.com/jesperancinha/note-manager-app/blob/master/docs/good.story/good.story.chapter.3.md)
@@ -101,7 +101,7 @@ Lursi remained the whole time listening carefully to Lucy's story in awe and dis
 - Sneller Brass - CTO of `Max Maxx BV`
 - `Red portal enterprises B.V.`
 - Kitten - The cat that helped Lucy
-- Ursi Tursi Lursi - A swiss friend of Lucy
+- Lars Pereira - A swiss friend of Lucy
 
 ### Inspiring music
 
@@ -109,27 +109,27 @@ This is the music selection that has inspired the above fiction story:
 
 <div align="center">
       <a title="Freemasons feat Sophie Ellis-Bextor - Heartbreak (Make Me A Dancer) [Music Video]" href="https://www.youtube.com/watch?v=BQ7H0tuOFGY">
-     <img 
+     <img alt="Freemasons feat Sophie Ellis-Bextor - Heartbreak (Make Me A Dancer) [Music Video]"
           src="https://img.youtube.com/vi/BQ7H0tuOFGY/0.jpg" 
           style="width:20%;">
       </a>
       <a title="It Came From the 80's... Vol.5 - A Retro Darkwave Horror Synth Special" href="https://www.youtube.com/watch?v=bnefm57d7z4">
-     <img 
+     <img alt ="It Came From the 80's... Vol.5 - A Retro Darkwave Horror Synth Special"
           src="https://img.youtube.com/vi/bnefm57d7z4/0.jpg" 
           style="width:20%;">
       </a>
       <a title="Freemasons ft. Bailey Tzuke - Uninvited (Official Video HQ)" href="https://www.youtube.com/watch?v=oFBWPcaMKeo">
-     <img 
+     <img alt="Freemasons ft. Bailey Tzuke - Uninvited (Official Video HQ)"
           src="https://img.youtube.com/vi/oFBWPcaMKeo/0.jpg" 
           style="width:20%;">
       </a>
       <a title="Arabic House Mix 2012" href="https://www.youtube.com/watch?v=c-cgeKUz_Ks">
-     <img 
+     <img alt="Arabic House Mix 2012"
           src="https://img.youtube.com/vi/c-cgeKUz_Ks/0.jpg" 
           style="width:20%;">
       </a>
       <a title="Im Nin'Alu - Ofra Haza" href="https://www.youtube.com/watch?v=ZRnzTTYk7_Q">
-     <img 
+     <img alt="Im Nin'Alu - Ofra Haza"
           src="https://img.youtube.com/vi/ZRnzTTYk7_Q/0.jpg" 
           style="width:20%;">
       </a>
