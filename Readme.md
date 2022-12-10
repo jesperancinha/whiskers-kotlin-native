@@ -36,6 +36,11 @@ If you are interested, please check [Chapter II - The cat that helped Lucy](./do
       </a>
 </div>
 
+#### Stable releases
+
+- [1.0.0](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.0) - [6cbd9b0701259dc0145b6f6714295cbed66cbbb1](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.0)
+
+
 ---
 
 ## How to run
