@@ -18,13 +18,13 @@ Olhão Marina, South of Portugal. There, Lucy began to have visions and confront
 
 ### The cat that helped Lucy
 
-Back in The Netherlands, Lucy had, among many of her jobs, one for a Telecom company
-called `Infrastructure Collective Zaphire BV`. It was also known as `Incozed`. At `Incozed`, Lucy was responsible to develop
+Back in The Netherlands, Lucy had, among many of her jobs, one for a fashion company
+called `Modern Fashion Metropol of Fun BV`. It was also known as `MFMF`. At `MFMF`, Lucy was responsible to develop
 software to support a variety of Telecom services.
 This was the job she got after her position at `BeRGees`. In Lucy's dream, she remembered Hara Arre. Hara was someone
 with her eyes on power, fame and reputation. She cared very little about her own position or the company itself.
 Needless to say that Hara would make the best to exploit the work from Lucy even claiming at times Lucy's work as her
-own work. The dream shifted back to `Incozed` to a meeting with another one of her former bosses: Fenestev Moon.
+own work. The dream shifted back to `MFMF` to a meeting with another one of her former bosses: Fenestev Moon.
 Lucy and Mr. Moon went to a meeting to clarify some concerns brought up by Lucy. Lucy was always concerned about the
 safety of the company and due to her knowledge she was aware that some drastic changes had to be made in regard to the
 software being produced. The dream turns to something Lucy remembers being the inflexion point in her decision to remain
