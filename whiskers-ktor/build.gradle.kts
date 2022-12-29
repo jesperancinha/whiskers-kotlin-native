@@ -1,7 +1,7 @@
 plugins {
     application
     kotlin("multiplatform") version "1.8.0"
-    kotlin("plugin.serialization") version "1.7.22"
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 group = "org.jesperancinha.native"
