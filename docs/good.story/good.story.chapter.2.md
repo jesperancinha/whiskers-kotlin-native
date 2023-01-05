@@ -46,12 +46,21 @@ Lucy wakes up startled in the middle of the night. She was back in `Armona`. Her
 As the night moved on and the sun rose, Lucy took further a nice rest and at around 10, she was already doing her
 groceries in the supermarket close to her on the island.
 As she went into the small supermarket she met an old friend called `Lars Pereira`. `Lars` was a strange man with a
-peculiar moustache. Like `Lucy`, `Lars` was also a foreigner in Portugal. He came from `Norway` and he, unlike
+peculiar scar. Like `Lucy`, `Lars` was also a foreigner in Portugal. He came from `Norway` and he, unlike
 Lucy,
 was
 only in `Armona` for holidays. Every single summer he would come back to relax.
-With a curly moustache reminding ourselves of a very sophisticated Viking, `Lars` was always nice to speak to. Lucy
-always saw in him an old friend. As they were talking over how great it was to live on that island, the cultura and the
+Lars Pereira, was someone visually very different. He had a strange tattoo that would start in his hand and radiate
+from there throughout his body. It started on his left hand with the shape of a root, and it would end on his right hand
+with the letters C, O, M and P and other faded out letters in what is seemed to be the result of the passing of time. It
+could mean
+anything and on the island it was a common subject to discuss what word used to be there? Could it have
+been `Completion`, `Composition`, `Composer` or something else? Nobody really knew and Lars always refused to discuss
+that changing the subject very swiftly and in very genius ways every single time someone would bring it up. Mean people
+would refer to him as Mr.Comp.
+
+Lucy always saw in him a close friend. As they were talking over how great it was to live on that island, the cultura
+and the
 portuguese traditions, a red cat came along.
 It was a very friendly cat that reminded Lucy of something she never told `Lars`.
 
@@ -85,7 +94,7 @@ hiring the cleaners and the cleaners never found the camera in plain sight, it w
 might be involved. Regardless, Lucy mentioned this in the office, but she was accused of being `too negative` and to her
 surprised she also accused of planting the camera herself.
 Many questions raised in Lucy's mind including if she was being suddenly targeted by the company simply for `being a
-woman`. The Netherlands was known to be, at the time, for many Dutch people, quite an extreme patriarch society. 
+woman`. The Netherlands was known to be, at the time, for many Dutch people, quite an extreme patriarch society.
 After this incident, `Lucy` was unable to remain in this environment that suddenly became so toxic to her. She
 presented her resignation and found a new job at `Red portal enterprises B.V.` only a few weeks after the incident.
 
