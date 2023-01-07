@@ -46,7 +46,7 @@ Lucy wakes up startled in the middle of the night. She was back in `Armona`. Her
 As the night moved on and the sun rose, Lucy took further a nice rest and at around 10, she was already doing her
 groceries in the supermarket close to her on the island.
 As she went into the small supermarket she met an old friend called `Lars Pereira`. `Lars` was a strange man with a
-peculiar scar. Like `Lucy`, `Lars` was also a foreigner in Portugal. He came from `Norway` and he, unlike
+peculiar tattoo. Like `Lucy`, `Lars` was also a foreigner in Portugal. He came from `Norway` and he, unlike
 Lucy,
 was
 only in `Armona` for holidays. Every single summer he would come back to relax.
