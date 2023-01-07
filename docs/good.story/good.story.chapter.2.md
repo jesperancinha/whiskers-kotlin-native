@@ -79,7 +79,7 @@ After a few pets and a few laughs, something that would take about 5 to 10 minut
 And that was no different this day. As Lucy walks into the office, `Kitten` starts to meouw. But not like a normal cat
 does. To Lucy, it felt like something was wrong. Somehow, the cat wanted to say something other than play or ask for
 food.
-The cat insisted on going inside the office, by scratchin its paws against the glass. As Lucy lets him in, the cat jumps
+The cat insisted on going inside the office, by scratching its paws against the glass. As Lucy lets him in, the cat jumps
 and runs straight into her desk and
 there he goes silent and begins to look at a corner where the bookcase was.
 
