@@ -3,6 +3,9 @@ name: Build and Test
 on:
   push:
     branches: [ main ]
+  pull_request_target:
+    types:
+      - closed
 
 jobs:
   build-test-good-feel:
