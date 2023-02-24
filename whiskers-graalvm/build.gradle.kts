@@ -31,6 +31,7 @@ dependencies {
 	implementation("jakarta.validation:jakarta.validation-api:3.0.2")
 	implementation("io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE")
 	implementation("org.hibernate.validator:hibernate-validator:8.0.0.Final")
+	implementation("jakarta.el:jakarta.el-api:5.0.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.testcontainers:junit-jupiter")
