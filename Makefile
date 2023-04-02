@@ -257,10 +257,10 @@ upgrade:
 	cd whiskers-graalvm && gradle wrapper --gradle-version $(GRADLE_VERSION)
 	cd whiskers-ktor && gradle wrapper --gradle-version $(GRADLE_VERSION)
 	cd whiskers-ktor-no-db && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-paragraph-sender && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-red-cat && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-red-cat-db && gradle wrapper --gradle-version $(GRADLE_VERSION)
 	cd whiskers-runners && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-runners/whiskers-runners-graalvm && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-runners/whiskers-runners-knative && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-runners/whiskers-runners-native && gradle wrapper --gradle-version $(GRADLE_VERSION)
 	cd plus && gradle wrapper --gradle-version $(GRADLE_VERSION)
 	cd good-feel && gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-gradle:
