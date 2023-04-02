@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 GITHUB_RUN_ID ?=123
+GRADLE_VERSION := 8.0.2
 
 b: build
 build: build-gradle build-gradle-graalvm build-runners
@@ -250,6 +251,18 @@ runnable-test-native:
 	cd whiskers-runners/whiskers-runners-native && make run-test
 runnable-test-jvm:
 	cd whiskers-runners/whiskers-runners-graalvm && make run-test-jar
+upgrade:
+	gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-cloudnative && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-graalvm && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-ktor && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-ktor-no-db && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-paragraph-sender && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-red-cat && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-red-cat-db && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd whiskers-runners && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd plus && gradle wrapper --gradle-version $(GRADLE_VERSION)
+	cd good-feel && gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-gradle:
 	sudo apt upgrade
 	sudo apt update
