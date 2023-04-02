@@ -250,3 +250,10 @@ runnable-test-native:
 	cd whiskers-runners/whiskers-runners-native && make run-test
 runnable-test-jvm:
 	cd whiskers-runners/whiskers-runners-graalvm && make run-test-jar
+upgrade-gradle:
+	sudo apt upgrade
+	sudo apt update
+	export SDKMAN_DIR="$(HOME)/.sdkman"
+	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk update
+	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk install gradle $(GRADLE_VERSION)
+	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]] && source "$(HOME)/.sdkman/bin/sdkman-init.sh" &&	sdk use gradle $(GRADLE_VERSION)
