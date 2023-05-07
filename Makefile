@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 GITHUB_RUN_ID ?=123
+SHELL := /bin/bash
 GRADLE_VERSION ?= 8.1.1
 
 b: build
