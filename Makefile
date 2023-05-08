@@ -1,6 +1,16 @@
 SHELL := /bin/bash
 GITHUB_RUN_ID ?=123
 GRADLE_VERSION ?= 8.1.1
+MODULE_LOCATIONS := whiskers-cloudnative \
+					whiskers-graalvm \
+					whiskers-ktor \
+					whiskers-ktor-no-db \
+					whiskers-runners \
+					whiskers-runners/whiskers-runners-graalvm \
+					whiskers-runners/whiskers-runners-knative \
+					whiskers-runners/whiskers-runners-native \
+					plus \
+					good-feel
 
 b: build
 build: build-gradle build-gradle-graalvm build-runners
@@ -252,17 +262,14 @@ runnable-test-native:
 runnable-test-jvm:
 	cd whiskers-runners/whiskers-runners-graalvm && make run-test-jar
 upgrade:
+	@for location in $(MODULE_LOCATIONS); do \
+  		export CURRENT=$(shell pwd); \
+  		echo "Upgrading $$location..."; \
+		cd $$location; \
+		gradle wrapper --gradle-version $(GRADLE_VERSION); \
+		cd $$CURRENT; \
+	done
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-cloudnative && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-graalvm && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-ktor && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-ktor-no-db && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-runners && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-runners/whiskers-runners-graalvm && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-runners/whiskers-runners-knative && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd whiskers-runners/whiskers-runners-native && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd plus && gradle wrapper --gradle-version $(GRADLE_VERSION)
-	cd good-feel && gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-gradle:
 	sudo apt upgrade
 	sudo apt update
