@@ -30,10 +30,12 @@ build-gradle-all-ktor: build-gradle-ktor build-gradle-ktor-no-db
 build-gradle-exec-graalvm:
 	mkdir -p bin; \
 	cd whiskers-graalvm; \
+	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
 build-gradle-cloud-graalvm:
 	mkdir -p bin; \
 	cd whiskers-cloudnative; \
+	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
 build-gradle-graalvm: build-gradle-exec-graalvm build-gradle-cloud-graalvm
 	make release-gradle-graalvm
