@@ -22,6 +22,10 @@
 
 This project is an in-depth investigation about all things Native and JVM with focus on `Kotlin Native`.
 
+<details>
+<summary><b>Stable releases</b></summary>
+
+---
 As a datasource, I have continued my novel, [Good-Story](https://github.com/jesperancinha/good-story/blob/main/docs/good.story/GoodStory.md), which links several projects focused on backend developments.
 
 If you are interested, please check [Chapter II - The cat that helped Lucy](./docs/good.story/good.story.chapter.2.md) for the complete data source and context.
@@ -39,6 +43,10 @@ If you are interested, please check [Chapter II - The cat that helped Lucy](./do
 #### Stable releases
 
 -   [1.0.0](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.0) - [6cbd9b0701259dc0145b6f6714295cbed66cbbb1](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.0)
+
+
+---
+</details>
 
 
 ---
@@ -96,23 +104,19 @@ make measure-all-sts
 
 ## References
 
-### Videos
+<details>
+<summary><b>Videos</b></summary>
 
-<div align="center">
-      <a title="Ktor From the Ground Up" href="https://www.youtube.com/watch?v=WlvK6zYo8Sw">
-     <img alt="Ktor From the Ground Up"
-          src="https://img.youtube.com/vi/WlvK6zYo8Sw/0.jpg" 
-          style="width:30%;">
-      </a>
-      <a title="Applied Event Streaming With Apache Kafka, Kotlin, and Ktor" href="https://www.youtube.com/watch?v=6qxkawU0qKA">
-     <img alt="Applied Event Streaming With Apache Kafka, Kotlin, and Ktor"
-          src="https://img.youtube.com/vi/6qxkawU0qKA/0.jpg" 
-          style="width:30%;">
-      </a>
-</div>
+---
+-   [Ktor From the Ground Up](https://www.youtube.com/watch?v=WlvK6zYo8Sw)
+-   [Applied Event Streaming With Apache Kafka, Kotlin, and Ktor](https://www.youtube.com/watch?v=6qxkawU0qKA")
+---
+</details>
 
-### Online
+<details>
+<summary><b>Websites</b></summary>
 
+---
 -   [Why GraalVM](https://www.graalvm.org/why-graalvm/)
 -   [Simplifying the cloud native journey with GraalVM and Helidon by Alina Yurenko](https://blogs.oracle.com/java/post/simplifying-the-cloud-native-journey-with-graalvm-and-helidon)
 -   [AOT compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation)
@@ -140,7 +144,10 @@ make measure-all-sts
 -   [Support external JAR libraries? #1212](https://github.com/JetBrains/kotlin-native/issues/1212)
 -   [How to Convert Runnable .jar File to Native Code?](https://stackoverflow.com/questions/52738484/how-to-convert-runnable-jar-file-to-native-code)
 -   [Incubator @ KongHQ](https://incubator.konghq.com/)
--   [Get started with Kotlin/Native in IntelliJ IDEA](https://kotlinlang.org/ docs/native-get-started.html#0)
+-   [Get started with Kotlin/Native in IntelliJ IDEA](https://kotlinlang.org/docs/native-get-started.html#0)
+
+---
+</details>
 
 ## Thanks
 
