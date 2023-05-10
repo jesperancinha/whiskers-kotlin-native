@@ -106,10 +106,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: gradle/gradle-build-action@v2
-      - uses: graalvm/setup-graalvm@v1
+      - uses:  @v1
         with:
           version: 'latest'
-          java-version: '17'
+          java-version: '19'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -124,7 +124,7 @@ jobs:
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '17'
+          java-version: '19'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -139,7 +139,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '19'
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
@@ -161,7 +161,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '19'
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
