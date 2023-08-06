@@ -88,11 +88,7 @@ copy-binaries:
 	cp postgres.zip whiskers-red-cat-db
 setup-binaries: download-binaries copy-binaries
 install-libs:
-	sudo apt install libreadline-dev
-	sudo apt-get install libpq-dev
-	sudo apt install bison
-	sudo apt install flex
-	sudo apt install build-essential libz-dev zlib1g-dev
+	sudo apt install libreadline-dev libpq-dev bison flex build-essential libz-dev zlib1g-dev -y
 install-kotlin-native-linux: setup-binaries install-libs install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
 install-kotlin-native-linux-ktor:
 	cd whiskers-ktor/c && make install-kotlin-native-linux
@@ -102,8 +98,8 @@ install-kotlin-native-linux-rc:
 install-kotlin-native-linux-rcdb:
 	cd whiskers-red-cat-db && make install-kotlin-native-linux
 install-python:
-	sudo apt-get install python3-distutils
-	sudo apt-get install python3-apt
+	sudo apt-get install python3-distutils -y
+	sudo apt-get install python3-apt -y
 run-paragraph-sender:
 	cd whiskers-paragraph-sender && python3 paragraph_sender.py
 dcup-ktor: stop
@@ -275,8 +271,8 @@ upgrade:
 	done
 	gradle wrapper --gradle-version $(GRADLE_VERSION)
 upgrade-gradle:
-	sudo apt upgrade
-	sudo apt update
+	sudo apt upgrade -y
+	sudo apt update -y
 	export SDKMAN_DIR="$(HOME)/.sdkman"; \
 	[[ -s "$(HOME)/.sdkman/bin/sdkman-init.sh" ]]; \
 	source "$(HOME)/.sdkman/bin/sdkman-init.sh"; \
@@ -292,8 +288,7 @@ upgrade-gradle:
 	fi; \
 	make upgrade
 install-linux:
-	sudo apt-get install jq
-	sudo apt-get install curl
+	sudo apt-get install jq curl -y
 	curl https://services.gradle.org/versions/current
 local-pipeline-ktor-no-db: build-gradle-ktor-no-db
 local-pipeline-ktor: build-gradle-ktor
