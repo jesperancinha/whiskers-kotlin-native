@@ -296,3 +296,9 @@ install-linux:
 	sudo apt-get install curl
 	curl https://services.gradle.org/versions/current
 local-pipeline-ktor-no-db: build-gradle-ktor-no-db
+local-pipeline-ktor: build-gradle-ktor
+local-pipeline-good-feel: build-gradle-good-feel
+local-pipeline-plus: build-gradle-plus
+local-pipeline-graal-exec: build-gradle-exec-graalvm
+local-pipeline-graal-cloud: build-gradle-cloud-graalvm
+local-pipeline: local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor-no-db local-pipeline-ktor  local-pipeline-graal-exec local-pipeline-graal-cloud
