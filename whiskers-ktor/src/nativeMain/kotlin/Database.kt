@@ -14,6 +14,7 @@ import org.jesperancinha.native.ConnStatusType.CONNECTION_OK
  * From 2022/10/11
  */
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 open class PostgresNativeDriver(
     host: String, database: String, user: String, password: String, port: Int = 5432, options: String? = null
 ) : SqlDriver {
@@ -188,6 +189,7 @@ open class PostgresNativeDriver(
         PQfinish(conn)
     }
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override fun newTransaction(): QueryResult.Value<Transacter.Transaction> =
         conn.exec("BEGIN").let { QueryResult.Value(Transaction(transaction)) }
 
@@ -204,6 +206,7 @@ open class PostgresNativeDriver(
     }
 }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 class PostgresCursor(
     private var result: CPointer<PGresult>,
     private val name: String,
@@ -265,6 +268,7 @@ class PostgresCursor(
 }
 
 @OptIn(ExperimentalUnsignedTypes::class)
+@kotlinx.cinterop.ExperimentalForeignApi
 class PostgresPreparedStatement(private val parameters: Int) : SqlPreparedStatement {
     internal fun values(scope: AutofreeScope): CValuesRef<CPointerVar<ByteVar>> = createValues(parameters) {
         value = when (val value = _values[it]) {
