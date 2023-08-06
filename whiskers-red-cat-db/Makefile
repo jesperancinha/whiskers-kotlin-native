@@ -14,7 +14,7 @@ install-kotlin-native-linux:
 	if [ -d "kotlin.native" ]; then rm -r kotlin.native; fi
 	if [ -d "postgres-master" ]; then rm -r postgres-master; fi
 	mv kotlin-native-linux-x86_64-1.7.20 kotlin.native
-	sudo apt install libreadline-dev
+	sudo apt install libreadline-dev -y
 	unzip -o postgres.zip
 postgres-build:
 	cd postgres-master && ./configure

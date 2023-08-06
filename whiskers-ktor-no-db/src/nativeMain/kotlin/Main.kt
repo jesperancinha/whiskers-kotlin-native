@@ -95,6 +95,7 @@ private suspend fun ApplicationCall.respondWithEntity(status: HttpStatusCode, pa
     respond(status = status, paragraph.encodeParagraph())
 }
 
+@OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
 fun readText(filePath: String): String {
     val returnBuffer = StringBuilder()
     val file = fopen(filePath, "r") ?: throw IllegalArgumentException("Cannot open input file $filePath")
