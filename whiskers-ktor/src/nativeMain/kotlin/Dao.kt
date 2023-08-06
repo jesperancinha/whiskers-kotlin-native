@@ -18,7 +18,7 @@ internal interface Repository<T> {
 }
 
 @Serializable
-data class CatSaying(
+ data class CatSaying(
     var id: Long? = null,
     val saying: String
 )
@@ -30,6 +30,7 @@ data class Paragraph(
 )
 
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 open class CatSayingsRepository(
     val nativeDriver: PostgresNativeDriver,
     override val singleEntityMapper: (SqlCursor) -> CatSaying = {
@@ -54,27 +55,32 @@ open class CatSayingsRepository(
 
 ) : Repository<CatSaying> {
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override fun findAll(): List<CatSaying> =
         nativeDriver.executeSelect(
             sql = "SELECT * from sayings.cat_line ;",
             mapper = listEntityMapper
         ).value
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun findById(id: Long): CatSaying = nativeDriver.executeSelect(
         sql = "SELECT * from sayings.cat_line  limit 1 where id = ${id};",
         mapper = singleEntityMapper
     ).value
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun first(): CatSaying =
         nativeDriver.executeSelect(
             sql = "SELECT * from sayings.cat_line  limit 1;",
             mapper = singleEntityMapper
         ).value
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun deleteAll() {
         nativeDriver.execute(null, "DELETE FROM sayings.cat_line",0)
     }
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun save(entity: CatSaying) =
         nativeDriver.executeInsert(null, "INSERT INTO sayings.cat_line (saying)VALUES ('${entity.saying}')")
             .let { entity }
@@ -82,8 +88,10 @@ open class CatSayingsRepository(
 }
 
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 class ParagraphRepository(
     val nativeDriver: PostgresNativeDriver,
+    @kotlinx.cinterop.ExperimentalForeignApi
     override val singleEntityMapper: (SqlCursor) -> Paragraph = {
         it.next()
         Paragraph(
@@ -91,6 +99,7 @@ class ParagraphRepository(
             text = it.getString(1) ?: throw RuntimeException("Element found without a text!")
         )
     },
+    @kotlinx.cinterop.ExperimentalForeignApi
     override val listEntityMapper: (SqlCursor) -> List<Paragraph> = {
         val all = mutableListOf<Paragraph>()
         while (it.next()) {
@@ -104,26 +113,31 @@ class ParagraphRepository(
         all.toList()
     }
 ) : Repository<Paragraph> {
+    @kotlinx.cinterop.ExperimentalForeignApi
     override fun findAll(): List<Paragraph> = nativeDriver.executeSelect(
             sql = "SELECT * from story.paragraph;",
             mapper = listEntityMapper
         ).value
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun findById(id: Long): Paragraph =nativeDriver.executeSelect(
         sql = "SELECT * from story.paragraph limit 1 where id = ${id};",
         mapper = singleEntityMapper
     ).value
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun first(): Paragraph  =
         nativeDriver.executeSelect(
             sql = "SELECT * from story.paragraph limit 1;",
             mapper = singleEntityMapper
         ).value
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun deleteAll() {
         nativeDriver.execute(null, "DELETE FROM story.paragraph",0)
     }
 
+    @kotlinx.cinterop.ExperimentalForeignApi
     override suspend fun save(entity: Paragraph): Paragraph =
         nativeDriver.executeInsert(null, "INSERT INTO story.paragraph(text)VALUES ('${entity.text.escapePostgreSQL()}')")
             .let { entity }

@@ -15,6 +15,7 @@ internal interface Service<T> {
 }
 
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 class CatSayingsService(
     driver: PostgresNativeDriver,
     val catSayingsRepository: CatSayingsRepository = CatSayingsRepository(nativeDriver = driver)
@@ -28,6 +29,7 @@ class CatSayingsService(
 
 
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 internal class ParagraphService(driver: PostgresNativeDriver) : Service<Paragraph> {
     private val paragraphRepository = ParagraphRepository(nativeDriver = driver)
     override fun getAll() = paragraphRepository.findAll()
