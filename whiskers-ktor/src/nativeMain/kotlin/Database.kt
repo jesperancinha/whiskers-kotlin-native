@@ -206,6 +206,7 @@ open class PostgresNativeDriver(
     }
 }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 class PostgresCursor(
     private var result: CPointer<PGresult>,
     private val name: String,

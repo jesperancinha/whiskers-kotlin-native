@@ -291,7 +291,9 @@ install-linux:
 	sudo apt-get install jq curl -y
 	curl https://services.gradle.org/versions/current
 local-pipeline-ktor-no-db: build-gradle-ktor-no-db
-local-pipeline-ktor: build-gradle-ktor
+local-pipeline-ktor: install-libs setup-binaries install-kotlin-native-linux-ktor
+	cd whiskers-ktor/postgresql/postgres-master && ./configure && make all
+	make build-gradle-ktor
 local-pipeline-good-feel: build-gradle-good-feel
 local-pipeline-plus: build-gradle-plus
 local-pipeline-graal-exec: build-gradle-exec-graalvm
