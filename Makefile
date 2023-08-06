@@ -295,3 +295,4 @@ install-linux:
 	sudo apt-get install jq
 	sudo apt-get install curl
 	curl https://services.gradle.org/versions/current
+local-pipeline-ktor-no-db: build-gradle-ktor-no-db
