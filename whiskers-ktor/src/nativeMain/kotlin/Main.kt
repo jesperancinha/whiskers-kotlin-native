@@ -27,6 +27,7 @@ data class Server(val port: Int)
 data class Database(val port: Int, val host: String)
 
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 fun main() {
     val configuration = getConfig()
     val driver = PostgresNativeDriver(
@@ -107,9 +108,11 @@ fun main() {
     }.start(wait = true)
 }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 private fun getConfig(): Config =
     readText("application.json").let { config -> Json.decodeFromString(config) }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 private fun runNativeDemos(): Config {
     val story = tell_story() as CPointer<ByteVar>
     println("Welcome to the redcat story (server): ${story.toKString()}")
@@ -122,6 +125,7 @@ private fun runNativeDemos(): Config {
 }
 
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 private fun makeACatsDay(catSayingsService: CatSayingsService, configuration: Config) {
     println("--- A cat's day 🐈  ---")
     val driver = PostgresNativeDriver(
@@ -140,6 +144,7 @@ private fun makeACatsDay(catSayingsService: CatSayingsService, configuration: Co
     println("--- Cat logs out ---")
 }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 fun readText(filePath: String): String {
     val returnBuffer = StringBuilder()
     val file = fopen(filePath, "r") ?: throw IllegalArgumentException("Cannot open input file $filePath")
@@ -162,6 +167,7 @@ fun readText(filePath: String): String {
     return toString
 }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 fun executeCommand(command: String): String {
     val fp: CPointer<FILE>? = popen(command, "r")
     val buffer = ByteArray(4096)
@@ -181,13 +187,16 @@ fun executeCommand(command: String): String {
     return returnString.trim().toString()
 }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 private suspend fun ApplicationCall.respondWithEncodedFlow(status: HttpStatusCode, flow: List<Paragraph>) {
     respond(status = status, flow.toEncodedParagraphs())
 }
+@kotlinx.cinterop.ExperimentalForeignApi
 private suspend fun ApplicationCall.respondWithEncodedFlow(status: HttpStatusCode, flow: List<CatSaying>) {
     respond(status = status, flow.toEncodedSayings())
 }
 
+@kotlinx.cinterop.ExperimentalForeignApi
 private suspend fun ApplicationCall.respondWithEntity(status: HttpStatusCode, paragraph: Paragraph) {
     respond(status = status, paragraph.encodeParagraph())
 }
