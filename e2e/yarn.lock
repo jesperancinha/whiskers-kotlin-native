@@ -77,9 +77,9 @@
   version "1.0.3"
   resolved "https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.3.tgz"
 
-"@types/node@*", "@types/node@^14.14.31":
-  version "14.18.31"
-  resolved "https://registry.npmjs.org/@types/node/-/node-14.18.31.tgz"
+"@types/node@*", "@types/node@^16.18.39":
+  version "16.18.39"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.39.tgz#aa39a1a87a40ef6098ee69689a1acb0c1b034832"
 
 "@types/sinonjs__fake-timers@8.1.1":
   version "8.1.1"
@@ -338,13 +338,13 @@ crypto@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/crypto/-/crypto-1.0.1.tgz"
 
-cypress@12.17.1:
-  version "12.17.1"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.17.1.tgz#777fdcceec4ecd642fc90795f5994853b6ea03f8"
+cypress@12.17.3:
+  version "12.17.3"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-12.17.3.tgz#1e2b19037236fc60e4a4b3a14f0846be17a1fc0e"
   dependencies:
     "@cypress/request" "^2.88.11"
     "@cypress/xvfb" "^1.2.4"
-    "@types/node" "^14.14.31"
+    "@types/node" "^16.18.39"
     "@types/sinonjs__fake-timers" "8.1.1"
     "@types/sizzle" "^2.3.2"
     arch "^2.2.0"
