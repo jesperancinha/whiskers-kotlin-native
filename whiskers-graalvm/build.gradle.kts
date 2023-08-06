@@ -53,3 +53,11 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+graalvmNative {
+	binaries {
+		named("main") {
+			mainClass.set("org.jesperancinha.knative.WhiskersGraalvmApplicationKt")
+		}
+	}
+}

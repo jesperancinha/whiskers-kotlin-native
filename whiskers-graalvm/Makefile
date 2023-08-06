@@ -1,6 +1,7 @@
 b: build-gradle
 build-gradle:
 	if [ -d "build" ]; then rm -r build; fi
+	gradle wrapper
 	./gradlew
 	./gradlew nativeCompile
 	make build-jar
