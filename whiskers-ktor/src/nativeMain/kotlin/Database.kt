@@ -268,6 +268,7 @@ class PostgresCursor(
 }
 
 @OptIn(ExperimentalUnsignedTypes::class)
+@kotlinx.cinterop.ExperimentalForeignApi
 class PostgresPreparedStatement(private val parameters: Int) : SqlPreparedStatement {
     internal fun values(scope: AutofreeScope): CValuesRef<CPointerVar<ByteVar>> = createValues(parameters) {
         value = when (val value = _values[it]) {

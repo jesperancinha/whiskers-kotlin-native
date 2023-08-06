@@ -88,6 +88,7 @@ open class CatSayingsRepository(
 }
 
 @ExperimentalUnsignedTypes
+@kotlinx.cinterop.ExperimentalForeignApi
 class ParagraphRepository(
     val nativeDriver: PostgresNativeDriver,
     @kotlinx.cinterop.ExperimentalForeignApi
