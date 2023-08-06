@@ -296,4 +296,4 @@ local-pipeline-good-feel: build-gradle-good-feel
 local-pipeline-plus: build-gradle-plus
 local-pipeline-graal-exec: build-gradle-exec-graalvm
 local-pipeline-graal-cloud: build-gradle-cloud-graalvm
-local-pipeline: setup-binaries install-kotlin-native-linux-ktor local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor-no-db local-pipeline-ktor  local-pipeline-graal-exec local-pipeline-graal-cloud
+local-pipeline: setup-binaries install-kotlin-native-linux install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor-no-db local-pipeline-ktor  local-pipeline-graal-exec local-pipeline-graal-cloud
