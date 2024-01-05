@@ -1,7 +1,7 @@
 plugins {
     application
-    kotlin("multiplatform") version "1.9.20"
-    kotlin("plugin.serialization") version "1.9.20"
+    kotlin("multiplatform") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 group = "org.jesperancinha.native"
@@ -29,7 +29,7 @@ kotlin {
             }
         }
     }
-    val ktorVersion="2.3.6"
+    val ktorVersion="2.3.7"
     sourceSets {
         val nativeMain by getting {
             dependencies {
@@ -37,7 +37,7 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
             }
         }
         val nativeTest by getting {

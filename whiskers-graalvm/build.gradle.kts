@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "3.2.0"
+	id("org.springframework.boot") version "3.2.1"
 	id("io.spring.dependency-management") version "1.1.4"
 //	id("org.springframework.experimental.aot") version "0.12.1"
 	id("org.graalvm.buildtools.native") version "0.9.28"
 	kotlin("jvm") version "1.9.21"
-  kotlin("plugin.spring") version "1.9.21"
+  kotlin("plugin.spring") version "1.9.22"
 }
 
 group = "org.jesperancinha.knative"

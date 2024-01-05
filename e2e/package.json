@@ -21,8 +21,8 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "13.5.1",
-    "ts-node": "10.9.1",
-    "typescript": "5.3.2"
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
   },
   "dependencies": {
     "client-oauth2": "^4.3.3",
