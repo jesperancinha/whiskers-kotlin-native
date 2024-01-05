@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.9.10"
+    kotlin("multiplatform") version "1.9.22"
 }
 
 group = "me.jesperancinha"
