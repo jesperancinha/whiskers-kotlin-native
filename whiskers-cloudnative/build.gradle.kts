@@ -6,7 +6,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.4"
 //	id("org.springframework.experimental.aot") version "0.12.1"
 	id("org.graalvm.buildtools.native") version "0.9.28"
-	kotlin("jvm") version "1.9.20"
+	kotlin("jvm") version "1.9.21"
 	kotlin("plugin.spring") version "1.9.10"
 }
 
@@ -32,7 +32,7 @@ dependencies {
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("jakarta.validation:jakarta.validation-api:3.0.2")
 	implementation("io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE")
-	implementation("org.springframework.boot:spring-boot-starter-validation:3.2.0")
+	implementation("org.springframework.boot:spring-boot-starter-validation:3.2.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("org.testcontainers:junit-jupiter")
