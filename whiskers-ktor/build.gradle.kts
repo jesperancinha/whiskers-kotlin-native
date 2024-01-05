@@ -1,7 +1,7 @@
 plugins {
     application
-    kotlin("multiplatform") version "1.9.21"
-    kotlin("plugin.serialization") version "1.9.21"
+    kotlin("multiplatform") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 group = "org.jesperancinha.native"
@@ -42,7 +42,7 @@ kotlin {
         }
 
     }
-    val ktorVersion = "2.3.6"
+    val ktorVersion = "2.3.7"
     sourceSets {
         val nativeMain by getting {
             dependencies {
@@ -50,8 +50,8 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
                 implementation("app.cash.sqldelight:runtime:2.0.0-alpha05")
             }
         }
