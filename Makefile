@@ -310,3 +310,4 @@ github-pipeline-ktor:
 	cd whiskers-ktor/postgresql/postgres-master && ./configure && make all; \
 	cd ../../../ ; \
 	make build-gradle-ktor
+local-pipeline: local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor local-pipeline-ktor-no-db local-pipeline-graal-exec local-pipeline-graal-cloud
