@@ -182,6 +182,9 @@ open class PostgresNativeDriver(
         const val BINARY_RESULT_FORMAT = 1
     }
 
+    override fun addListener(vararg queryKeys: String, listener: Query.Listener) {
+    }
+
     override fun close() {
         PQfinish(conn)
     }
@@ -189,6 +192,12 @@ open class PostgresNativeDriver(
     @kotlinx.cinterop.ExperimentalForeignApi
     override fun newTransaction(): QueryResult.Value<Transacter.Transaction> =
         conn.exec("BEGIN").let { QueryResult.Value(Transaction(transaction)) }
+
+    override fun notifyListeners(vararg queryKeys: String) {
+    }
+
+    override fun removeListener(vararg queryKeys: String, listener: Query.Listener) {
+    }
 
     private inner class Transaction(
         override val enclosingTransaction: Transacter.Transaction?

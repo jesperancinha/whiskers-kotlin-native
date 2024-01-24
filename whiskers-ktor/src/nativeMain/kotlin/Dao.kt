@@ -1,5 +1,6 @@
 @file:OptIn(ExperimentalUnsignedTypes::class)
 
+import app.cash.sqldelight.db.QueryResult
 import app.cash.sqldelight.db.SqlCursor
 import io.ktor.http.*
 import io.ktor.util.*
@@ -13,8 +14,8 @@ internal interface Repository<T> {
     suspend fun first(): T
     suspend fun save(entity: T): T
     suspend fun deleteAll(): Unit
-    val singleEntityMapper: (SqlCursor) -> T
-    val listEntityMapper: (SqlCursor) -> List<T>
+    val singleEntityMapper: (SqlCursor) -> QueryResult<T>
+    val listEntityMapper: (SqlCursor) -> QueryResult<List<T>>
 }
 
 @Serializable
@@ -33,14 +34,14 @@ data class Paragraph(
 @kotlinx.cinterop.ExperimentalForeignApi
 open class CatSayingsRepository(
     val nativeDriver: PostgresNativeDriver,
-    override val singleEntityMapper: (SqlCursor) -> CatSaying = {
+    override val singleEntityMapper: (SqlCursor) -> QueryResult<CatSaying> = {
         it.next()
-        CatSaying(
+        QueryResult.Value(CatSaying(
             id = it.getLong(0) ?: -1,
             saying = it.getString(1) ?: throw RuntimeException("Element found without a text!")
-        )
+        ))
     },
-    override val listEntityMapper: (SqlCursor) -> List<CatSaying> = {
+    override val listEntityMapper: (SqlCursor) ->  QueryResult<List<CatSaying>> = {
         val all = mutableListOf<CatSaying>()
         while (it.next().value) {
             all.add(
@@ -50,7 +51,7 @@ open class CatSayingsRepository(
                 )
             )
         }
-        all.toList()
+        QueryResult.Value(all.toList())
     }
 
 ) : Repository<CatSaying> {
@@ -92,15 +93,15 @@ open class CatSayingsRepository(
 class ParagraphRepository(
     val nativeDriver: PostgresNativeDriver,
     @kotlinx.cinterop.ExperimentalForeignApi
-    override val singleEntityMapper: (SqlCursor) -> Paragraph = {
+    override val singleEntityMapper: (SqlCursor) ->         QueryResult<Paragraph> = {
         it.next()
-        Paragraph(
+        QueryResult.Value(Paragraph(
             id = it.getLong(0) ?: -1,
             text = it.getString(1) ?: throw RuntimeException("Element found without a text!")
-        )
+        ))
     },
     @kotlinx.cinterop.ExperimentalForeignApi
-    override val listEntityMapper: (SqlCursor) -> List<Paragraph> = {
+    override val listEntityMapper: (SqlCursor) ->  QueryResult.Value<List<Paragraph>> = {
         val all = mutableListOf<Paragraph>()
         while (it.next().value) {
             all.add(
@@ -110,7 +111,7 @@ class ParagraphRepository(
                 )
             )
         }
-        all.toList()
+        QueryResult.Value(all.toList())
     }
 ) : Repository<Paragraph> {
     @kotlinx.cinterop.ExperimentalForeignApi
