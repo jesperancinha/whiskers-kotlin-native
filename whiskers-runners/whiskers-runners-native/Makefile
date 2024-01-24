@@ -12,7 +12,7 @@ build-native:
 install-kotlin-native-linux:
 	tar -xvzf kotlin.native.tar.gz
 	if [ -d "kotlin.native" ]; then rm -r kotlin.native; fi
-	mv kotlin-native-linux-x86_64-1.7.20 kotlin.native
+	mv kotlin-native-linux-x86_64-1.9.22 kotlin.native
 copy-binaries:
 	cd ../../ && make copy-binaries
 run:
