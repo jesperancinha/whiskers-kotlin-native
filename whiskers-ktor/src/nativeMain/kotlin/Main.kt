@@ -1,3 +1,4 @@
+import app.cash.sqldelight.db.QueryResult
 import io.ktor.http.*
 import io.ktor.http.HttpStatusCode.Companion.Accepted
 import io.ktor.http.HttpStatusCode.Companion.Created
@@ -137,7 +138,7 @@ private fun makeACatsDay(catSayingsService: CatSayingsService, configuration: Co
     )
     val notPrepared = driver.executeQuery(null, "SELECT * from sayings.cat_line limit 1;", parameters = 0, mapper = {
         it.next()
-        it.getString(1)
+        QueryResult.Value(it.getString(1))
     })
     catSayingsService.getAll().map { println(it.saying) }
     println(notPrepared.value)

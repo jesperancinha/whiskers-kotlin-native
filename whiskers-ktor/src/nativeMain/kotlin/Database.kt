@@ -35,9 +35,6 @@ open class PostgresNativeDriver(
         }
     }
 
-    override fun addListener(listener: Query.Listener, queryKeys: Array<String>) = Unit
-    override fun notifyListeners(queryKeys: Array<String>) = Unit
-    override fun removeListener(listener: Query.Listener, queryKeys: Array<String>) = Unit
     override fun currentTransaction(): Transacter.Transaction? = transaction
     fun executeInsert(
         identifier: Int?,
@@ -99,7 +96,7 @@ open class PostgresNativeDriver(
                 bindString(0, identifier.toString())
             }, mapper = {
                 it.next()
-                it.getString(0)
+               QueryResult.Value(it.getString(0))
             })
         return result.value != null
     }
@@ -107,7 +104,7 @@ open class PostgresNativeDriver(
     fun <R> executeSelect(
         identifier: Int? = null,
         sql: String,
-        mapper: (SqlCursor) -> R,
+        mapper: (SqlCursor) -> QueryResult<R>,
         parameters: Int = 0,
         binders: (SqlPreparedStatement.() -> Unit)? = null
     ) = executeQuery(identifier, sql, mapper, parameters, binders)
@@ -115,10 +112,10 @@ open class PostgresNativeDriver(
     override fun <R> executeQuery(
         identifier: Int?,
         sql: String,
-        mapper: (SqlCursor) -> R,
+        mapper: (SqlCursor) -> QueryResult<R>,
         parameters: Int,
         binders: (SqlPreparedStatement.() -> Unit)?
-    ): QueryResult.Value<R> {
+    ): QueryResult<R> {
         val cursorName = if (identifier == null) "myCursor" else "cursor$identifier"
         val cursor = "DECLARE $cursorName CURSOR FOR"
         val preparedStatement = if (parameters != 0) {
@@ -162,7 +159,7 @@ open class PostgresNativeDriver(
         }?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
 
         val value = PostgresCursor(result, cursorName, conn).use(mapper)
-        return QueryResult.Value(value = value)
+        return value
     }
 
 
@@ -185,6 +182,9 @@ open class PostgresNativeDriver(
         const val BINARY_RESULT_FORMAT = 1
     }
 
+    override fun addListener(vararg queryKeys: String, listener: Query.Listener) {
+    }
+
     override fun close() {
         PQfinish(conn)
     }
@@ -193,10 +193,17 @@ open class PostgresNativeDriver(
     override fun newTransaction(): QueryResult.Value<Transacter.Transaction> =
         conn.exec("BEGIN").let { QueryResult.Value(Transaction(transaction)) }
 
+    override fun notifyListeners(vararg queryKeys: String) {
+    }
+
+    override fun removeListener(vararg queryKeys: String, listener: Query.Listener) {
+    }
+
     private inner class Transaction(
         override val enclosingTransaction: Transacter.Transaction?
     ) : Transacter.Transaction() {
-        override fun endTransaction(successful: Boolean): QueryResult.Unit {
+
+        override fun endTransaction(successful: Boolean): QueryResult<Unit> {
             if (enclosingTransaction == null) {
                 if (successful) conn.exec("END") else conn.exec("ROLLBACK")
             }
@@ -258,12 +265,12 @@ class PostgresCursor(
         }
     }
 
-    override fun next(): Boolean {
+    override fun next(): QueryResult<Boolean> {
         result = PQexec(conn, "FETCH NEXT IN $name")?.run { check(conn) }
             ?: throw RuntimeException("Unable to prepare PQprepare")
 
-        return PQcmdTuples(result)?.let { it.toKString().toInt() == 1 }
-            ?: throw RuntimeException("PQcmdTuples were not created!")
+        return QueryResult.Value(PQcmdTuples(result)?.let { it.toKString().toInt() == 1 }
+            ?: throw RuntimeException("PQcmdTuples were not created!"))
     }
 }
 
