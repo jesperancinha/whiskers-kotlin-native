@@ -35,9 +35,6 @@ open class PostgresNativeDriver(
         }
     }
 
-    override fun addListener(listener: Query.Listener, queryKeys: Array<String>) = Unit
-    override fun notifyListeners(queryKeys: Array<String>) = Unit
-    override fun removeListener(listener: Query.Listener, queryKeys: Array<String>) = Unit
     override fun currentTransaction(): Transacter.Transaction? = transaction
     fun executeInsert(
         identifier: Int?,
@@ -99,7 +96,7 @@ open class PostgresNativeDriver(
                 bindString(0, identifier.toString())
             }, mapper = {
                 it.next()
-                it.getString(0)
+               QueryResult.Value(it.getString(0))
             })
         return result.value != null
     }
@@ -107,7 +104,7 @@ open class PostgresNativeDriver(
     fun <R> executeSelect(
         identifier: Int? = null,
         sql: String,
-        mapper: (SqlCursor) -> R,
+        mapper: (SqlCursor) -> QueryResult<R>,
         parameters: Int = 0,
         binders: (SqlPreparedStatement.() -> Unit)? = null
     ) = executeQuery(identifier, sql, mapper, parameters, binders)
@@ -115,10 +112,10 @@ open class PostgresNativeDriver(
     override fun <R> executeQuery(
         identifier: Int?,
         sql: String,
-        mapper: (SqlCursor) -> R,
+        mapper: (SqlCursor) -> QueryResult<R>,
         parameters: Int,
         binders: (SqlPreparedStatement.() -> Unit)?
-    ): QueryResult.Value<R> {
+    ): QueryResult<R> {
         val cursorName = if (identifier == null) "myCursor" else "cursor$identifier"
         val cursor = "DECLARE $cursorName CURSOR FOR"
         val preparedStatement = if (parameters != 0) {
