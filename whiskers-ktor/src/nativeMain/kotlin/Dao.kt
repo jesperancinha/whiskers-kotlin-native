@@ -42,7 +42,7 @@ open class CatSayingsRepository(
     },
     override val listEntityMapper: (SqlCursor) -> List<CatSaying> = {
         val all = mutableListOf<CatSaying>()
-        while (it.next()) {
+        while (it.next().value) {
             all.add(
                 CatSaying(
                     id = it.getLong(0) ?: -1,
@@ -102,7 +102,7 @@ class ParagraphRepository(
     @kotlinx.cinterop.ExperimentalForeignApi
     override val listEntityMapper: (SqlCursor) -> List<Paragraph> = {
         val all = mutableListOf<Paragraph>()
-        while (it.next()) {
+        while (it.next().value) {
             all.add(
                 Paragraph(
                     id = it.getLong(0) ?: -1,
