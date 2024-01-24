@@ -299,3 +299,14 @@ local-pipeline-plus: build-gradle-plus
 local-pipeline-graal-exec: build-gradle-exec-graalvm
 local-pipeline-graal-cloud: build-gradle-cloud-graalvm
 local-pipeline-linux: setup-binaries install-kotlin-native-linux install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor-no-db local-pipeline-ktor  local-pipeline-graal-exec local-pipeline-graal-cloud
+github-pipeline-ktor:
+	sudo apt install libreadline-dev; \
+  	sudo apt-get install libpq-dev; \
+    sudo apt install bison; \
+    sudo apt install flex; \
+	make setup-binaries; \
+	export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"; \
+	make install-kotlin-native-linux-ktor; \
+	cd whiskers-ktor/postgresql/postgres-master && ./configure && make all; \
+	cd ../../../ ; \
+	make build-gradle-ktor
