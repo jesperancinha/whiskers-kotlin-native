@@ -265,12 +265,12 @@ class PostgresCursor(
         }
     }
 
-    override fun next(): QueryResult.Value<Boolean> {
+    override fun next(): QueryResult<Boolean> {
         result = PQexec(conn, "FETCH NEXT IN $name")?.run { check(conn) }
             ?: throw RuntimeException("Unable to prepare PQprepare")
 
-        return PQcmdTuples(result)?.let { it.toKString().toInt() == 1 }
-            ?: throw RuntimeException("PQcmdTuples were not created!")
+        return QueryResult.Value(PQcmdTuples(result)?.let { it.toKString().toInt() == 1 }
+            ?: throw RuntimeException("PQcmdTuples were not created!"))
     }
 }
 
