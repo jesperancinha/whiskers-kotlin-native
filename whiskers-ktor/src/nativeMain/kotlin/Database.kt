@@ -159,7 +159,7 @@ open class PostgresNativeDriver(
         }?.run { check(conn) } ?: throw RuntimeException("Unable to prepare PQprepare")
 
         val value = PostgresCursor(result, cursorName, conn).use(mapper)
-        return QueryResult.Value(value = value)
+        return value
     }
 
 
@@ -202,7 +202,8 @@ open class PostgresNativeDriver(
     private inner class Transaction(
         override val enclosingTransaction: Transacter.Transaction?
     ) : Transacter.Transaction() {
-        override fun endTransaction(successful: Boolean): QueryResult.Unit {
+
+        override fun endTransaction(successful: Boolean): QueryResult<Unit> {
             if (enclosingTransaction == null) {
                 if (successful) conn.exec("END") else conn.exec("ROLLBACK")
             }
@@ -264,7 +265,7 @@ class PostgresCursor(
         }
     }
 
-    override fun next(): Boolean {
+    override fun next(): QueryResult.Value<Boolean> {
         result = PQexec(conn, "FETCH NEXT IN $name")?.run { check(conn) }
             ?: throw RuntimeException("Unable to prepare PQprepare")
 
