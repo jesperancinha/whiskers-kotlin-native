@@ -3,7 +3,8 @@ import kotlinx.cinterop.ByteVar
 import kotlinx.cinterop.toKString
 import redcat.*
 
-fun main(args: Array<String>) {
+@OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
+fun main() {
     println("--- A cat's day 🐈  ---")
     val conn = PQsetdbLogin(
         pghost = "localhost",
