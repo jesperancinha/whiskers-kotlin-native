@@ -1,6 +1,6 @@
 plugins {
     application
-    kotlin("multiplatform") version "1.9.22"
+    kotlin("multiplatform") version "1.9.23"
     kotlin("plugin.serialization") version "1.9.23"
 }
 
