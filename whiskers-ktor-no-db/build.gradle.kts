@@ -1,7 +1,7 @@
 plugins {
     application
-    kotlin("multiplatform") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("multiplatform") version "1.9.23"
+    kotlin("plugin.serialization") version "1.9.23"
 }
 
 group = "org.jesperancinha.native"
@@ -29,7 +29,7 @@ kotlin {
             }
         }
     }
-    val ktorVersion="2.3.8"
+    val ktorVersion="2.3.9"
     sourceSets {
         val nativeMain by getting {
             dependencies {
