@@ -338,9 +338,9 @@ crypto@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/crypto/-/crypto-1.0.1.tgz"
 
-cypress@13.7.0:
-  version "13.7.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-13.7.0.tgz#19e53c0bd6eca5e3bde0d6ac9e98fbf1782e3a9e"
+cypress@13.7.1:
+  version "13.7.1"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-13.7.1.tgz#d1208eb04efd46ef52a30480a5da71a03373261a"
   dependencies:
     "@cypress/request" "^3.0.0"
     "@cypress/xvfb" "^1.2.4"
