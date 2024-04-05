@@ -22,7 +22,7 @@
   "devDependencies": {
     "cypress": "13.7.2",
     "ts-node": "10.9.2",
-    "typescript": "5.4.3"
+    "typescript": "5.4.4"
   },
   "dependencies": {
     "client-oauth2": "^4.3.3",
