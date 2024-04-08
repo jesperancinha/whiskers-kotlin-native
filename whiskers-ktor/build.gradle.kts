@@ -42,7 +42,7 @@ kotlin {
         }
 
     }
-    val ktorVersion = "2.3.9"
+    val ktorVersion = "2.3.10"
     sourceSets {
         val nativeMain by getting {
             dependencies {
