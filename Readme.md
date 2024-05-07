@@ -79,19 +79,19 @@ make measure-all-sts
 
 ## Project Structure
 
--   [good-feel](whiskers-multiplatform/good-feel) - A simple Kotlin Native project without the use of C bindings
--   [plus](whiskers-multiplatform/plus) - A Kotlin Native project exploring other functions provided by Kotlin Native
+-   [good-feel](good-feel) - A simple Kotlin Native project without the use of C bindings
+-   [plus](plus) - A Kotlin Native project exploring other functions provided by Kotlin Native
 -   [whiskers-cloudnative](./whiskers-cloudnative) - Spring Native way of creating a docker container as a full implementation of the Onion Model used in Microservices
 -   [whiskers-graalvm](./whiskers-graalvm) - Spring Native way of creating a GraalVM self-contained executable command as a full implementation of the Onion Model used in Microservices
--   [whiskers-ktor-no-db](whiskers-multiplatform/whiskers-ktor-no-db) - Ktor Service implemented with hard-coded configuration
--   [whiskers-ktor](whiskers-multiplatform/whiskers-ktor) - Ktor Service containing a full implementation of the Onion Model used in Microservices
+-   [whiskers-ktor-no-db](whiskers-ktor-no-db) - Ktor Service implemented with hard-coded configuration
+-   [whiskers-ktor](whiskers-ktor) - Ktor Service containing a full implementation of the Onion Model used in Microservices
 
 --- 
 
 ## Project layout
 
-1.  [Good Feel](whiskers-multiplatform/good-feel) -  A project to make you feel good. If you run into a situation where things get tough, then run this command to make you feel good. This project is the first test-drive about native use in this whole project
-2.  [Plus](whiskers-multiplatform/plus) - Plus just means a step forward. This module is fully dedicated to the use of external libraries.
+1.  [Good Feel](good-feel) -  A project to make you feel good. If you run into a situation where things get tough, then run this command to make you feel good. This project is the first test-drive about native use in this whole project
+2.  [Plus](plus) - Plus just means a step forward. This module is fully dedicated to the use of external libraries.
 
 ---
 

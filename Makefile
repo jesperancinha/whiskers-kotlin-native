@@ -12,7 +12,11 @@ MODULE_LOCATIONS := whiskers-cloudnative \
 					good-feel
 
 b: build
-build: build-gradle build-gradle-graalvm build-runners
+clean:
+	if [ -d build ]; then rm -f build; fi;
+build-one-gradle: clean
+	./gradlew build
+build: clean build-gradle build-gradle-graalvm build-runners
 build-runners:
 	cd whiskers-runners && make b
 build-gradle-good-feel:

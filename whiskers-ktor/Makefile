@@ -1,3 +1,5 @@
+include ../Makefile.mk
+
 b: build
 build: build-gradle
 build-gradle: build-binaries
