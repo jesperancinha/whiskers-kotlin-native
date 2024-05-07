@@ -31,6 +31,21 @@ updates:
     schedule:
       interval: "daily"
 
+  - package-ecosystem: gradle
+    directory: "/whiskers-runners/whiskers-runners-graalvm"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: gradle
+    directory: "/whiskers-runners/whiskers-runners-knative"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: gradle
+    directory: "/whiskers-runners/whiskers-runners-native"
+    schedule:
+      interval: "daily"
+
   - package-ecosystem: npm
     directory: "/e2e"
     schedule:
