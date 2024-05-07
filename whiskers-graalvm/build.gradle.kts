@@ -13,6 +13,12 @@ group = "org.jesperancinha.knative"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
+val gradleSysVersion = System.getenv("GRADLE_VERSION")
+
+tasks.register<Wrapper>("wrapper") {
+    gradleVersion =  gradleSysVersion
+}
+
 repositories {
     mavenCentral()
     maven { url = uri("https://repo.spring.io/release") }

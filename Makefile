@@ -15,6 +15,7 @@ b: build
 clean:
 	if [ -d build ]; then rm -f build; fi;
 build-one-gradle: clean
+	 export GRADLE_VERSION=$(GRADLE_VERSION); \
 	./gradlew build
 build: clean build-gradle build-gradle-graalvm build-runners
 build-runners:
@@ -33,11 +34,13 @@ build-gradle-all-ktor: build-gradle-ktor build-gradle-ktor-no-db
 build-gradle-exec-graalvm:
 	mkdir -p bin; \
 	cd whiskers-graalvm; \
+	export GRADLE_VERSION=$(GRADLE_VERSION); \
 	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
 build-gradle-cloud-graalvm:
 	mkdir -p bin; \
 	cd whiskers-cloudnative; \
+	export GRADLE_VERSION=$(GRADLE_VERSION); \
 	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
 build-gradle-graalvm: build-gradle-exec-graalvm build-gradle-cloud-graalvm
