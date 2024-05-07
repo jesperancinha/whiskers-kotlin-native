@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+include ../../Makefile.mk
 
 b: build-native buildw
 buildw:

@@ -1,3 +1,6 @@
+plugins {
+    alias(libs.plugins.kotlin.multiplatform)
+}
 group = "org.jesperancinha"
 version = "1.0-SNAPSHOT"
 

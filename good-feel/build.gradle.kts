@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.9.24"
+    alias(libs.plugins.kotlin.multiplatform)
 }
 
 group = "org.jesperancinha"

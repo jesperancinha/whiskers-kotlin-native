@@ -7,8 +7,8 @@ include(":whiskers-ktor-no-db")
 include(":good-feel")
 include(":plus")
 include(":whiskers-runners:whiskers-runners-graalvm")
-include(":whiskers-runners:whisksers-runners-native")
-include(":whiskers-runners:whiksers-runners-knative")
+include(":whiskers-runners:whiskers-runners-native")
+include(":whiskers-runners:whiskers-runners-knative")
 
 pluginManagement {
     repositories {
