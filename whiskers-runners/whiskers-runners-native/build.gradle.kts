@@ -1,6 +1,5 @@
 plugins {
     application
-    kotlin("multiplatform") version "1.9.22"
 }
 
 group = "org.jesperancinha"

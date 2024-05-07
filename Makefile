@@ -1,6 +1,5 @@
-SHELL := /bin/bash
-GITHUB_RUN_ID ?=123
-GRADLE_VERSION ?= 8.2.1
+include Makefile.mk
+
 MODULE_LOCATIONS := whiskers-cloudnative \
 					whiskers-graalvm \
 					whiskers-ktor \
@@ -13,7 +12,12 @@ MODULE_LOCATIONS := whiskers-cloudnative \
 					good-feel
 
 b: build
-build: build-gradle build-gradle-graalvm build-runners
+clean:
+	if [ -d build ]; then rm -f build; fi;
+build-one-gradle: clean
+	 export GRADLE_VERSION=$(GRADLE_VERSION); \
+	./gradlew build
+build: clean build-gradle build-gradle-graalvm build-runners
 build-runners:
 	cd whiskers-runners && make b
 build-gradle-good-feel:
@@ -30,12 +34,12 @@ build-gradle-all-ktor: build-gradle-ktor build-gradle-ktor-no-db
 build-gradle-exec-graalvm:
 	mkdir -p bin; \
 	cd whiskers-graalvm; \
+	export GRADLE_VERSION=$(GRADLE_VERSION); \
 	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
-build-gradle-cloud-graalvm:
+build-gradle-cloud-graalvm: wrapper
 	mkdir -p bin; \
 	cd whiskers-cloudnative; \
-	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
 build-gradle-graalvm: build-gradle-exec-graalvm build-gradle-cloud-graalvm
 	make release-gradle-graalvm

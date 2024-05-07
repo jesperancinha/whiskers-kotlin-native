@@ -1,7 +1,3 @@
-plugins {
-    kotlin("multiplatform") version "1.9.22"
-}
-
 group = "org.jesperancinha"
 version = "1.0-SNAPSHOT"
 

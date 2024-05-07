@@ -1,0 +1,13 @@
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "1.9.24" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = "1.9.24" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version = "1.9.24" }
+spring-boot = { id = "org.springframework.boot", version = "3.2.5" }
+spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.5" }
+flyway = { id = "org.flywaydb.flyway", version = "10.12.0" }
+graalvm-buildtools-native = { id = "org.graalvm.buildtools.native", version = "0.10.1" }
+
+[libraries]
+springdoc-openapi-starter-mvc = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version = "2.5.0" }
+jackson-datatype-jsr310 = { group = "com.fasterxml.jackson.datatype", name="jackson-datatype-jsr310", version = "2.17.1" }
+kostest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version = "5.8.1" }
