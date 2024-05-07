@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+include ../../Makefile.mk
 
 build:
 	gcc -c "-I$(PWD)" redcat.c -o redcat.o
@@ -6,7 +6,4 @@ build:
 build-native: build
 	./kotlin.native/bin/cinterop -def redcat.def -compiler-options "-I$(PWD)" -o redcat.klib
 	./kotlin.native/bin/konanc -l redcat.klib main.kt -linker-options redcat.a -o main
-install-kotlin-native-linux:
-	tar -xvzf kotlin.native.tar.gz
-	if [ -d "kotlin.native" ]; then rm -r kotlin.native; fi
-	mv kotlin-native-linux-x86_64-1.9.22 kotlin.native
+install-native: install-kotlin-native-linux

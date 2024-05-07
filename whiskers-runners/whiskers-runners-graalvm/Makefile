@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+include ../../Makefile.mk
 
 install:
 	gu install native-image

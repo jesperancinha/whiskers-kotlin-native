@@ -1,4 +1,4 @@
-SHELL := /bin/bash
+include ../../Makefile.mk
 
 b: build-gradle
 build-gradle:
@@ -13,3 +13,4 @@ run-test-multiple:
 	date +%s | xargs -I {} echo "knative,"{} > ../../result-multiple-run-knative.csv
 	./build/bin/native/debugExecutable/whiskers-runners-knative.kexe 10000000
 	date +%s | xargs -I {} echo "knative,"{} >> ../../result-multiple-run-knative.csv
+install-native: install-kotlin-native-linux
