@@ -30,19 +30,12 @@ As a datasource, I have continued my novel, [Good-Story](https://github.com/jesp
 
 If you are interested, please check [Chapter II - The cat that helped Lucy](./docs/good.story/good.story.chapter.2.md) for the complete data source and context.
 
-[![alt text](https://raw.githubusercontent.com/jesperancinha/project-signer/master/project-signer-templates/icons-20/medium-20.png "Medium")](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91) [Kotlin Native and GraalVM — The Story So Far](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91)
-
-<div align="center">
-      <a title="Kotlin Native and GraalVM — The Story So Far" href="https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91">
-     <img 
-          src="./docs/article.whiskers.banner.png" 
-          style="width:100%;">
-      </a>
-</div>
+[![](https://img.shields.io/badge/Kotlin%20Native%20and%20GraalVM%20-%20The%20Story%20So%20Far-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://itnext.io/kotlin-native-and-graalvm-the-story-so-far-e10d7e9cfc91)
 
 #### Stable releases
 
--   [1.0.0](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.0) - [6cbd9b0701259dc0145b6f6714295cbed66cbbb1](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.0)
+-   [1.0.0](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.0) - [6cbd9b0701259dc0145b6f6714295cbed66cbbb1](https://github.com/jesperancinha/whiskers-kotlin-native/tree/6cbd9b0701259dc0145b6f6714295cbed66cbbb1)
+-   [1.0.1](https://github.com/jesperancinha/whiskers-kotlin-native/tree/1.0.1) - [2a79e23a821942ed6a0d2360117c5ab9947b6ecc](https://github.com/jesperancinha/whiskers-kotlin-native/tree/2a79e23a821942ed6a0d2360117c5ab9947b6ecc) - Last version without TOML
 
 
 ---
@@ -86,19 +79,19 @@ make measure-all-sts
 
 ## Project Structure
 
--   [good-feel](./good-feel) - A simple Kotlin Native project without the use of C bindings
--   [plus](./plus) - A Kotlin Native project exploring other functions provided by Kotlin Native
+-   [good-feel](whiskers-multiplatform/good-feel) - A simple Kotlin Native project without the use of C bindings
+-   [plus](whiskers-multiplatform/plus) - A Kotlin Native project exploring other functions provided by Kotlin Native
 -   [whiskers-cloudnative](./whiskers-cloudnative) - Spring Native way of creating a docker container as a full implementation of the Onion Model used in Microservices
 -   [whiskers-graalvm](./whiskers-graalvm) - Spring Native way of creating a GraalVM self-contained executable command as a full implementation of the Onion Model used in Microservices
--   [whiskers-ktor-no-db](./whiskers-ktor-no-db) - Ktor Service implemented with hard-coded configuration
--   [whiskers-ktor](./whiskers-ktor) - Ktor Service containing a full implementation of the Onion Model used in Microservices
+-   [whiskers-ktor-no-db](whiskers-multiplatform/whiskers-ktor-no-db) - Ktor Service implemented with hard-coded configuration
+-   [whiskers-ktor](whiskers-multiplatform/whiskers-ktor) - Ktor Service containing a full implementation of the Onion Model used in Microservices
 
 --- 
 
 ## Project layout
 
-1.  [Good Feel](./good-feel) -  A project to make you feel good. If you run into a situation where things get tough, then run this command to make you feel good. This project is the first test-drive about native use in this whole project
-2.  [Plus](./plus) - Plus just means a step forward. This module is fully dedicated to the use of external libraries.
+1.  [Good Feel](whiskers-multiplatform/good-feel) -  A project to make you feel good. If you run into a situation where things get tough, then run this command to make you feel good. This project is the first test-drive about native use in this whole project
+2.  [Plus](whiskers-multiplatform/plus) - Plus just means a step forward. This module is fully dedicated to the use of external libraries.
 
 ---
 

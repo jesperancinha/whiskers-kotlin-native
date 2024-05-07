@@ -6,13 +6,13 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.5"
 //	id("org.springframework.experimental.aot") version "0.12.1"
 	id("org.graalvm.buildtools.native") version "0.10.1"
-	kotlin("jvm") version "1.9.24"
-	kotlin("plugin.spring") version "1.9.24"
+	alias(libs.plugins.kotlin.spring)
+	alias(libs.plugins.kotlin.jvm)
 }
 
 group = "org.jesperancinha.native"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
 	mavenLocal()
@@ -48,7 +48,7 @@ dependencyManagement {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "17"
+		jvmTarget = "21"
 	}
 }
 //

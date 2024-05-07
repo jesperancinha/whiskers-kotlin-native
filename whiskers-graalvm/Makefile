@@ -1,3 +1,5 @@
+include ../Makefile.mk
+
 b: build-gradle
 build-gradle:
 	if [ -d "build" ]; then rm -r build; fi

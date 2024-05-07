@@ -1,6 +1,5 @@
-SHELL := /bin/bash
-GITHUB_RUN_ID ?=123
-GRADLE_VERSION ?= 8.2.1
+include Makefile.mk
+
 MODULE_LOCATIONS := whiskers-cloudnative \
 					whiskers-graalvm \
 					whiskers-ktor \

@@ -3,6 +3,9 @@ name: Build on PR
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches:
+      - "!main"
 
 jobs:
   build-test-good-feel:

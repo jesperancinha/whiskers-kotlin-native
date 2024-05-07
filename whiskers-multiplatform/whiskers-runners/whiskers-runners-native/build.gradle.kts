@@ -1,5 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "1.9.22"
+    application
 }
 
 group = "org.jesperancinha"
@@ -20,12 +20,23 @@ kotlin {
     }
 
     nativeTarget.apply {
+        compilations.getByName("main") {
+            cinterops {
+                val redcat by creating {
+                    defFile(project.file("src/nativeInterop/cinterop/redcat.def"))
+                    packageName("org.jesperancinha.knative")
+                    headers("src/nativeInterop/cinterop/code/redcat.h")
+                    includeDirs.allHeaders("code","src/nativeInterop/cinterop/code")
+                }
+            }
+        }
         binaries {
             executable {
                 entryPoint = "main"
             }
         }
     }
+
     sourceSets {
         val nativeMain by getting
         val nativeTest by getting
