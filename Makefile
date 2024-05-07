@@ -37,11 +37,9 @@ build-gradle-exec-graalvm:
 	export GRADLE_VERSION=$(GRADLE_VERSION); \
 	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
-build-gradle-cloud-graalvm:
+build-gradle-cloud-graalvm: wrapper
 	mkdir -p bin; \
 	cd whiskers-cloudnative; \
-	export GRADLE_VERSION=$(GRADLE_VERSION); \
-	gradle wrapper --gradle-version $(GRADLE_VERSION); \
 	make b
 build-gradle-graalvm: build-gradle-exec-graalvm build-gradle-cloud-graalvm
 	make release-gradle-graalvm
