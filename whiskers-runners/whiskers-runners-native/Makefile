@@ -25,4 +25,4 @@ run-test-multiple:
 	date +%s | xargs -I {} echo "native,"{} > ../../result-multiple-run-native.csv
 	./build/bin/native/debugExecutable/whiskers-runners-native.kexe 10000000
 	date +%s | xargs -I {} echo "native,"{} >> ../../result-multiple-run-native.csv
-
+install-native: download-kotlin-native install-kotlin-native-linux

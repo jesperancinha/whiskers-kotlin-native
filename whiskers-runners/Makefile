@@ -8,4 +8,5 @@ build-gradle:
  		make install-native; \
  		make b
 	cd whiskers-runners-native; \
+ 		make install-native; \
 		make b
