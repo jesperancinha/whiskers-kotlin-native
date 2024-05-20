@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
 //	id("org.springframework.experimental.aot") version "0.12.1"
-    id("org.graalvm.buildtools.native") version "0.10.2"
+    alias(libs.plugins.graalvm.buildtools.native)
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.spring)
 }
