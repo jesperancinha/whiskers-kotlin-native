@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -21,7 +21,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       - name: Build Gradle
         run: make build-gradle-good-feel
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -39,7 +39,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       - name: Build Gradle
         run: make build-gradle-plus
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -57,7 +57,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       - name: Setup Gradle Env
         run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -78,7 +78,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       - name: Linux libraries
         run: sudo apt install libreadline-dev &&
@@ -104,8 +104,8 @@ jobs:
   build-graalvm-exec-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: gradle/gradle-build-action@v2
+      - uses: actions/checkout@v4
+      - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -119,8 +119,8 @@ jobs:
   build-graalvm-cloud-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: gradle/gradle-build-action@v2
+      - uses: actions/checkout@v4
+      - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -135,14 +135,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       - name: Setup Binaries
         run: make setup-binaries
@@ -157,14 +157,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v3
-      - uses: actions/setup-java@v3
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v3
 
       - name: Linux libraries
         run: sudo apt install libreadline-dev &&
@@ -187,8 +187,8 @@ jobs:
   build-runners:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: gradle/gradle-build-action@v2
+      - uses: actions/checkout@v4
+      - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'

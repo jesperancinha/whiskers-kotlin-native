@@ -314,3 +314,6 @@ github-pipeline-ktor:
 	cd ../../../ ; \
 	make build-gradle-ktor
 local-pipeline: local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor local-pipeline-ktor-no-db local-pipeline-graal-exec local-pipeline-graal-cloud
+deps-plugins-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash
+deps-quick-update: deps-plugins-update
