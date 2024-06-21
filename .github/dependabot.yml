@@ -2,51 +2,19 @@ version: 2
 updates:
 
   - package-ecosystem: gradle
-    directory: "/good-feel"
+    directory: "/"
     schedule:
       interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/plus"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/whiskers-cloudnative"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/whiskers-graalvm"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/whiskers-ktor"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/whiskers-ktor-no-db"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/whiskers-runners/whiskers-runners-graalvm"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/whiskers-runners/whiskers-runners-knative"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: gradle
-    directory: "/whiskers-runners/whiskers-runners-native"
-    schedule:
-      interval: "daily"
-
-  - package-ecosystem: npm
-    directory: "/e2e"
-    schedule:
-      interval: "daily"
+    groups:
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin.*"
+          - "com.google.devtools.ksp"
+          - "kotlin*"
+          - "*kotlin*"
+      spring:
+        patterns:
+          - "*spring*"
+      ktor:
+        patterns:
+          - "*ktor*"
