@@ -9,6 +9,6 @@ flyway = { id = "org.flywaydb.flyway", version = "10.15.0" }
 graalvm-buildtools-native = { id = "org.graalvm.buildtools.native", version = "0.10.2" }
 
 [libraries]
-springdoc-openapi-starter-mvc = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version = "2.5.0" }
+springdoc-openapi-starter-mvc = { group = "org.springdoc", name = "springdoc-openapi-starter-webmvc-ui", version = "2.6.0" }
 jackson-datatype-jsr310 = { group = "com.fasterxml.jackson.datatype", name="jackson-datatype-jsr310", version = "2.17.1" }
 kostest-assertions = { group = "io.kotest", name = "kotest-assertions-core", version = "5.9.1" }
