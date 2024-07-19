@@ -316,4 +316,10 @@ github-pipeline-ktor:
 local-pipeline: local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor local-pipeline-ktor-no-db local-pipeline-graal-exec local-pipeline-graal-cloud
 deps-plugins-update:
 	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/pluginUpdatesOne.sh | bash
-deps-quick-update: deps-plugins-update
+deps-java-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/javaUpdatesOne.sh | bash
+deps-gradle-update:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/gradleUpdatesOne.sh | bash
+deps-quick-update: deps-plugins-update deps-java-update deps-gradle-update
+accept-prs:
+	curl -sL https://raw.githubusercontent.com/jesperancinha/project-signer/master/acceptPR.sh | bash
