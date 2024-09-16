@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4
-      - uses: graalvm/setup-graalvm@v1
+      - uses: graalvm/setup-graalvm@!
         with:
           version: 'latest'
           java-version: '21'
@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4
-      - uses: graalvm/setup-graalvm@v1
+      - uses: graalvm/setup-graalvm@!
         with:
           version: 'latest'
           java-version: '21'
@@ -49,7 +49,7 @@ jobs:
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4
-      - uses: graalvm/setup-graalvm@v1
+      - uses: graalvm/setup-graalvm@!
         with:
           version: 'latest'
           java-version: '21'
@@ -59,7 +59,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
-      - name: Setup Gradle 8.9
+      - name: Setup Gradle 8.10.1
         run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
 
       - name: Build Gradle
@@ -70,7 +70,7 @@ jobs:
     steps:
       - name: Checkout project sources
         uses: actions/checkout@v4
-      - uses: graalvm/setup-graalvm@v1
+      - uses: graalvm/setup-graalvm@!
         with:
           version: 'latest'
           java-version: '21'
@@ -89,7 +89,7 @@ jobs:
       - name: Setup Binaries
         run: make setup-binaries
 
-      - name: Setup Gradle 8.9
+      - name: Setup Gradle 8.10.1
         run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
 
       - name: Install Kotlin Native
@@ -106,7 +106,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: gradle/gradle-build-action@v3
-      - uses: graalvm/setup-graalvm@v1
+      - uses: graalvm/setup-graalvm@!
         with:
           version: 'latest'
           java-version: '21'
@@ -121,7 +121,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: gradle/gradle-build-action@v3
-      - uses: graalvm/setup-graalvm@v1
+      - uses: graalvm/setup-graalvm@!
         with:
           version: 'latest'
           java-version: '21'
@@ -189,7 +189,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: gradle/gradle-build-action@v3
-      - uses: graalvm/setup-graalvm@v1
+      - uses: graalvm/setup-graalvm@!
         with:
           version: 'latest'
           java-version: '21'
