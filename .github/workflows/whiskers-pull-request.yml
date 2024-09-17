@@ -59,7 +59,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
-      - name: Setup Gradle 8.9
+      - name: Setup Gradle 8.10.1
         run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
 
       - name: Build Gradle
@@ -89,7 +89,7 @@ jobs:
       - name: Setup Binaries
         run: make setup-binaries
 
-      - name: Setup Gradle 8.9
+      - name: Setup Gradle 8.10.1
         run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
 
       - name: Install Kotlin Native
