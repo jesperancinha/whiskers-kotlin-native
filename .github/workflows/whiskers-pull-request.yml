@@ -101,6 +101,11 @@ jobs:
       - name: Build Gradle
         run: make build-gradle-ktor
 
+      - name: Ktor Build Fail!
+        if: failure()
+        run: |
+          cat build/reports/problems/problems-report.html
+
   build-graalvm-exec-test:
     runs-on: ubuntu-latest
     steps:
