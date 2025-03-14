@@ -78,7 +78,7 @@ jobs:
         uses: gradle/gradle-build-action@v3
 
       - name: Linux libraries
-        run: sudo apt install libreadline-dev libpq-dev bison flex -y
+        run: sudo apt install libreadline-dev libpq-dev bison flex libbsd-dev -y
 
       - name: Setup Binaries
         run: make setup-binaries
