@@ -59,9 +59,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
-      - name: Setup Gradle 8.10.1
-        run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
-
       - name: Build Gradle
         run: make build-gradle-ktor-no-db
 
@@ -81,16 +78,10 @@ jobs:
         uses: gradle/gradle-build-action@v3
 
       - name: Linux libraries
-        run: sudo apt install libreadline-dev &&
-          sudo apt-get install libpq-dev &&
-          sudo apt install bison &&
-          sudo apt install flex
+        run: sudo apt install libreadline-dev libpq-dev bison flex -y
 
       - name: Setup Binaries
         run: make setup-binaries
-
-      - name: Setup Gradle 8.10.1
-        run: export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"
 
       - name: Install Kotlin Native
         run: make install-kotlin-native-linux-ktor
