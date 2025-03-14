@@ -77,6 +77,9 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
+      - name: Update System
+        run: sudo apt update -y && sudo apt upgrade -y
+
       - name: Linux libraries
         run: sudo apt install libreadline-dev libpq-dev bison flex libbsd-dev -y
 
