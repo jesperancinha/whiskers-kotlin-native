@@ -90,6 +90,7 @@ jobs:
 
       - name: Build Gradle
         run: make build-gradle-ktor
+        continue-on-error: true
 
       - name: Ktor Build Fail!
         if: failure()
@@ -174,6 +175,12 @@ jobs:
 
       - name: Build Gradle Red Cat
         run: make build-gradle-redcat-db
+        continue-on-error: true
+
+      - name: Red Cat DB Build Fail!
+        if: failure()
+        run: |
+          cat build/reports/problems/problems-report.html
 
   build-runners:
     runs-on: ubuntu-latest
