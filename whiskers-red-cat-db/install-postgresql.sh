@@ -1,4 +1,4 @@
-cd postgres-master || exit
+cd postgres-* || exit
 ./configure
 make all
 cd ..
