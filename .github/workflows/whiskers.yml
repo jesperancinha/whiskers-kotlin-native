@@ -90,7 +90,7 @@ jobs:
         run: make install-kotlin-native-linux-ktor
 
       - name: Install Postgres
-        run:  cd whiskers-ktor/postgresql/postgres-master && ./configure && make all
+        run:  cd whiskers-ktor/postgresql/postgres-* && ./configure && make all
 
       - name: Build Gradle
         run: make build-gradle-ktor
@@ -173,7 +173,7 @@ jobs:
         run: make install-kotlin-native-linux-rcdb
 
       - name: Install Postgres
-        run:  cd whiskers-red-cat-db/postgres-master && ./configure && make all
+        run:  cd whiskers-red-cat-db/postgres-* && ./configure && make all
 
       - name: Build Gradle Red Cat
         run: make build-gradle-redcat-db

@@ -295,7 +295,7 @@ install-linux:
 	curl https://services.gradle.org/versions/current
 local-pipeline-ktor-no-db: build-gradle-ktor-no-db
 local-pipeline-ktor: install-libs setup-binaries install-kotlin-native-linux-ktor
-	cd whiskers-ktor/postgresql/postgres-master && ./configure && make all
+	cd whiskers-ktor/postgresql/postgres-* && ./configure && make all
 	make build-gradle-ktor
 local-pipeline-good-feel: build-gradle-good-feel
 local-pipeline-plus: build-gradle-plus
@@ -310,7 +310,7 @@ github-pipeline-ktor:
 	make setup-binaries; \
 	export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"; \
 	make install-kotlin-native-linux-ktor; \
-	cd whiskers-ktor/postgresql/postgres-master && ./configure && make all; \
+	cd whiskers-ktor/postgresql/postgres-* && ./configure && make all; \
 	cd ../../../ ; \
 	make build-gradle-ktor
 local-pipeline: local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor local-pipeline-ktor-no-db local-pipeline-graal-exec local-pipeline-graal-cloud
