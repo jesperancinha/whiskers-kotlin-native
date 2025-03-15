@@ -40,7 +40,7 @@ kotlin-native-linux-x86_64-1.7.20
 *.klib
 redcat.klib-build
 postgres.zip
-postgres-master
+postgres-*
 stdbool.h
 stdint.h
 _types.h
