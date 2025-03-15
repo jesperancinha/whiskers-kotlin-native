@@ -80,7 +80,7 @@ dcup-light: dcd
 kong-config:
 	cd kong && make kong-config
 download-binaries: download-kotlin-native
-	if [[ ! -f "postgres.zip" ]]; then wget -O postgres.zip https://github.com/postgres/postgres/archive/refs/heads/master.zip; fi
+	if [[ ! -f "postgres.zip" ]]; then wget -O postgres.zip https://github.com/postgres/postgres/archive/refs/tags/REL_17_4.zip; fi
 copy-binaries:
 	cp kotlin*.tar.gz whiskers-ktor/postgresql
 	cp kotlin*.tar.gz whiskers-ktor/c
