@@ -17,7 +17,7 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-          components: 'native-image'
+
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -35,7 +35,7 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-          components: 'native-image'
+
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -53,7 +53,7 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-          components: 'native-image'
+
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -71,7 +71,7 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-          components: 'native-image'
+
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -109,7 +109,7 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-          components: 'native-image'
+
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle GraalVM
@@ -124,7 +124,7 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-          components: 'native-image'
+
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle GraalVM
@@ -192,7 +192,7 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-          components: 'native-image'
+
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle Runners
