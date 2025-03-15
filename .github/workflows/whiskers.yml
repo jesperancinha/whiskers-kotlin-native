@@ -17,7 +17,6 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -35,7 +34,6 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -53,7 +51,6 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -71,7 +68,6 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -104,7 +100,6 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle GraalVM
@@ -119,7 +114,6 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle GraalVM
@@ -134,7 +128,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '21'
-
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
@@ -156,7 +149,6 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '21'
-
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
@@ -187,7 +179,6 @@ jobs:
         with:
           version: 'latest'
           java-version: '21'
-
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle Runners
