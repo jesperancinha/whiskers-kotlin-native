@@ -80,7 +80,7 @@ dcup-light: dcd
 kong-config:
 	cd kong && make kong-config
 download-binaries: download-kotlin-native
-	if [[ ! -f "postgres.zip" ]]; then wget -O postgres.zip https://github.com/postgres/postgres/archive/refs/heads/master.zip; fi
+	if [[ ! -f "postgres.zip" ]]; then wget -O postgres.zip https://github.com/postgres/postgres/archive/refs/tags/REL_17_4.zip; fi
 copy-binaries:
 	cp kotlin*.tar.gz whiskers-ktor/postgresql
 	cp kotlin*.tar.gz whiskers-ktor/c
@@ -91,7 +91,7 @@ copy-binaries:
 	cp postgres.zip whiskers-red-cat-db
 setup-binaries: download-binaries copy-binaries
 install-libs:
-	sudo apt install libreadline-dev libpq-dev bison flex build-essential libz-dev zlib1g-dev -y
+	sudo apt install libreadline-dev libpq-dev bison flex build-essential libz-dev zlib1g-dev libc6 -y
 install-kotlin-native-linux: setup-binaries install-libs install-kotlin-native-linux-ktor install-kotlin-native-linux-rc install-kotlin-native-linux-rcdb
 install-kotlin-native-linux-ktor:
 	cd whiskers-ktor/c && make install-native
@@ -295,7 +295,7 @@ install-linux:
 	curl https://services.gradle.org/versions/current
 local-pipeline-ktor-no-db: build-gradle-ktor-no-db
 local-pipeline-ktor: install-libs setup-binaries install-kotlin-native-linux-ktor
-	cd whiskers-ktor/postgresql/postgres-master && ./configure && make all
+	cd whiskers-ktor/postgresql/postgres-* && ./configure && make all
 	make build-gradle-ktor
 local-pipeline-good-feel: build-gradle-good-feel
 local-pipeline-plus: build-gradle-plus
@@ -310,7 +310,7 @@ github-pipeline-ktor:
 	make setup-binaries; \
 	export GRADLE_OPTS="-Xmx2048m -Dorg.gradle.jvmargs='-Xmx2048m -XX:MaxPermSize=2048m'"; \
 	make install-kotlin-native-linux-ktor; \
-	cd whiskers-ktor/postgresql/postgres-master && ./configure && make all; \
+	cd whiskers-ktor/postgresql/postgres-* && ./configure && make all; \
 	cd ../../../ ; \
 	make build-gradle-ktor
 local-pipeline: local-pipeline-good-feel local-pipeline-plus local-pipeline-ktor local-pipeline-ktor-no-db local-pipeline-graal-exec local-pipeline-graal-cloud
