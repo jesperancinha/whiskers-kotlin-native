@@ -1,5 +1,4 @@
 plugins {
-    application
     alias(libs.plugins.kotlin.multiplatform)
     kotlin("plugin.serialization") version "2.1.0"
 }
