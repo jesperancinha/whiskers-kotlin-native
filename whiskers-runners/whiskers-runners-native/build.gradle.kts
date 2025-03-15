@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
+    application
 }
 
 group = "org.jesperancinha"
