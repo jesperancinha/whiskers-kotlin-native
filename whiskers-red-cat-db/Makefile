@@ -8,7 +8,7 @@ build:
 build-native: build
 	#./kotlin.native/bin/cinterop -def redcat.def -compiler-options "-I$(PWD)" -compiler-options "-I$(PWD)/postgres-*/src/include" -compiler-options "-I$(PWD)/postgres-*/src/port" -o redcat.klib
 	./kotlin.native/bin/cinterop -def redcat.def -o redcat.klib
-	./kotlin.native/bin/konanc -l redcat.klib main.kt -linker-options libpq.a -o main -linker-option
+	./kotlin.native/bin/konanc -l redcat.klib main.kt -linker-options libpq.a -o main
 install-kotlin-native-linux:
 	tar -xvzf kotlin.native.tar.gz
 	if [ -d "kotlin.native" ]; then rm -r kotlin.native; fi
