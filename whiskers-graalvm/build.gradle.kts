@@ -36,7 +36,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("jakarta.validation:jakarta.validation-api:3.1.1")
     implementation("io.r2dbc:r2dbc-postgresql:0.8.13.RELEASE")
-    implementation("org.springframework.boot:spring-boot-starter-validation:3.4.3")
+    implementation("org.springframework.boot:spring-boot-starter-validation:3.4.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.testcontainers:junit-jupiter")
