@@ -1,5 +1,6 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+
 plugins {
-    application
     alias(libs.plugins.kotlin.multiplatform)
     kotlin("plugin.serialization") version "2.2.0"
 }
@@ -13,6 +14,14 @@ repositories {
 }
 
 kotlin {
+    jvm {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        binaries {
+            executable {
+                mainClass.set("MainKt")
+            }
+        }
+    }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
     val nativeTarget = when {
@@ -29,7 +38,7 @@ kotlin {
             }
         }
     }
-    val ktorVersion="3.1.1"
+    val ktorVersion = "3.2.0"
     sourceSets {
         val nativeMain by getting {
             dependencies {
@@ -37,7 +46,7 @@ kotlin {
                 implementation("io.ktor:ktor-server-cio:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
             }
         }
         val nativeTest by getting {
