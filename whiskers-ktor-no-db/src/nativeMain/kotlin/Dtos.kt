@@ -7,7 +7,7 @@ import kotlin.text.toCharArray
 
 const val alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-inline fun List<Paragraph>.toEncodedParagraphs() = map { it.encodeParagraph() }
+fun List<Paragraph>.toEncodedParagraphs() = map { it.encodeParagraph() }
 
 fun Paragraph.encodeParagraph(): Paragraph {
     val codedParagraph = text.split(" ").joinToString(" ") { word ->
@@ -25,7 +25,7 @@ fun Paragraph.encodeParagraph(): Paragraph {
     return Paragraph(id = id ?: -1, text = codedParagraph)
 }
 
-inline fun List<CatSaying>.toEncodedSayings() =
+fun List<CatSaying>.toEncodedSayings() =
     map {
         val codedSaying = it.saying.split(" ").joinToString(" ") { word ->
             word.toCharArray().fold("") { acc, value ->

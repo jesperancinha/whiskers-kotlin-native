@@ -1,5 +1,6 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+
 plugins {
-    application
     alias(libs.plugins.kotlin.multiplatform)
     kotlin("plugin.serialization") version "2.2.0"
 }
@@ -13,6 +14,14 @@ repositories {
 }
 
 kotlin {
+    jvm {
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        binaries {
+            executable {
+                mainClass.set("MainKt")
+            }
+        }
+    }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
     val nativeTarget = when {
@@ -29,7 +38,7 @@ kotlin {
             }
         }
     }
-    val ktorVersion="3.2.0"
+    val ktorVersion = "3.2.0"
     sourceSets {
         val nativeMain by getting {
             dependencies {
