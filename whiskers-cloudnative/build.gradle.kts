@@ -51,12 +51,13 @@ tasks.register<Wrapper>("wrapper") {
 	gradleVersion =  gradleSysVersion
 }
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "21"
+kotlin {
+	compilerOptions {
+		freeCompilerArgs.add("-Xjsr305=strict")
+		jvmTarget.set(JVM_21)
 	}
 }
+
 //
 //tasks.getByName<BootBuildImage>("bootBuildImage") {
 //	builder = "paketobuildpacks/builder:tiny"
