@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -63,7 +63,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
@@ -94,7 +94,7 @@ jobs:
   build-graalvm-exec-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
@@ -108,7 +108,7 @@ jobs:
   build-graalvm-cloud-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
@@ -123,8 +123,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+        uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
           distribution: 'adopt'
           java-version: '21'
@@ -144,8 +144,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+        uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
           distribution: 'adopt'
           java-version: '21'
@@ -173,7 +173,7 @@ jobs:
   build-runners:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
