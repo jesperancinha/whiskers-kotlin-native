@@ -5,7 +5,7 @@ kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version = "2.3.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version = "2.3.0" }
 spring-boot = { id = "org.springframework.boot", version = "3.5.7" }
 spring-dependency-management = { id = "io.spring.dependency-management", version = "1.1.7" }
-flyway = { id = "org.flywaydb.flyway", version = "11.19.0" }
+flyway = { id = "org.flywaydb.flyway", version = "11.19.1" }
 graalvm-buildtools-native = { id = "org.graalvm.buildtools.native", version = "0.11.3" }
 
 [libraries]
