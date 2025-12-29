@@ -12,7 +12,7 @@ plugins {
 
 group = "org.jesperancinha.knative"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_25
 
 val gradleSysVersion = System.getenv("GRADLE_VERSION")
 
@@ -53,7 +53,7 @@ dependencyManagement {
 kotlin {
     compilerOptions {
         freeCompilerArgs.add("-Xjsr305=strict")
-        jvmTarget.set(JVM_21)
+        jvmTarget.set(JVM_25)
     }
 }
 
