@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '21'
+          java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -29,11 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '21'
+          java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -46,11 +46,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '21'
+          java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -63,11 +63,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '21'
+          java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
@@ -101,12 +101,12 @@ jobs:
   build-graalvm-exec-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '21'
+          java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle GraalVM
@@ -115,12 +115,12 @@ jobs:
   build-graalvm-cloud-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '21'
+          java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle GraalVM
@@ -130,11 +130,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - uses: actions/setup-java@v5
         with:
           distribution: 'adopt'
-          java-version: '21'
+          java-version: '25'
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
@@ -151,11 +151,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout project sources
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - uses: actions/setup-java@v5
         with:
           distribution: 'adopt'
-          java-version: '21'
+          java-version: '25'
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
@@ -187,12 +187,12 @@ jobs:
   build-runners:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
       - uses: gradle/gradle-build-action@v3
       - uses: graalvm/setup-graalvm@v1
         with:
           version: 'latest'
-          java-version: '21'
+          java-version: '25'
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Gradle Runners

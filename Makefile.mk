@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 GITHUB_RUN_ID ?=123
-GRADLE_VERSION ?= 9.2.1
+GRADLE_VERSION ?= 9.6.1
 
 b:
 
