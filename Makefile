@@ -10,7 +10,8 @@ MODULE_LOCATIONS := whiskers-cloudnative \
 					whiskers-runners/whiskers-runners-native \
 					plus \
 					good-feel
-
+init:
+	. ./init.sh
 b: build
 clean:
 	if [ -d build ]; then rm -f build; fi;

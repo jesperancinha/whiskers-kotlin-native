@@ -49,10 +49,83 @@ Old code may contain signatures that look like this:
 
 They should all be removed, as they are not needed and add no value to the code.
 
-## 6. Checklist
+## 6. When using Kotlin code make sure to use the kotlin extensions for parsing
+
+### Example 1
+
+When finding this:
+
+```kotlin
+    .getForEntity("/tulips", String::class.java)
+```
+replace with:
+```kotlin
+    .getForEntity<String>("/tulips")
+```
+
+## 7. Update the usage of `CSVParser` which is now deprecated
+
+This skill refers to the `CSVParser` from `org.apache.commons.csv.*`
+
+### Example 1
+
+Replace
+```kotlin
+val csvParser = CSVParser(reader, CSV_HEADER)
+```
+
+with
+
+```kotlin
+val csvParser = CSVParser.builder()
+    .setReader(reader)
+    .setFormat(CSV_HEADER).get()
+```
+
+### Example 2
+
+Replace this
+
+```kotlin
+private val CSV_HEADER = DEFAULT
+    .withHeader(
+        "id",
+        "description",
+        "year",
+        "value",
+        "currency",
+        "type",
+        "diameterMM",
+        "internalDiameterMM",
+        "heightMM",
+        "widthMM"
+    )
+```
+
+with:
+
+```kotlin
+private val CSV_HEADER = CSVFormat.DEFAULT.builder()
+    .setHeader(
+        "id",
+        "description",
+        "year",
+        "value",
+        "currency",
+        "type",
+        "diameterMM",
+        "internalDiameterMM",
+        "heightMM",
+        "widthMM"
+    ).get()
+```
+
+## 8. Checklist
 
 [ ] The code does not use the `!!` operator.
 [ ] The code does not use the safe call operator (`?.`) when the value is guaranteed to be non-null.
 [ ] The code uses `val` instead of `var` whenever possible.
 [ ] The code uses the `Duration` overload when using the `delay` function.
 [ ] The code does not contain any code signatures.
+[ ] The code uses the kotlin extensions for parsing when using Kotlin code.
+[ ] The code should not use the `CSVParser` constructuro directly
