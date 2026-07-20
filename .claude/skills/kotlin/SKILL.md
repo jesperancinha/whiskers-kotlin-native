@@ -120,7 +120,12 @@ private val CSV_HEADER = CSVFormat.DEFAULT.builder()
     ).get()
 ```
 
-## 8. Checklist
+## 8. For all uses of Lombok in Kotlin classes that still use its builder pattern, please convert them to data classes
+
+Due to Java conversions to Kotlin, some of them, due to their automatic nature, didn't consider the existence of data classes.
+If Kotlin classes still use lombok for the builder pattern please convert them to `data class`.
+
+## 9. Checklist
 
 [ ] The code does not use the `!!` operator.
 [ ] The code does not use the safe call operator (`?.`) when the value is guaranteed to be non-null.

@@ -89,3 +89,12 @@ These badges should only be part of root `Readme.md` files. They should also be 
 
 The pipeline GitHub action badges usually have the name of the project. They usually have `actions/workflows` in the links.
 These should only be part of root `Readme.md` files. They should also be removed from other .md files if found.
+
+## 5. Please remove emojis from badges
+
+There may be other badges with emojis in their presentation text.
+Most of these bages are the Generic one:
+
+[![Generic badge]()]()
+
+Look for these badges and simply remove the emoji from the presentation text, if any is found.
